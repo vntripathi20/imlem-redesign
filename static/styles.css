@@ -1,0 +1,233 @@
+:root {
+  color-scheme: light;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: linear-gradient(180deg, #e9f1fb 0%, #f7f9fd 100%);
+  color: #0f2340;
+  line-height: 1.6;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 1.5rem 1.5rem 3rem;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgba(15, 35, 64, 0.14);
+  padding-bottom: 1rem;
+  margin-bottom: 1.75rem;
+}
+
+.brand {
+  display: block;
+  font-size: 1.85rem;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+}
+
+.tagline {
+  margin: 0.25rem 0 0;
+  color: #47688a;
+}
+
+.footer {
+  border-top: 1px solid rgba(15, 35, 64, 0.12);
+  margin-top: 2.5rem;
+  padding-top: 1rem;
+  color: #486b91;
+  font-size: 0.95rem;
+}
+
+.page-title {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.nav-grid,
+.grid-card-list,
+.filters,
+.form-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.nav-grid {
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.hero-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(2, 63, 138, 0.08), rgba(255, 255, 255, 0.95));
+  border: 1px solid rgba(15, 35, 64, 0.16);
+  border-radius: 1.4rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.hero-card .eyebrow {
+  display: inline-flex;
+  margin-bottom: 1rem;
+  color: #0050a9;
+  font-size: 0.9rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero-card p {
+  max-width: 620px;
+  color: #314964;
+}
+
+.hero-actions {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.hero-image {
+  width: 100%;
+  max-width: 440px;
+  border-radius: 1.2rem;
+  object-fit: cover;
+  justify-self: end;
+}
+
+.card {
+  background: white;
+  border: 1px solid rgba(15, 35, 64, 0.08);
+  border-radius: 1.2rem;
+  padding: 1.4rem;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 14px 30px rgba(15, 35, 64, 0.06);
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.card p {
+  margin: 0.85rem 0 0;
+  color: #4f5e72;
+}
+
+.button-primary,
+.button-secondary,
+.link-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.15rem;
+  border-radius: 0.95rem;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background-color 0.18s ease;
+}
+
+.button-primary {
+  background: #0d3d78;
+  color: white;
+  box-shadow: 0 14px 26px rgba(13, 61, 120, 0.2);
+}
+
+.button-secondary,
+.link-button {
+  background: #e7f0fc;
+  color: #0f2340;
+  border-color: rgba(15, 35, 64, 0.12);
+}
+
+.button-primary:hover,
+.button-secondary:hover,
+.link-button:hover {
+  transform: translateY(-1px);
+}
+
+.filters select,
+.form-grid input,
+.form-grid select,
+.form-grid textarea {
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(23, 33, 43, 0.16);
+  background: white;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+thead {
+  background: #f5f7fa;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.9rem 0.85rem;
+  border-bottom: 1px solid rgba(23, 33, 43, 0.08);
+}
+
+th {
+  font-weight: 600;
+}
+
+.toast {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 0.85rem;
+  background: #e8f4ea;
+  border: 1px solid #b1d8b0;
+  color: #1f3e25;
+}
+
+@media (max-width: 920px) {
+  .hero-card {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .hero-image {
+    justify-self: center;
+  }
+}
+
+@media (max-width: 720px) {
+  .topbar {
+    flex-direction: column;
+  }
+}

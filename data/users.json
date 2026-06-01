@@ -1,0 +1,18 @@
+{
+  "accounts": [
+    {
+      "id": "admin-1",
+      "name": "Site Administrator",
+      "role": "admin",
+      "clusterId": null,
+      "email": "admin@imlem.org"
+    },
+    {
+      "id": "coord-1",
+      "name": "Cluster Coordinator",
+      "role": "coordinator",
+      "clusterId": "cluster-1",
+      "email": "coord@imlem.org"
+    }
+  ]
+}
