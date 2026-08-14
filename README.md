@@ -4,15 +4,15 @@ A Python-backed academic archive system for the Intermediate Math League of East
 
 ## What is included
 
-- Python Flask backend
-- Static frontend served by Flask
+- Flask backend serving a JSON API and the frontend
+- Plain HTML/CSS/JS frontend (no build step, no Node)
 - Study materials archive by year and meet
 - Meet information management
-- Admin/coordinator dashboard workflows
+- Admin and coach login with role-scoped dashboards
 - File-based JSON storage for archive data
 - PDF upload support with year/meet/type assignment
 
-## Quick start
+## Quick start (local development)
 
 1. Install Python dependencies
 
@@ -20,24 +20,29 @@ A Python-backed academic archive system for the Intermediate Math League of East
 py -m pip install -r requirements.txt
 ```
 
-2. Start the application
+2. Start the application in debug mode
 
 ```powershell
+$env:FLASK_DEBUG = "1"
 py app.py
 ```
 
 3. Open the site at `http://localhost:5000`
 
+For a production-style run instead, see [DEPLOYMENT.md](DEPLOYMENT.md).
+
 ## Folder layout
 
-- `app.py` — Flask backend and API service
-- `templates/` — HTML template for the frontend
-- `static/` — frontend CSS and JavaScript assets
-- `data/` — JSON content storage for archive, meets, clusters, statistics, and users
+- `app.py` — Flask backend, API, and page serving
+- `templates/` — HTML page shell for the frontend
+- `static/` — frontend CSS and JavaScript (hash-routed single page)
+- `data/` — JSON content storage for archive, meets, divisions/schools, statistics, and users
 - `uploads/` — PDF uploads served by Flask
+- `images/` — site images
 
 ## Notes
 
 - Historical study materials remain in `data/study-materials.json` and `uploads/`
 - The Flask backend appends new meet and file entries, preserving past records
-- Coordinators can update assigned cluster meet details without code edits
+- Schools live inside divisions (`data/divisions.json`); coaches log in and manage only their own school's info, roster, and view their results
+- Admins create coach accounts, divisions, schools, and meets from the Admin Dashboard

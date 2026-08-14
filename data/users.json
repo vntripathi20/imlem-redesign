@@ -4,15 +4,19 @@
       "id": "admin-1",
       "name": "Site Administrator",
       "role": "admin",
-      "clusterId": null,
-      "email": "admin@imlem.org"
+      "divisionId": null,
+      "schoolId": null,
+      "email": "admin@imlem.org",
+      "passwordHash": "scrypt:32768:8:1$UFwhkHiFyd4cgXNb$abb74d6f2fc9fa33a00b82aa95ed24c396db03e9ac855bf6c46e2e1dafe4dc96933e3a7054fc0da0a652ce3670afb7948e445203639f560c7c0529ac8fc166a1"
     },
     {
-      "id": "coord-1",
-      "name": "Cluster Coordinator",
-      "role": "coordinator",
-      "clusterId": "cluster-1",
-      "email": "coord@imlem.org"
+      "id": "coach-1",
+      "name": "Sample Elementary Coach",
+      "role": "coach",
+      "divisionId": "div-euclid",
+      "schoolId": "school-1",
+      "email": "coach@imlem.org",
+      "passwordHash": "scrypt:32768:8:1$Gl7MrQpPQGonPObw$44ad6ab9b387fbc9567b022b0f660b7bca56059b55bae11ad6f651d40e30df47e75a8b88b04c99b722f4afd791271be2af50bfe61ddaa8372da053e6641fbc8b"
     }
   ]
 }

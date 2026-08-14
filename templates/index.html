@@ -3,21 +3,36 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMLEM Archive</title>
+    <title>IMLEM — Intermediate Math League of Eastern Massachusetts</title>
+    <link rel="icon" href="/images/logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/static/styles.css" />
   </head>
   <body>
+    <div class="utility-bar">
+      <div class="app-shell utility-bar-inner">
+        <span>1974–2026 · Fifty years of middle school mathematics</span>
+        <div class="utility-links" id="utility-links"></div>
+      </div>
+    </div>
     <div class="app-shell">
-      <header class="topbar">
-        <div>
-          <span class="brand">IMLEM</span>
-          <p class="tagline">Intermediate Math League of Eastern Massachusetts</p>
-        </div>
+      <header class="topbar" id="topbar">
+        <a class="brand-mark" href="#/">
+          <img src="/images/logo.png" alt="IMLEM logo" />
+          <span class="brand-text">
+            <span class="brand">IMLEM</span>
+            <span class="tagline">Intermediate Math League of Eastern Massachusetts</span>
+          </span>
+        </a>
+        <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+        <nav class="primary-nav" id="primary-nav"></nav>
       </header>
       <main id="root"></main>
-      <footer class="footer">
-        <span>Academic archive interface — historical data preserved.</span>
-      </footer>
+      <footer class="footer" id="footer"></footer>
     </div>
     <script src="/static/app.js"></script>
   </body>
