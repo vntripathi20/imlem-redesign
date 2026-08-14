@@ -130,10 +130,16 @@ function renderLogin(redirectHash) {
       <p>Log in to access your coach or administrator dashboard.</p>
       <div class="card" style="max-width:420px">
         <form id="login-form" class="form-grid single-column">
-          <input name="email" type="email" placeholder="Email" required />
-          <input name="password" type="password" placeholder="Password" required />
+          <div class="field">
+            <label class="field-label" for="login-email">Email</label>
+            <input id="login-email" name="email" type="email" autocomplete="username" required />
+          </div>
+          <div class="field">
+            <label class="field-label" for="login-password">Password</label>
+            <input id="login-password" name="password" type="password" autocomplete="current-password" required />
+          </div>
           <button class="button-primary" type="submit">Log In</button>
-          <p id="login-error" class="login-error" style="display:none"></p>
+          <p id="login-error" class="login-error" role="alert" style="display:none"></p>
         </form>
       </div>
     </section>
@@ -211,7 +217,12 @@ function renderHome(stats) {
             <a class="button-secondary" href="#/standings">Current standings</a>
           </div>
         </div>
-        <img class="hero-image" src="/images/50-years.png" alt="50 years celebration" />
+        <div class="hero-visual">
+          <div class="hero-image-frame">
+            <img class="hero-image" src="/images/50-years.png" alt="Illustration marking IMLEM's 50th anniversary, 1974 to 2026" />
+            <p class="hero-image-caption">50 years of IMLEM</p>
+          </div>
+        </div>
       </div>
 
       <div class="next-meet-strip">
@@ -298,12 +309,13 @@ function renderMeetInfo(data) {
       <p><a class="link-button" href="#/meets/calculator-rules">Calculator Rules</a></p>
       <div class="table-wrapper">
         <table>
+          <caption class="sr-only">Meet dates, locations, times, and announcements</caption>
           <thead>
             <tr>
-              <th>Date</th>
-              <th>Location</th>
-              <th>Time</th>
-              <th>Announcement</th>
+              <th scope="col">Date</th>
+              <th scope="col">Location</th>
+              <th scope="col">Time</th>
+              <th scope="col">Announcement</th>
             </tr>
           </thead>
           <tbody>
@@ -344,8 +356,9 @@ function renderStandings(divisions) {
             <h2>${escapeHtml(division.name)} Division</h2>
             <div class="table-wrapper">
               <table>
+                <caption class="sr-only">${escapeHtml(division.name)} Division standings by meet</caption>
                 <thead>
-                  <tr><th>School</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>Total</th></tr>
+                  <tr><th scope="col">School</th><th scope="col">M1</th><th scope="col">M2</th><th scope="col">M3</th><th scope="col">M4</th><th scope="col">M5</th><th scope="col">Total</th></tr>
                 </thead>
                 <tbody>
                   ${teams.length
@@ -393,12 +406,13 @@ function renderStatistics(data) {
       <p>View historical performance summaries and league results.</p>
       <div class="table-wrapper">
         <table>
+          <caption class="sr-only">League statistics by year</caption>
           <thead>
             <tr>
-              <th>Year</th>
-              <th>Summary</th>
-              <th>Top School</th>
-              <th>Notes</th>
+              <th scope="col">Year</th>
+              <th scope="col">Summary</th>
+              <th scope="col">Top School</th>
+              <th scope="col">Notes</th>
             </tr>
           </thead>
           <tbody>
@@ -463,6 +477,8 @@ function renderLinks() {
 function makeToast(message) {
   const toast = document.createElement('div');
   toast.className = 'toast';
+  toast.setAttribute('role', 'status');
+  toast.setAttribute('aria-live', 'polite');
   toast.textContent = message;
   root.prepend(toast);
   setTimeout(() => toast.remove(), 4000);
@@ -473,8 +489,15 @@ function renderPasswordFormCard() {
     <div class="card" style="margin-top:1.5rem;max-width:420px">
       <h2>Change Password</h2>
       <form id="password-form" class="form-grid single-column">
-        <input name="currentPassword" type="password" placeholder="Current password" required />
-        <input name="newPassword" type="password" placeholder="New password (min 8 characters)" minlength="8" required />
+        <div class="field">
+          <label class="field-label" for="password-form-current">Current password</label>
+          <input id="password-form-current" name="currentPassword" type="password" autocomplete="current-password" required />
+        </div>
+        <div class="field">
+          <label class="field-label" for="password-form-new">New password</label>
+          <input id="password-form-new" name="newPassword" type="password" autocomplete="new-password" minlength="8" required />
+          <span class="field-hint">Minimum 8 characters.</span>
+        </div>
         <button class="button-primary" type="submit">Update Password</button>
       </form>
     </div>
@@ -514,7 +537,10 @@ function renderAdmin(divisions, meets, users) {
         </div>
         <div id="division-form-wrapper" style="display:none;max-width:320px;margin-top:1rem">
           <form id="division-form">
-            <input name="name" placeholder="Division name" />
+            <div class="field">
+              <label class="field-label" for="division-form-name">Division name</label>
+              <input id="division-form-name" name="name" placeholder="e.g. Euclid" />
+            </div>
             <button class="button-primary" type="submit">Create Division</button>
           </form>
         </div>
@@ -586,69 +612,132 @@ function renderAdmin(divisions, meets, users) {
         <div class="card">
           <h2>Upload Study Materials</h2>
           <form id="upload-form">
-            <input name="year" placeholder="Year" />
-            <input name="meetNumber" placeholder="Meet number" />
-            <select name="type"><option value="questions">Questions</option><option value="answers">Answers</option><option value="solutions">Solutions</option></select>
-            <input type="file" name="file" accept="application/pdf" />
+            <div class="field">
+              <label class="field-label" for="upload-form-year">Year</label>
+              <input id="upload-form-year" name="year" placeholder="e.g. 2026" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="upload-form-meet">Meet number</label>
+              <input id="upload-form-meet" name="meetNumber" placeholder="1–5" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="upload-form-type">File type</label>
+              <select id="upload-form-type" name="type"><option value="questions">Questions</option><option value="answers">Answers</option><option value="solutions">Solutions</option></select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="upload-form-file">PDF file</label>
+              <input id="upload-form-file" type="file" name="file" accept="application/pdf" />
+            </div>
             <button class="button-primary" type="submit">Upload PDF</button>
           </form>
         </div>
         <div class="card">
           <h2>Create New Meet</h2>
           <form id="meet-form">
-            <input type="date" name="date" />
-            <input name="time" placeholder="Meet time" />
-            <input name="location" placeholder="Location" />
-            <input name="announcement" placeholder="Announcement (optional)" />
+            <div class="field">
+              <label class="field-label" for="meet-form-date">Date</label>
+              <input id="meet-form-date" type="date" name="date" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="meet-form-time">Time</label>
+              <input id="meet-form-time" name="time" placeholder="e.g. 4:00 PM" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="meet-form-location">Location</label>
+              <input id="meet-form-location" name="location" placeholder="Host school or venue" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="meet-form-announcement">Announcement (optional)</label>
+              <input id="meet-form-announcement" name="announcement" placeholder="Any notes for coaches" />
+            </div>
             <button class="button-primary" type="submit">Create Meet</button>
           </form>
         </div>
         <div class="card">
           <h2>Add School to Division</h2>
           <form id="division-team-form">
-            <select name="divisionId">${divisions.map((division) => `<option value="${division.id}">${escapeHtml(division.name)}</option>`).join('')}</select>
-            <input name="name" placeholder="School name" />
-            <input name="description" placeholder="Description (optional)" />
+            <div class="field">
+              <label class="field-label" for="division-team-form-division">Division</label>
+              <select id="division-team-form-division" name="divisionId">${divisions.map((division) => `<option value="${division.id}">${escapeHtml(division.name)}</option>`).join('')}</select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="division-team-form-name">School name</label>
+              <input id="division-team-form-name" name="name" placeholder="School name" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="division-team-form-description">Description (optional)</label>
+              <input id="division-team-form-description" name="description" placeholder="Description (optional)" />
+            </div>
             <button class="button-secondary" type="submit">Add School</button>
           </form>
         </div>
         <div class="card">
           <h2>Edit School Info</h2>
           <form id="edit-school-form">
-            <select name="schoolRef">
-              ${divisions
-                .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}" data-name="${escapeHtml(team.name)}" data-description="${escapeHtml(team.description || '')}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
-                .join('')}
-            </select>
-            <input name="name" placeholder="School name" />
-            <input name="description" placeholder="Description" />
+            <div class="field">
+              <label class="field-label" for="edit-school-form-ref">School</label>
+              <select id="edit-school-form-ref" name="schoolRef">
+                ${divisions
+                  .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}" data-name="${escapeHtml(team.name)}" data-description="${escapeHtml(team.description || '')}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
+                  .join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="edit-school-form-name">School name</label>
+              <input id="edit-school-form-name" name="name" placeholder="School name" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="edit-school-form-description">Description</label>
+              <input id="edit-school-form-description" name="description" placeholder="Description" />
+            </div>
             <button class="button-secondary" type="submit">Save School Info</button>
           </form>
         </div>
         <div class="card">
           <h2>Record Meet Score</h2>
           <form id="division-score-form">
-            <select name="teamRef">
-              ${divisions
-                .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
-                .join('')}
-            </select>
-            <input name="meetNumber" placeholder="Meet number (1-5)" />
-            <input name="score" placeholder="Score" />
+            <div class="field">
+              <label class="field-label" for="division-score-form-team">School</label>
+              <select id="division-score-form-team" name="teamRef">
+                ${divisions
+                  .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
+                  .join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="division-score-form-meet">Meet number (1–5)</label>
+              <input id="division-score-form-meet" name="meetNumber" placeholder="1–5" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="division-score-form-score">Score</label>
+              <input id="division-score-form-score" name="score" placeholder="Score" />
+            </div>
             <button class="button-primary" type="submit">Save Score</button>
           </form>
         </div>
         <div class="card">
           <h2>Create Coach Account</h2>
           <form id="create-coach-form">
-            <select name="schoolRef">
-              ${divisions
-                .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
-                .join('')}
-            </select>
-            <input name="name" placeholder="Coach name" />
-            <input name="email" type="email" placeholder="Email" />
-            <input name="password" type="password" placeholder="Temporary password (min 8 characters)" minlength="8" />
+            <div class="field">
+              <label class="field-label" for="create-coach-form-school">School</label>
+              <select id="create-coach-form-school" name="schoolRef">
+                ${divisions
+                  .flatMap((division) => division.teams.map((team) => `<option value="${division.id}|${team.id}">${escapeHtml(division.name)} — ${escapeHtml(team.name)}</option>`))
+                  .join('')}
+              </select>
+            </div>
+            <div class="field">
+              <label class="field-label" for="create-coach-form-name">Coach name</label>
+              <input id="create-coach-form-name" name="name" placeholder="Coach name" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="create-coach-form-email">Email</label>
+              <input id="create-coach-form-email" name="email" type="email" placeholder="Email" />
+            </div>
+            <div class="field">
+              <label class="field-label" for="create-coach-form-password">Temporary password</label>
+              <input id="create-coach-form-password" name="password" type="password" placeholder="Min 8 characters" minlength="8" />
+            </div>
             <button class="button-secondary" type="submit">Create Coach Account</button>
           </form>
         </div>
@@ -864,8 +953,14 @@ function renderCoach(data) {
       <div class="card" style="margin-top:1.5rem">
         <h2>School Info</h2>
         <form id="school-info-form">
-          <input name="name" value="${escapeHtml(school.name)}" placeholder="School name" />
-          <textarea name="description" rows="3" placeholder="Short description">${escapeHtml(school.description || '')}</textarea>
+          <div class="field">
+            <label class="field-label" for="school-info-form-name">School name</label>
+            <input id="school-info-form-name" name="name" value="${escapeHtml(school.name)}" placeholder="School name" />
+          </div>
+          <div class="field">
+            <label class="field-label" for="school-info-form-description">Short description</label>
+            <textarea id="school-info-form-description" name="description" rows="3" placeholder="Short description">${escapeHtml(school.description || '')}</textarea>
+          </div>
           <button class="button-primary" type="submit">Save School Info</button>
         </form>
       </div>
@@ -873,7 +968,11 @@ function renderCoach(data) {
       <div class="card" style="margin-top:1.5rem">
         <h2>Team Roster</h2>
         <form id="roster-form">
-          <textarea name="roster" rows="6" placeholder="One student name per line">${escapeHtml((school.roster || []).join('\n'))}</textarea>
+          <div class="field">
+            <label class="field-label" for="roster-form-roster">Roster</label>
+            <textarea id="roster-form-roster" name="roster" rows="6" placeholder="One student name per line">${escapeHtml((school.roster || []).join('\n'))}</textarea>
+            <span class="field-hint">One student name per line.</span>
+          </div>
           <button class="button-primary" type="submit">Save Roster</button>
         </form>
       </div>
@@ -882,7 +981,8 @@ function renderCoach(data) {
         <h2>Results</h2>
         <div class="table-wrapper">
           <table>
-            <thead><tr><th>Division</th><th>M1</th><th>M2</th><th>M3</th><th>M4</th><th>M5</th><th>Total</th></tr></thead>
+            <caption class="sr-only">${escapeHtml(school.name)} results by meet</caption>
+            <thead><tr><th scope="col">Division</th><th scope="col">M1</th><th scope="col">M2</th><th scope="col">M3</th><th scope="col">M4</th><th scope="col">M5</th><th scope="col">Total</th></tr></thead>
             <tbody>
               <tr>
                 <td>${escapeHtml(division.name)}</td>
