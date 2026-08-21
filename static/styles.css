@@ -349,27 +349,22 @@ textarea:focus-visible,
   }
 }
 
-/* ---------- Kids banner ---------- */
+/* ---------- Student banner ---------- */
 
-.kids-banner {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: clamp(0.5rem, 3vw, 2rem);
-  background: var(--blue-50);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  padding: 1rem clamp(1rem, 4vw, 2.5rem) 0;
+.student-banner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.85rem;
   margin: 2rem 0 0;
-  overflow: hidden;
 }
 
-.kids-banner img {
-  height: 128px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 1;
-  min-width: 0;
+.student-banner img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--line);
 }
 
 /* ---------- Hero ---------- */
@@ -1306,13 +1301,9 @@ tbody tr:last-child td {
     display: none;
   }
 
-  .kids-banner {
-    border-radius: var(--radius-md);
-    padding-top: 0.85rem;
-  }
-
-  .kids-banner img {
-    height: 88px;
+  .student-banner {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem;
   }
 
   .page-title {

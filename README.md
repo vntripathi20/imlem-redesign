@@ -40,7 +40,7 @@ For a production-style run instead, see [DEPLOYMENT.md](DEPLOYMENT.md).
 - `uploads/` — PDF uploads served by Flask
 - `images/` — site images
 - `images/icons/` — section icons and the hero illustration; CC0 public-domain clip art from [openclipart.org](https://openclipart.org), used as-is
-- `images/banner/` — the homepage student banner; CC0 public-domain clip art from [openclipart.org](https://openclipart.org), used as-is
+- `images/banner/` — the homepage student banner; free-to-use photos from [Pexels](https://www.pexels.com/license/) (Pexels License — free for commercial use, no attribution required), resized/recompressed for the web. These are stock photos, not photos from actual IMLEM meets
 
 ## Notes
 

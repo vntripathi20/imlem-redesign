@@ -220,11 +220,11 @@ function renderHome(stats) {
   const { schoolCount = 0, divisionCount = 0, meetCount = 0, nextMeet = null, leader = null } = stats || {};
   root.innerHTML = `
     <section>
-      <div class="kids-banner" role="img" aria-label="Illustration of four students raising a hand, writing, using a calculator, and reading">
-        <img src="/images/banner/kid-raising-hand.svg" alt="" />
-        <img src="/images/banner/kid-writing.svg" alt="" />
-        <img src="/images/banner/kid-calculator.svg" alt="" />
-        <img src="/images/banner/kid-reading.svg" alt="" />
+      <div class="student-banner" role="img" aria-label="Photos of students raising a hand in class, using calculators, writing, and reading together">
+        <img src="/images/banner/student-raising-hand.jpg" alt="" loading="lazy" />
+        <img src="/images/banner/student-calculator.jpg" alt="" loading="lazy" />
+        <img src="/images/banner/student-writing.jpg" alt="" loading="lazy" />
+        <img src="/images/banner/student-reading.jpg" alt="" loading="lazy" />
       </div>
       <div class="hero-banner">
         <div class="hero-motif">
