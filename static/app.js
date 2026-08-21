@@ -220,6 +220,12 @@ function renderHome(stats) {
   const { schoolCount = 0, divisionCount = 0, meetCount = 0, nextMeet = null, leader = null } = stats || {};
   root.innerHTML = `
     <section>
+      <div class="kids-banner" role="img" aria-label="Illustration of four students raising a hand, writing, using a calculator, and reading">
+        <img src="/images/banner/kid-raising-hand.svg" alt="" />
+        <img src="/images/banner/kid-writing.svg" alt="" />
+        <img src="/images/banner/kid-calculator.svg" alt="" />
+        <img src="/images/banner/kid-reading.svg" alt="" />
+      </div>
       <div class="hero-banner">
         <div class="hero-motif">
           <img src="/images/icons/hero-protractor.svg" alt="" />
