@@ -39,6 +39,7 @@ For a production-style run instead, see [DEPLOYMENT.md](DEPLOYMENT.md).
 - `data/` — JSON content storage for archive, meets, divisions/schools, statistics, and users
 - `uploads/` — PDF uploads served by Flask
 - `images/` — site images
+- `images/icons/` — section icons and the hero illustration; CC0 public-domain clip art from [openclipart.org](https://openclipart.org), used as-is
 
 ## Notes
 
