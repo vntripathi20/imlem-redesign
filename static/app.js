@@ -71,6 +71,56 @@ const sectionBlurbs = {
   Links: 'Outside resources for practice and problem-solving.',
 };
 
+/* Flat-style vector icons (clip art) for the section index — self-contained SVG, no image requests. */
+const sectionIcons = {
+  'Meet Information': `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="6" y="9" width="28" height="24" rx="3" fill="#eaf1fb" stroke="#0c4a9e" stroke-width="1.5"/>
+    <rect x="6" y="9" width="28" height="7" rx="3" fill="#0c4a9e"/>
+    <rect x="12" y="4" width="3" height="8" rx="1.5" fill="#c9821e"/>
+    <rect x="25" y="4" width="3" height="8" rx="1.5" fill="#c9821e"/>
+    <circle cx="14" cy="23" r="2" fill="#c9821e"/>
+    <circle cx="20" cy="23" r="2" fill="#0c4a9e"/>
+    <circle cx="26" cy="23" r="2" fill="#0c4a9e"/>
+    <circle cx="14" cy="29" r="2" fill="#0c4a9e"/>
+  </svg>`,
+  Standings: `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M13 8h14v9a7 7 0 0 1-14 0V8Z" fill="#fbeed9" stroke="#b3791a" stroke-width="1.5"/>
+    <path d="M13 10H8a5 5 0 0 0 5 8" stroke="#1a56b0" stroke-width="1.5" fill="none"/>
+    <path d="M27 10h5a5 5 0 0 1-5 8" stroke="#1a56b0" stroke-width="1.5" fill="none"/>
+    <rect x="17" y="24" width="6" height="5" fill="#b3791a"/>
+    <rect x="13" y="29" width="14" height="3" rx="1.5" fill="#0a1a33"/>
+  </svg>`,
+  Statistics: `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="6" y="30" width="28" height="2" fill="#0a1a33"/>
+    <rect x="9" y="20" width="6" height="10" rx="1" fill="#1a56b0"/>
+    <rect x="17" y="13" width="6" height="17" rx="1" fill="#b3791a"/>
+    <rect x="25" y="23" width="6" height="7" rx="1" fill="#163a63"/>
+  </svg>`,
+  'Study Materials': `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 12c-3-2.5-8-3-12-2v18c4-1 9-.5 12 2 3-2.5 8-3 12-2V10c-4-1-9-.5-12 2Z" fill="#e8f0fc" stroke="#1a56b0" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M20 12v18" stroke="#b3791a" stroke-width="1.5"/>
+  </svg>`,
+  'League Information': `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M20 6l11 4v9c0 8-5 12-11 15C14 31 9 27 9 19v-9l11-4Z" fill="#fbeed9" stroke="#b3791a" stroke-width="1.5" stroke-linejoin="round"/>
+    <circle cx="20" cy="17" r="1.8" fill="#0a1a33"/>
+    <rect x="18.5" y="20" width="3" height="7" rx="1.2" fill="#0a1a33"/>
+  </svg>`,
+  "Coaches' Corner": `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="9" y="8" width="22" height="26" rx="2.5" fill="#e8f0fc" stroke="#1a56b0" stroke-width="1.5"/>
+    <rect x="15" y="5" width="10" height="6" rx="2" fill="#b3791a"/>
+    <path d="M14 20l4 4 8-8" stroke="#0a1a33" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="14" y="28" width="12" height="2" rx="1" fill="#163a63"/>
+  </svg>`,
+  'Contact Information': `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="6" y="11" width="28" height="19" rx="2.5" fill="#e8f0fc" stroke="#1a56b0" stroke-width="1.5"/>
+    <path d="M7 12l13 10 13-10" stroke="#b3791a" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+  </svg>`,
+  Links: `<svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="4" y="16" width="18" height="10" rx="5" transform="rotate(-35 13 21)" fill="none" stroke="#1a56b0" stroke-width="3.5"/>
+    <rect x="18" y="14" width="18" height="10" rx="5" transform="rotate(-35 27 19)" fill="none" stroke="#b3791a" stroke-width="3.5"/>
+  </svg>`,
+};
+
 function renderNav(sections) {
   return `
     <ul class="index-list">
@@ -79,6 +129,7 @@ function renderNav(sections) {
           (section, i) => `
         <li>
           <a href="${section.hash}">
+            <span class="index-icon">${sectionIcons[section.title] || ''}</span>
             <span class="index-num">${String(i + 1).padStart(2, '0')}</span>
             <span class="index-text">
               <span class="index-title">${section.title}</span>
@@ -208,6 +259,16 @@ function renderHome(stats) {
   root.innerHTML = `
     <section>
       <div class="hero-banner">
+        <svg class="hero-motif" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+          <path d="M20 90 A40 40 0 0 1 100 90 Z" fill="#fbeed9" fill-opacity="0.92" stroke="#c98d2c" stroke-width="2"/>
+          <line x1="60" y1="90" x2="60" y2="52" stroke="#8f5c12" stroke-width="1.2"/>
+          <line x1="60" y1="90" x2="35" y2="60" stroke="#8f5c12" stroke-width="1"/>
+          <line x1="60" y1="90" x2="85" y2="60" stroke="#8f5c12" stroke-width="1"/>
+          <circle cx="70" cy="22" r="4" fill="#e8f0fc" stroke="#1a56b0" stroke-width="2"/>
+          <line x1="70" y1="22" x2="46" y2="88" stroke="#1a56b0" stroke-width="3" stroke-linecap="round"/>
+          <line x1="70" y1="22" x2="92" y2="70" stroke="#0a1a33" stroke-width="3" stroke-linecap="round"/>
+          <circle cx="46" cy="88" r="2.5" fill="#b3261e"/>
+        </svg>
         <div class="hero-copy">
           <span class="eyebrow">Intermediate Math League of Eastern Massachusetts</span>
           <h1>Middle school math competition, five meets a season.</h1>

@@ -382,6 +382,16 @@ textarea:focus-visible,
   background-repeat: repeat, repeat, no-repeat;
 }
 
+.hero-motif {
+  position: absolute;
+  left: -18px;
+  bottom: -18px;
+  width: 150px;
+  height: 150px;
+  opacity: 0.9;
+  pointer-events: none;
+}
+
 .hero-copy {
   position: relative;
   z-index: 1;
@@ -559,6 +569,30 @@ textarea:focus-visible,
 .index-list a:focus-visible {
   background: var(--blue-50);
   padding-left: 0.9rem;
+}
+
+.index-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 50%;
+  background: var(--blue-50);
+  border: 1px solid var(--line);
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.index-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.index-list a:hover .index-icon,
+.index-list a:focus-visible .index-icon {
+  background: var(--gold-100);
+  border-color: rgba(201, 130, 30, 0.35);
 }
 
 .index-num {
@@ -1231,6 +1265,10 @@ tbody tr:last-child td {
   .hero-banner {
     padding: 1.75rem;
     border-radius: var(--radius-md);
+  }
+
+  .hero-motif {
+    display: none;
   }
 
   .page-title {
