@@ -1,0 +1,1653 @@
+{
+ "http://imlem.org/": {
+  "type": "text/html",
+  "bytes": 5465,
+  "final": "http://imlem.org/",
+  "title": "Intermediate Math League of Eastern Massachusetts",
+  "forms": []
+ },
+ "http://imlem.org/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/favicon.ico"
+ },
+ "http://www.imlem.org/imlem.css": {
+  "type": "text/css",
+  "bytes": 3013,
+  "final": "http://www.imlem.org/imlem.css"
+ },
+ "http://imlem.org/meetinfo/202627/202627topics.html": {
+  "type": "text/html",
+  "bytes": 5469,
+  "final": "http://imlem.org/meetinfo/202627/202627topics.html",
+  "title": "IMLEM Meet Information -- 2026-27",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/calculators.html": {
+  "type": "text/html",
+  "bytes": 782,
+  "final": "http://imlem.org/meetinfo/calculators.html",
+  "title": "IMLEM Calculator Rules",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202526/202526_individual.html": {
+  "type": "text/html",
+  "bytes": 542988,
+  "final": "http://imlem.org/statistics/202526/202526_individual.html",
+  "title": "IMLEM Individual Rankings 2025-26",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202526/202526_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 24811,
+  "final": "http://imlem.org/statistics/202526/202526_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2025-26 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202526/202526_team.html": {
+  "type": "text/html",
+  "bytes": 14490,
+  "final": "http://imlem.org/statistics/202526/202526_team.html",
+  "title": "IMLEM Overall Team Rankings 2025-26",
+  "forms": []
+ },
+ "http://imlem.org/statistics/index.html": {
+  "type": "text/html",
+  "bytes": 13168,
+  "final": "http://imlem.org/statistics/index.html",
+  "title": "IMLEM Statistics",
+  "forms": []
+ },
+ "http://imlem.org/studymaterials/index.html": {
+  "type": "text/html",
+  "bytes": 2098,
+  "final": "http://imlem.org/studymaterials/index.html",
+  "title": "IMLEM Study Materials",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/bylaws/2003bylaws.html": {
+  "type": "text/html",
+  "bytes": 20619,
+  "final": "http://imlem.org/leagueinfo/bylaws/2003bylaws.html",
+  "title": "IMLEM By-Laws, March 2003",
+  "forms": []
+ },
+ "http://imlem.org/contact/president.html": {
+  "type": "text/html",
+  "bytes": 1060,
+  "final": "http://imlem.org/contact/president.html",
+  "title": "How to contact the IMLEM President",
+  "forms": []
+ },
+ "http://imlem.org/contact/tabulator.html": {
+  "type": "text/html",
+  "bytes": 1200,
+  "final": "http://imlem.org/contact/tabulator.html",
+  "title": "How to contact the IMLEM Tabulator",
+  "forms": []
+ },
+ "http://imlem.org/contact/treasurer.html": {
+  "type": "text/html",
+  "bytes": 1049,
+  "final": "http://imlem.org/contact/treasurer.html",
+  "title": "How to contact the IMLEM Treasurer",
+  "forms": []
+ },
+ "http://imlem.org/contact/contestwriter.html": {
+  "type": "text/html",
+  "bytes": 1008,
+  "final": "http://imlem.org/contact/contestwriter.html",
+  "title": "How to contact the IMLEM Contest Writer",
+  "forms": []
+ },
+ "http://imlem.org/contact/whotocontact.html": {
+  "type": "text/html",
+  "bytes": 1746,
+  "final": "http://imlem.org/contact/whotocontact.html",
+  "title": "Who to contact",
+  "forms": []
+ },
+ "http://imlem.org/links/index.html": {
+  "type": "text/html",
+  "bytes": 5078,
+  "final": "http://imlem.org/links/index.html",
+  "title": "IMLEM Links to Other Sites",
+  "forms": []
+ },
+ "http://imlem.org/logos/50th_anniversary.gif": {
+  "type": "image/gif",
+  "bytes": 23901,
+  "final": "http://imlem.org/logos/50th_anniversary.gif"
+ },
+ "http://imlem.org/meetinfo/202627/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202627/favicon.ico"
+ },
+ "http://imlem.org/index.html": {
+  "type": "text/html",
+  "bytes": 5465,
+  "final": "http://imlem.org/index.html",
+  "title": "Intermediate Math League of Eastern Massachusetts",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/index.html": {
+  "type": "text/html",
+  "bytes": 6472,
+  "final": "http://imlem.org/meetinfo/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202526/202526topics.html": {
+  "type": "text/html",
+  "bytes": 6253,
+  "final": "http://imlem.org/meetinfo/202526/202526topics.html",
+  "title": "IMLEM Meet Information -- 2025-26",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/favicon.ico"
+ },
+ "http://www.imlem.org/sorttable.js": {
+  "type": "application/x-javascript",
+  "bytes": 17334,
+  "final": "http://www.imlem.org/sorttable.js"
+ },
+ "http://imlem.org/statistics/202526/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202526/favicon.ico"
+ },
+ "http://imlem.org/statistics/202425/202425_individual.html": {
+  "type": "text/html",
+  "bytes": 553129,
+  "final": "http://imlem.org/statistics/202425/202425_individual.html",
+  "title": "IMLEM Individual Rankings 2024-25",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202425/202425_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 24833,
+  "final": "http://imlem.org/statistics/202425/202425_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2024-25 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202425/202425_team.html": {
+  "type": "text/html",
+  "bytes": 14509,
+  "final": "http://imlem.org/statistics/202425/202425_team.html",
+  "title": "IMLEM Overall Team Rankings 2024-25",
+  "forms": []
+ },
+ "http://imlem.org/statistics/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/favicon.ico"
+ },
+ "http://imlem.org/statistics/202324/202324_team.html": {
+  "type": "text/html",
+  "bytes": 13764,
+  "final": "http://imlem.org/statistics/202324/202324_team.html",
+  "title": "IMLEM Overall Team Rankings 2023-24",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202324/202324_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 23918,
+  "final": "http://imlem.org/statistics/202324/202324_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2023-24 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202324/202324_individual.html": {
+  "type": "text/html",
+  "bytes": 528406,
+  "final": "http://imlem.org/statistics/202324/202324_individual.html",
+  "title": "IMLEM Individual Rankings 2023-24",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202223/202223_team.html": {
+  "type": "text/html",
+  "bytes": 14837,
+  "final": "http://imlem.org/statistics/202223/202223_team.html",
+  "title": "IMLEM Overall Team Rankings 2022-23",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202223/202223_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 28181,
+  "final": "http://imlem.org/statistics/202223/202223_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2022-23 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202223/202223_individual.html": {
+  "type": "text/html",
+  "bytes": 436051,
+  "final": "http://imlem.org/statistics/202223/202223_individual.html",
+  "title": "IMLEM Individual Rankings 2022-23",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202122/202122_team.html": {
+  "type": "text/html",
+  "bytes": 16219,
+  "final": "http://imlem.org/statistics/202122/202122_team.html",
+  "title": "IMLEM Overall Team Rankings 2021-22",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202122/202122_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 24849,
+  "final": "http://imlem.org/statistics/202122/202122_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2021-22 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202122/202122_individual.html": {
+  "type": "text/html",
+  "bytes": 628068,
+  "final": "http://imlem.org/statistics/202122/202122_individual.html",
+  "title": "IMLEM Individual Rankings 2021-22",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202021/202021_team.html": {
+  "type": "text/html",
+  "bytes": 12177,
+  "final": "http://imlem.org/statistics/202021/202021_team.html",
+  "title": "IMLEM Overall Team Rankings 2020-21",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202021/202021_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 19550,
+  "final": "http://imlem.org/statistics/202021/202021_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2020-21 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/202021/202021_individual.html": {
+  "type": "text/html",
+  "bytes": 451759,
+  "final": "http://imlem.org/statistics/202021/202021_individual.html",
+  "title": "IMLEM Individual Rankings 2020-21",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201920/201920_team.html": {
+  "type": "text/html",
+  "bytes": 16224,
+  "final": "http://imlem.org/statistics/201920/201920_team.html",
+  "title": "IMLEM Overall Team Rankings 2019-20",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201920/201920_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 29483,
+  "final": "http://imlem.org/statistics/201920/201920_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2019-20 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201920/201920_individual.html": {
+  "type": "text/html",
+  "bytes": 614585,
+  "final": "http://imlem.org/statistics/201920/201920_individual.html",
+  "title": "IMLEM Individual Rankings 2019-20",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201819/201819_team.html": {
+  "type": "text/html",
+  "bytes": 19250,
+  "final": "http://imlem.org/statistics/201819/201819_team.html",
+  "title": "IMLEM Overall Team Rankings 2018-19",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201819/201819_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 34451,
+  "final": "http://imlem.org/statistics/201819/201819_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2018-19 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201819/201819_individual.html": {
+  "type": "text/html",
+  "bytes": 757411,
+  "final": "http://imlem.org/statistics/201819/201819_individual.html",
+  "title": "IMLEM Individual Rankings 2018-19",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201718/201718_team.html": {
+  "type": "text/html",
+  "bytes": 18251,
+  "final": "http://imlem.org/statistics/201718/201718_team.html",
+  "title": "IMLEM Overall Team Rankings 2017-18",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201718/201718_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 33465,
+  "final": "http://imlem.org/statistics/201718/201718_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2017-18 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201718/201718_individual.html": {
+  "type": "text/html",
+  "bytes": 759297,
+  "final": "http://imlem.org/statistics/201718/201718_individual.html",
+  "title": "IMLEM Individual Rankings 2017-18",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201617/201617_team.html": {
+  "type": "text/html",
+  "bytes": 18613,
+  "final": "http://imlem.org/statistics/201617/201617_team.html",
+  "title": "IMLEM Overall Team Rankings 2016-17",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201617/201617_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 30689,
+  "final": "http://imlem.org/statistics/201617/201617_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2016-17 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201617/201617_individual.html": {
+  "type": "text/html",
+  "bytes": 751814,
+  "final": "http://imlem.org/statistics/201617/201617_individual.html",
+  "title": "IMLEM Individual Rankings 2016-17",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201516/201516_team.html": {
+  "type": "text/html",
+  "bytes": 16979,
+  "final": "http://imlem.org/statistics/201516/201516_team.html",
+  "title": "IMLEM Overall Team Rankings 2015-16",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201516/201516_team_bydivision.html": {
+  "type": "text/html",
+  "bytes": 29245,
+  "final": "http://imlem.org/statistics/201516/201516_team_bydivision.html",
+  "title": "IMLEM Team Rankings 2015-16 by Division",
+  "forms": []
+ },
+ "http://imlem.org/statistics/201516/201516_individual.html": {
+  "type": "text/html",
+  "bytes": 683763,
+  "final": "http://imlem.org/statistics/201516/201516_individual.html",
+  "title": "IMLEM Individual Rankings 2015-16",
+  "forms": []
+ },
+ "http://imlem.org/studymaterials/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/studymaterials/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/index.html": {
+  "type": "text/html",
+  "bytes": 1124,
+  "final": "http://imlem.org/leagueinfo/index.html",
+  "title": "IMLEM League Information",
+  "forms": []
+ },
+ "http://imlem.org/contact/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/contact/favicon.ico"
+ },
+ "http://imlem.org/contact/index.html": {
+  "type": "text/html",
+  "bytes": 1086,
+  "final": "http://imlem.org/contact/index.html",
+  "title": "IMLEM Contact Information",
+  "forms": []
+ },
+ "http://imlem.org/links/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/links/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202425/202425datessites.html": {
+  "type": "text/html",
+  "bytes": 4962,
+  "final": "http://imlem.org/meetinfo/202425/202425datessites.html",
+  "title": "IMLEM Meet Information -- 2024-25",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/202425topics.html": {
+  "type": "text/html",
+  "bytes": 6106,
+  "final": "http://imlem.org/meetinfo/202425/202425topics.html",
+  "title": "IMLEM Meet Information -- 2024-25",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1532,
+  "final": "http://imlem.org/meetinfo/202425/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1683,
+  "final": "http://imlem.org/meetinfo/202425/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1582,
+  "final": "http://imlem.org/meetinfo/202425/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1710,
+  "final": "http://imlem.org/meetinfo/202425/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1731,
+  "final": "http://imlem.org/meetinfo/202425/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1663,
+  "final": "http://imlem.org/meetinfo/202425/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1721,
+  "final": "http://imlem.org/meetinfo/202425/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1632,
+  "final": "http://imlem.org/meetinfo/202425/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1692,
+  "final": "http://imlem.org/meetinfo/202425/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1591,
+  "final": "http://imlem.org/meetinfo/202425/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 965,
+  "final": "http://imlem.org/meetinfo/202425/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1628,
+  "final": "http://imlem.org/meetinfo/202425/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 965,
+  "final": "http://imlem.org/meetinfo/202425/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 2097,
+  "final": "http://imlem.org/meetinfo/202425/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/15.html": {
+  "type": "text/html",
+  "bytes": 921,
+  "final": "http://imlem.org/meetinfo/202425/cluster/15.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 4975,
+  "final": "http://imlem.org/meetinfo/202425/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202324/202324datessites.html": {
+  "type": "text/html",
+  "bytes": 2078,
+  "final": "http://imlem.org/meetinfo/202324/202324datessites.html",
+  "title": "IMLEM Meet Information -- 2023-24",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202324/202324topics.html": {
+  "type": "text/html",
+  "bytes": 6250,
+  "final": "http://imlem.org/meetinfo/202324/202324topics.html",
+  "title": "IMLEM Meet Information -- 2023-24",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202223/202223datessites.html": {
+  "type": "text/html",
+  "bytes": 2155,
+  "final": "http://imlem.org/meetinfo/202223/202223datessites.html",
+  "title": "IMLEM Meet Information -- 2022-23",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202223/202223topics.html": {
+  "type": "text/html",
+  "bytes": 6246,
+  "final": "http://imlem.org/meetinfo/202223/202223topics.html",
+  "title": "IMLEM Meet Information -- 2022-23",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202122/202122datessites.html": {
+  "type": "text/html",
+  "bytes": 2133,
+  "final": "http://imlem.org/meetinfo/202122/202122datessites.html",
+  "title": "IMLEM Meet Information -- 2021-22",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202122/202122topics.html": {
+  "type": "text/html",
+  "bytes": 6250,
+  "final": "http://imlem.org/meetinfo/202122/202122topics.html",
+  "title": "IMLEM Meet Information -- 2021-22",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/202021datessites.html": {
+  "type": "text/html",
+  "bytes": 3329,
+  "final": "http://imlem.org/meetinfo/202021/202021datessites.html",
+  "title": "IMLEM Meet Information -- 2020-21",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/202021topics.html": {
+  "type": "text/html",
+  "bytes": 6249,
+  "final": "http://imlem.org/meetinfo/202021/202021topics.html",
+  "title": "IMLEM Meet Information -- 2020-21",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/201920datessites.html": {
+  "type": "text/html",
+  "bytes": 4981,
+  "final": "http://imlem.org/meetinfo/201920/201920datessites.html",
+  "title": "IMLEM Meet Information -- 2019-20",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/201920topics.html": {
+  "type": "text/html",
+  "bytes": 6396,
+  "final": "http://imlem.org/meetinfo/201920/201920topics.html",
+  "title": "IMLEM Meet Information -- 2019-20",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1625,
+  "final": "http://imlem.org/meetinfo/201920/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1729,
+  "final": "http://imlem.org/meetinfo/201920/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1710,
+  "final": "http://imlem.org/meetinfo/201920/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1790,
+  "final": "http://imlem.org/meetinfo/201920/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1715,
+  "final": "http://imlem.org/meetinfo/201920/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1736,
+  "final": "http://imlem.org/meetinfo/201920/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1750,
+  "final": "http://imlem.org/meetinfo/201920/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1963,
+  "final": "http://imlem.org/meetinfo/201920/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1884,
+  "final": "http://imlem.org/meetinfo/201920/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1816,
+  "final": "http://imlem.org/meetinfo/201920/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1689,
+  "final": "http://imlem.org/meetinfo/201920/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1711,
+  "final": "http://imlem.org/meetinfo/201920/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1704,
+  "final": "http://imlem.org/meetinfo/201920/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 1903,
+  "final": "http://imlem.org/meetinfo/201920/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/15.html": {
+  "type": "text/html",
+  "bytes": 1756,
+  "final": "http://imlem.org/meetinfo/201920/cluster/15.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1938,
+  "final": "http://imlem.org/meetinfo/201920/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201920/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 4901,
+  "final": "http://imlem.org/meetinfo/201920/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/201819datessites.html": {
+  "type": "text/html",
+  "bytes": 5337,
+  "final": "http://imlem.org/meetinfo/201819/201819datessites.html",
+  "title": "IMLEM Meet Information -- 2018-19",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/201819topics.html": {
+  "type": "text/html",
+  "bytes": 6249,
+  "final": "http://imlem.org/meetinfo/201819/201819topics.html",
+  "title": "IMLEM Meet Information -- 2018-19",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1577,
+  "final": "http://imlem.org/meetinfo/201819/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1706,
+  "final": "http://imlem.org/meetinfo/201819/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1702,
+  "final": "http://imlem.org/meetinfo/201819/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1851,
+  "final": "http://imlem.org/meetinfo/201819/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1787,
+  "final": "http://imlem.org/meetinfo/201819/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1675,
+  "final": "http://imlem.org/meetinfo/201819/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1750,
+  "final": "http://imlem.org/meetinfo/201819/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1781,
+  "final": "http://imlem.org/meetinfo/201819/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1889,
+  "final": "http://imlem.org/meetinfo/201819/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1845,
+  "final": "http://imlem.org/meetinfo/201819/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1688,
+  "final": "http://imlem.org/meetinfo/201819/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1710,
+  "final": "http://imlem.org/meetinfo/201819/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1676,
+  "final": "http://imlem.org/meetinfo/201819/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 1749,
+  "final": "http://imlem.org/meetinfo/201819/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/15.html": {
+  "type": "text/html",
+  "bytes": 1748,
+  "final": "http://imlem.org/meetinfo/201819/cluster/15.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1903,
+  "final": "http://imlem.org/meetinfo/201819/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201819/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 4975,
+  "final": "http://imlem.org/meetinfo/201819/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/201718datessites.html": {
+  "type": "text/html",
+  "bytes": 4915,
+  "final": "http://imlem.org/meetinfo/201718/201718datessites.html",
+  "title": "IMLEM Meet Information -- 2017-18",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/201718topics.html": {
+  "type": "text/html",
+  "bytes": 6246,
+  "final": "http://imlem.org/meetinfo/201718/201718topics.html",
+  "title": "IMLEM Meet Information -- 2017-18",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1504,
+  "final": "http://imlem.org/meetinfo/201718/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1627,
+  "final": "http://imlem.org/meetinfo/201718/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1562,
+  "final": "http://imlem.org/meetinfo/201718/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1692,
+  "final": "http://imlem.org/meetinfo/201718/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1590,
+  "final": "http://imlem.org/meetinfo/201718/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1542,
+  "final": "http://imlem.org/meetinfo/201718/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1668,
+  "final": "http://imlem.org/meetinfo/201718/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1599,
+  "final": "http://imlem.org/meetinfo/201718/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1668,
+  "final": "http://imlem.org/meetinfo/201718/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1631,
+  "final": "http://imlem.org/meetinfo/201718/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1528,
+  "final": "http://imlem.org/meetinfo/201718/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1567,
+  "final": "http://imlem.org/meetinfo/201718/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1576,
+  "final": "http://imlem.org/meetinfo/201718/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 1639,
+  "final": "http://imlem.org/meetinfo/201718/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/15.html": {
+  "type": "text/html",
+  "bytes": 1572,
+  "final": "http://imlem.org/meetinfo/201718/cluster/15.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1792,
+  "final": "http://imlem.org/meetinfo/201718/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201718/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 4164,
+  "final": "http://imlem.org/meetinfo/201718/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/201617datessites.html": {
+  "type": "text/html",
+  "bytes": 4891,
+  "final": "http://imlem.org/meetinfo/201617/201617datessites.html",
+  "title": "IMLEM Meet Information -- 2016-17",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/201617topics.html": {
+  "type": "text/html",
+  "bytes": 6245,
+  "final": "http://imlem.org/meetinfo/201617/201617topics.html",
+  "title": "IMLEM Meet Information -- 2016-17",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1573,
+  "final": "http://imlem.org/meetinfo/201617/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1620,
+  "final": "http://imlem.org/meetinfo/201617/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1557,
+  "final": "http://imlem.org/meetinfo/201617/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1787,
+  "final": "http://imlem.org/meetinfo/201617/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1587,
+  "final": "http://imlem.org/meetinfo/201617/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1582,
+  "final": "http://imlem.org/meetinfo/201617/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1644,
+  "final": "http://imlem.org/meetinfo/201617/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1767,
+  "final": "http://imlem.org/meetinfo/201617/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1676,
+  "final": "http://imlem.org/meetinfo/201617/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1671,
+  "final": "http://imlem.org/meetinfo/201617/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1586,
+  "final": "http://imlem.org/meetinfo/201617/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1579,
+  "final": "http://imlem.org/meetinfo/201617/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1597,
+  "final": "http://imlem.org/meetinfo/201617/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 1679,
+  "final": "http://imlem.org/meetinfo/201617/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1794,
+  "final": "http://imlem.org/meetinfo/201617/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201617/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 4091,
+  "final": "http://imlem.org/meetinfo/201617/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/201516datessites.html": {
+  "type": "text/html",
+  "bytes": 4599,
+  "final": "http://imlem.org/meetinfo/201516/201516datessites.html",
+  "title": "IMLEM Meet Information -- 2015-16",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/201516topics.html": {
+  "type": "text/html",
+  "bytes": 6184,
+  "final": "http://imlem.org/meetinfo/201516/201516topics.html",
+  "title": "IMLEM Meet Information -- 2015-16",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/201516topics.pdf": {
+  "type": "application/pdf",
+  "bytes": 35158,
+  "final": "http://imlem.org/meetinfo/201516/201516topics.pdf"
+ },
+ "http://imlem.org/meetinfo/201516/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1566,
+  "final": "http://imlem.org/meetinfo/201516/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1596,
+  "final": "http://imlem.org/meetinfo/201516/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1577,
+  "final": "http://imlem.org/meetinfo/201516/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1762,
+  "final": "http://imlem.org/meetinfo/201516/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1582,
+  "final": "http://imlem.org/meetinfo/201516/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1576,
+  "final": "http://imlem.org/meetinfo/201516/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1612,
+  "final": "http://imlem.org/meetinfo/201516/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1771,
+  "final": "http://imlem.org/meetinfo/201516/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1643,
+  "final": "http://imlem.org/meetinfo/201516/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1600,
+  "final": "http://imlem.org/meetinfo/201516/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1610,
+  "final": "http://imlem.org/meetinfo/201516/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1572,
+  "final": "http://imlem.org/meetinfo/201516/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1579,
+  "final": "http://imlem.org/meetinfo/201516/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1752,
+  "final": "http://imlem.org/meetinfo/201516/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/201516/cluster/index.html": {
+  "type": "text/html",
+  "bytes": 3581,
+  "final": "http://imlem.org/meetinfo/201516/cluster/index.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202526/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202526/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202526/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202526/pdf.gif"
+ },
+ "http://imlem.org/statistics/202425/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202425/favicon.ico"
+ },
+ "http://imlem.org/statistics/202324/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202324/favicon.ico"
+ },
+ "http://imlem.org/statistics/202223/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202223/favicon.ico"
+ },
+ "http://imlem.org/statistics/202122/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202122/favicon.ico"
+ },
+ "http://imlem.org/statistics/202021/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/202021/favicon.ico"
+ },
+ "http://imlem.org/statistics/201920/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/201920/favicon.ico"
+ },
+ "http://imlem.org/statistics/201819/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/201819/favicon.ico"
+ },
+ "http://imlem.org/statistics/201718/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/201718/favicon.ico"
+ },
+ "http://imlem.org/statistics/201617/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/201617/favicon.ico"
+ },
+ "http://imlem.org/statistics/201516/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/statistics/201516/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/201819/201819officers.html": {
+  "type": "text/html",
+  "bytes": 4161,
+  "final": "http://imlem.org/leagueinfo/201819/201819officers.html",
+  "title": "IMLEM Officers 2018-19",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/201718/201718officers.html": {
+  "type": "text/html",
+  "bytes": 4156,
+  "final": "http://imlem.org/leagueinfo/201718/201718officers.html",
+  "title": "IMLEM Officers 2017-18",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/201617/201617officers.html": {
+  "type": "text/html",
+  "bytes": 4027,
+  "final": "http://imlem.org/leagueinfo/201617/201617officers.html",
+  "title": "IMLEM Officers 2016-17",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/201516/201516officers.html": {
+  "type": "text/html",
+  "bytes": 3849,
+  "final": "http://imlem.org/leagueinfo/201516/201516officers.html",
+  "title": "IMLEM Officers 2015-16",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202425/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202425/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202425/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202425/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/202425/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202425/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202425/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1903,
+  "final": "http://imlem.org/meetinfo/202425/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202324/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202324/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202324/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202324/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/202223/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202223/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202223/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202223/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/202122/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202122/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202122/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202122/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/202021/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202021/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202021/cluster/1.html": {
+  "type": "text/html",
+  "bytes": 1625,
+  "final": "http://imlem.org/meetinfo/202021/cluster/1.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/2.html": {
+  "type": "text/html",
+  "bytes": 1729,
+  "final": "http://imlem.org/meetinfo/202021/cluster/2.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/3.html": {
+  "type": "text/html",
+  "bytes": 1710,
+  "final": "http://imlem.org/meetinfo/202021/cluster/3.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/4.html": {
+  "type": "text/html",
+  "bytes": 1790,
+  "final": "http://imlem.org/meetinfo/202021/cluster/4.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/5.html": {
+  "type": "text/html",
+  "bytes": 1715,
+  "final": "http://imlem.org/meetinfo/202021/cluster/5.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/6.html": {
+  "type": "text/html",
+  "bytes": 1736,
+  "final": "http://imlem.org/meetinfo/202021/cluster/6.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/7.html": {
+  "type": "text/html",
+  "bytes": 1750,
+  "final": "http://imlem.org/meetinfo/202021/cluster/7.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/8.html": {
+  "type": "text/html",
+  "bytes": 1963,
+  "final": "http://imlem.org/meetinfo/202021/cluster/8.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/9.html": {
+  "type": "text/html",
+  "bytes": 1884,
+  "final": "http://imlem.org/meetinfo/202021/cluster/9.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/10.html": {
+  "type": "text/html",
+  "bytes": 1816,
+  "final": "http://imlem.org/meetinfo/202021/cluster/10.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/11.html": {
+  "type": "text/html",
+  "bytes": 1689,
+  "final": "http://imlem.org/meetinfo/202021/cluster/11.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/12.html": {
+  "type": "text/html",
+  "bytes": 1711,
+  "final": "http://imlem.org/meetinfo/202021/cluster/12.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/13.html": {
+  "type": "text/html",
+  "bytes": 1704,
+  "final": "http://imlem.org/meetinfo/202021/cluster/13.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/14.html": {
+  "type": "text/html",
+  "bytes": 1903,
+  "final": "http://imlem.org/meetinfo/202021/cluster/14.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/cluster/15.html": {
+  "type": "text/html",
+  "bytes": 1756,
+  "final": "http://imlem.org/meetinfo/202021/cluster/15.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/meetinfo/202021/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/202021/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201920/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201920/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201920/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/201920/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201920/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201920/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201819/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201819/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201819/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/201819/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201819/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201819/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201718/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201718/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201718/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/201718/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201718/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201718/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201617/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201617/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201617/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/201617/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201617/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201617/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201516/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201516/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/201516/pdf.gif": {
+  "type": "image/gif",
+  "bytes": 2794,
+  "final": "http://imlem.org/meetinfo/201516/pdf.gif"
+ },
+ "http://imlem.org/meetinfo/201516/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/201516/cluster/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/201819/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/201819/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/201920/201920officers.html": {
+  "type": "text/html",
+  "bytes": 4179,
+  "final": "http://imlem.org/leagueinfo/201920/201920officers.html",
+  "title": "IMLEM Officers 2019-20",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/201718/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/201718/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/201617/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/201617/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/201516/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/201516/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202021/cluster/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/meetinfo/202021/cluster/favicon.ico"
+ },
+ "http://imlem.org/meetinfo/202021/cluster/pa.html": {
+  "type": "text/html",
+  "bytes": 1938,
+  "final": "http://imlem.org/meetinfo/202021/cluster/pa.html",
+  "title": "IMLEM Meet Information",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/201920/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/201920/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/202021/202021officers.html": {
+  "type": "text/html",
+  "bytes": 4180,
+  "final": "http://imlem.org/leagueinfo/202021/202021officers.html",
+  "title": "IMLEM Officers 2020-21",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/202021/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/202021/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/202122/202122officers.html": {
+  "type": "text/html",
+  "bytes": 4180,
+  "final": "http://imlem.org/leagueinfo/202122/202122officers.html",
+  "title": "IMLEM Officers 2021-22",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/202122/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/202122/favicon.ico"
+ },
+ "http://imlem.org/leagueinfo/202223/202223officers.html": {
+  "type": "text/html",
+  "bytes": 4107,
+  "final": "http://imlem.org/leagueinfo/202223/202223officers.html",
+  "title": "IMLEM Officers 2022-23",
+  "forms": []
+ },
+ "http://imlem.org/leagueinfo/202223/favicon.ico": {
+  "type": "image/x-icon",
+  "bytes": 3638,
+  "final": "http://imlem.org/leagueinfo/202223/favicon.ico"
+ }
+}

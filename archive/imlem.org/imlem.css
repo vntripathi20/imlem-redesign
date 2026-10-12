@@ -1,0 +1,139 @@
+/* ===== Base ===== */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 1em auto;
+  padding: 0 1em;
+  line-height: 1.5;
+}
+
+body.prose { max-width: 55em; }
+
+img { max-width: 100%; height: auto; }
+
+
+/* ===== Headings ===== */
+
+/* site title — replaces <font face="Arial Black..." size=5 color=navy> */
+h1 {
+  font-family: "Arial Black", Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  color: navy;
+  margin: 0 0 0.5em 0;
+  font-weight: normal;   /* h1 is bold by default; the <font> tag wasn't */
+}
+
+h2 { font-size: large; margin: 1.2em 0 0.4em 0; }
+td h2 { font-size: x-large; margin: 0; }
+
+h3 { font-size: medium; margin: 1em 0 0.3em 0; }
+
+
+/* ===== Text and small elements ===== */
+
+.center { text-align: center; }
+
+.breadcrumb { font-size: x-small; }
+
+.note { font-size: x-small; }
+
+.toc { margin: 1.5em auto; }
+
+summary {
+  font-size: 1.17em;
+  font-weight: bold;
+}
+
+
+/* ===== Page layout ===== */
+
+.page {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1em;
+  align-items: start;
+}
+
+.aps { text-align: center; }
+
+
+/* ===== Tables: general ===== */
+
+table { line-height: 1.2; }
+td, th { font-size: 1.1em; }
+
+.tablewrap { overflow-x: auto; }
+.tablewrap table { width: max-content; margin: 0 auto; }
+
+
+/* ===== Tables: statistics pages (all) ===== */
+
+table.stats {
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+
+table.stats th,
+table.stats td {
+  border: 1px solid #999;
+  padding: 3px 8px;
+}
+
+table.stats th {
+  background: #e8e8e8;
+}
+
+/* only the second header row sorts, so only it gets the pointer */
+table.stats thead tr:last-child th {
+  cursor: pointer;
+}
+
+table.stats tbody tr:nth-child(even) {
+  background: #f6f6f6;
+}
+
+
+/* ===== Individual pages (table.indiv) =====
+   col 4 = Name; T columns at 13, 19, 25, 31, 37;
+   ranking total = first column after the last T */
+
+table.indiv tbody td:nth-child(4),
+table.indiv tbody td:nth-child(6n+13),
+table.indiv tbody td:nth-child(6n+13):nth-last-child(-n+3) + td {
+  font-weight: bold;
+}
+
+
+/* ===== Team pages (table.team) =====
+   col 3 = School; meet Scores at 5, 7, 9, 11, 13; Total Score = last column.
+   All of these fall on odd columns from 3; the Rank columns are even. */
+
+table.team tbody td:nth-child(2n+3) {
+  font-weight: bold;
+}
+
+/* by-division pages: same School column width in every division's table */
+table.bydiv td:nth-child(3),
+table.bydiv thead tr:last-child th:nth-child(3) {
+  width: 17em;
+  white-space: nowrap;
+}
+
+
+/* ===== Tint the "who" and the "result" columns ===== */
+
+table.indiv tbody td:nth-child(4),
+table.indiv tbody td:nth-child(6n+13):nth-last-child(-n+3) + td,
+table.team tbody td:nth-child(3),
+table.team tbody td:last-child {
+  background: #eaf0f8;
+}
+
+/* slightly darker on even rows, so the striping carries through */
+table.indiv tbody tr:nth-child(even) td:nth-child(4),
+table.indiv tbody tr:nth-child(even) td:nth-child(6n+13):nth-last-child(-n+3) + td,
+table.team tbody tr:nth-child(even) td:nth-child(3),
+table.team tbody tr:nth-child(even) td:last-child {
+  background: #dde6f2;
+}

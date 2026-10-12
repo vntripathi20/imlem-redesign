@@ -1,0 +1,9 @@
+{
+ "http://imlem.org/coaches/index.html": "HTTP Error 401: Authorization Required",
+ "http://imlem.org/meetinfo/202425/201819topics.html": "HTTP Error 404: Not Found",
+ "http://imlem.org/meetinfo/202425/201819datessites.html": "HTTP Error 404: Not Found",
+ "http://imlem.org/meetinfo/202425/201718datessites.html": "HTTP Error 404: Not Found",
+ "http://imlem.org/meetinfo/201819/201718datessites.html": "HTTP Error 404: Not Found",
+ "http://imlem.org/meetinfo/202021/201819datessites.html": "HTTP Error 404: Not Found",
+ "http://imlem.org/meetinfo/202021/201920datessites.html": "HTTP Error 404: Not Found"
+}

@@ -1,0 +1,523 @@
+{
+ "http://www.matharchive.org/imlem/": [
+  "http://imlem.org/",
+  "http://imlem.org/studymaterials/index.html",
+  "http://imlem.org/index.html"
+ ],
+ "http://www.artofproblemsolving.com/community/c308_massachusetts": [
+  "http://imlem.org/",
+  "http://imlem.org/index.html"
+ ],
+ "https://www.prepforstem.com/math/imlem/practice-on-all-categories/": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.prepforstem.com/math/imlem/imlem-test/": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "http://www.amazon.com/Hard-Math-Middle-School-Imlem/dp/1439297428/": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "http://www.amazon.com/Hard-Math-Middle-School-IMLEM/dp/1453814450/": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.youtube.com/playlist?list=PLJszZsm-cRYtrYt9Urb-gd33o0ntGxRD8": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.youtube.com/playlist?list=PLJszZsm-cRYtaEPRGMEO-ZD26Sef60-c1": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.youtube.com/playlist?list=PLJszZsm-cRYsM6OJtqAApLGvZuv_Pxrjj": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.youtube.com/playlist?list=PLJszZsm-cRYub8JmFr6UBF92tMLglRORG": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://www.youtube.com/playlist?list=PLJszZsm-cRYsXfNwoZzUVvmAZTy8LNjzV": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "https://web.archive.org/web/20170610001524/http://sch.ci.lexington.ma.us/~jfrost/mathteam": [
+  "http://imlem.org/studymaterials/index.html"
+ ],
+ "mailto:kelly_LASTNAME@wayland.k12.ma.us": [
+  "http://imlem.org/contact/president.html"
+ ],
+ "mailto:imlem@LASTNAME.com": [
+  "http://imlem.org/contact/tabulator.html"
+ ],
+ "mailto:patLASTNAME83@gmail.com": [
+  "http://imlem.org/contact/treasurer.html"
+ ],
+ "mailto:FIRSTNAME@comcast.net": [
+  "http://imlem.org/contact/contestwriter.html"
+ ],
+ "http://www.gbml.net/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mmleague.net/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.wocomal.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "https://sites.google.com/site/smmlonline/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.smcml.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "https://sites.google.com/site/tristatemathleague/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.maml.org/": [
+  "http://imlem.org/links/index.html",
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.maml.net/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.pi-cone.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.centralmainemathleague.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.nysml.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://nciml.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.nyciml.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://amc.maa.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mandelbrot.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathleague.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.wpi.edu/News/Events/MathMeet/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://web.mit.edu/hmmt/www/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "https://pumac.princeton.edu/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.math.duke.edu/dumu/mathmeet/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.arml.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.usamts.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathcounts.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathkangaroo.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathpropress.com/competitions.html": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://math2.uncc.edu/~hbreiter/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.ideamath.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.themathclub.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.themathcircle.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathround.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.artofproblemsolving.com/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathpath.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.hcssim.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.mathcamp.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.promys.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.math.ohio-state.edu/ross/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.areteem.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.awesomemath.org/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://sumac.stanford.edu/": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.ams.org/employment/mathcamps.html": [
+  "http://imlem.org/links/index.html"
+ ],
+ "http://www.matharchive.org/imlem/2025-26/202510_imlem.pdf": [
+  "http://imlem.org/meetinfo/202526/202526topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2025-26/202511_imlem.pdf": [
+  "http://imlem.org/meetinfo/202526/202526topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2025-26/202601_imlem.pdf": [
+  "http://imlem.org/meetinfo/202526/202526topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2025-26/202602_imlem.pdf": [
+  "http://imlem.org/meetinfo/202526/202526topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2025-26/202604_imlem.pdf": [
+  "http://imlem.org/meetinfo/202526/202526topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2024-25/202410_imlem.pdf": [
+  "http://imlem.org/meetinfo/202425/202425topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2024-25/202411_imlem.pdf": [
+  "http://imlem.org/meetinfo/202425/202425topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2024-25/202501_imlem.pdf": [
+  "http://imlem.org/meetinfo/202425/202425topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2024-25/202504_imlem.pdf": [
+  "http://imlem.org/meetinfo/202425/202425topics.html"
+ ],
+ "mailto:dLASTNAME@prsd.org": [
+  "http://imlem.org/meetinfo/202425/cluster/1.html",
+  "http://imlem.org/meetinfo/201920/cluster/1.html",
+  "http://imlem.org/meetinfo/201819/cluster/1.html",
+  "http://imlem.org/meetinfo/201718/cluster/1.html",
+  "http://imlem.org/meetinfo/201617/cluster/1.html",
+  "http://imlem.org/meetinfo/201516/cluster/1.html",
+  "http://imlem.org/meetinfo/202021/cluster/1.html"
+ ],
+ "mailto:sLASTNAME@beverlyschools.org": [
+  "http://imlem.org/meetinfo/202425/cluster/2.html",
+  "http://imlem.org/meetinfo/201920/cluster/2.html",
+  "http://imlem.org/meetinfo/201819/cluster/2.html",
+  "http://imlem.org/meetinfo/201718/cluster/2.html",
+  "http://imlem.org/meetinfo/201617/cluster/2.html",
+  "http://imlem.org/meetinfo/201516/cluster/2.html",
+  "http://imlem.org/meetinfo/202021/cluster/2.html"
+ ],
+ "mailto:aLASTNAME@natickps.org": [
+  "http://imlem.org/meetinfo/202425/cluster/3.html",
+  "http://imlem.org/meetinfo/201920/cluster/3.html",
+  "http://imlem.org/meetinfo/201819/cluster/3.html",
+  "http://imlem.org/meetinfo/201718/cluster/3.html",
+  "http://imlem.org/meetinfo/201617/cluster/3.html",
+  "http://imlem.org/meetinfo/202021/cluster/3.html"
+ ],
+ "mailto:caitlin.LASTNAME@reading.k12.ma.us\n": [
+  "http://imlem.org/meetinfo/202425/cluster/4.html"
+ ],
+ "mailto:smullin.FIRSTNAME@marbleheadschools.org\n": [
+  "http://imlem.org/meetinfo/202425/cluster/5.html"
+ ],
+ "mailto:scott.LASTNAME@andoverma.us": [
+  "http://imlem.org/meetinfo/202425/cluster/6.html"
+ ],
+ "mailto:isaiah_davidsonweiss@TOWN.k12.ma.us": [
+  "http://imlem.org/meetinfo/202425/cluster/7.html"
+ ],
+ "mailto:eLASTNAME@meadowbrook-ma.org": [
+  "http://imlem.org/meetinfo/202425/cluster/8.html"
+ ],
+ "mailto:LASTNAMEcj@worcesterschools.net": [
+  "http://imlem.org/meetinfo/202425/cluster/9.html"
+ ],
+ "mailto:jennifer.LASTNAME@mansfieldschools.com": [
+  "http://imlem.org/meetinfo/202425/cluster/10.html",
+  "http://imlem.org/meetinfo/201920/cluster/10.html",
+  "http://imlem.org/meetinfo/201819/cluster/10.html",
+  "http://imlem.org/meetinfo/201718/cluster/10.html",
+  "http://imlem.org/meetinfo/201617/cluster/10.html",
+  "http://imlem.org/meetinfo/201516/cluster/10.html",
+  "http://imlem.org/meetinfo/202021/cluster/10.html"
+ ],
+ "mailto:LASTNAMEk@mersd.org": [
+  "http://imlem.org/meetinfo/202425/cluster/12.html",
+  "http://imlem.org/meetinfo/201920/cluster/12.html",
+  "http://imlem.org/meetinfo/201819/cluster/12.html",
+  "http://imlem.org/meetinfo/201718/cluster/12.html",
+  "http://imlem.org/meetinfo/201617/cluster/12.html",
+  "http://imlem.org/meetinfo/201516/cluster/12.html",
+  "http://imlem.org/meetinfo/202021/cluster/12.html"
+ ],
+ "mailto:lLASTNAME@winchesterps.org": [
+  "http://imlem.org/meetinfo/202425/cluster/14.html"
+ ],
+ "http://www.matharchive.org/imlem/2023-24/202310_imlem.pdf": [
+  "http://imlem.org/meetinfo/202324/202324topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2023-24/202311_imlem.pdf": [
+  "http://imlem.org/meetinfo/202324/202324topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2023-24/202401_imlem.pdf": [
+  "http://imlem.org/meetinfo/202324/202324topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2023-24/202402_imlem.pdf": [
+  "http://imlem.org/meetinfo/202324/202324topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2023-24/202404_imlem.pdf": [
+  "http://imlem.org/meetinfo/202324/202324topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2022-23/202210_imlem.pdf": [
+  "http://imlem.org/meetinfo/202223/202223topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2022-23/202212_imlem.pdf": [
+  "http://imlem.org/meetinfo/202223/202223topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2022-23/202301_imlem.pdf": [
+  "http://imlem.org/meetinfo/202223/202223topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2022-23/202302_imlem.pdf": [
+  "http://imlem.org/meetinfo/202223/202223topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2022-23/202304_imlem.pdf": [
+  "http://imlem.org/meetinfo/202223/202223topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2021-22/202110_imlem.pdf": [
+  "http://imlem.org/meetinfo/202122/202122topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2021-22/202112_imlem.pdf": [
+  "http://imlem.org/meetinfo/202122/202122topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2021-22/202201_imlem.pdf": [
+  "http://imlem.org/meetinfo/202122/202122topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2021-22/202202_imlem.pdf": [
+  "http://imlem.org/meetinfo/202122/202122topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2021-22/202203_imlem.pdf": [
+  "http://imlem.org/meetinfo/202122/202122topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2020-21/202011_imlem.pdf": [
+  "http://imlem.org/meetinfo/202021/202021topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2020-21/202012_imlem.pdf": [
+  "http://imlem.org/meetinfo/202021/202021topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2020-21/202101_imlem.pdf": [
+  "http://imlem.org/meetinfo/202021/202021topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2020-21/202103_imlem.pdf": [
+  "http://imlem.org/meetinfo/202021/202021topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2020-21/202104_imlem.pdf": [
+  "http://imlem.org/meetinfo/202021/202021topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2019-20/201910_imlem.pdf": [
+  "http://imlem.org/meetinfo/201920/201920topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2019-20/201912_imlem.pdf": [
+  "http://imlem.org/meetinfo/201920/201920topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2019-20/202001_imlem.pdf": [
+  "http://imlem.org/meetinfo/201920/201920topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2019-20/202002_imlem.pdf": [
+  "http://imlem.org/meetinfo/201920/201920topics.html"
+ ],
+ "mailto:c1oneil@EMAIL.com": [
+  "http://imlem.org/meetinfo/201920/cluster/4.html",
+  "http://imlem.org/meetinfo/201819/cluster/4.html",
+  "http://imlem.org/meetinfo/201718/cluster/4.html",
+  "http://imlem.org/meetinfo/201617/cluster/4.html",
+  "http://imlem.org/meetinfo/201516/cluster/4.html",
+  "http://imlem.org/meetinfo/202021/cluster/4.html"
+ ],
+ "mailto:o'neilc@TOWN.k12.ma.us": [
+  "http://imlem.org/meetinfo/201920/cluster/4.html",
+  "http://imlem.org/meetinfo/201819/cluster/4.html",
+  "http://imlem.org/meetinfo/201718/cluster/4.html",
+  "http://imlem.org/meetinfo/201617/cluster/4.html",
+  "http://imlem.org/meetinfo/201516/cluster/4.html",
+  "http://imlem.org/meetinfo/202021/cluster/4.html"
+ ],
+ "mailto:LASTNAMEa@lynnschools.org": [
+  "http://imlem.org/meetinfo/201920/cluster/5.html",
+  "http://imlem.org/meetinfo/201819/cluster/5.html",
+  "http://imlem.org/meetinfo/201718/cluster/5.html",
+  "http://imlem.org/meetinfo/202021/cluster/5.html"
+ ],
+ "mailto:eLASTNAME@aps1.net": [
+  "http://imlem.org/meetinfo/201920/cluster/6.html",
+  "http://imlem.org/meetinfo/201819/cluster/6.html",
+  "http://imlem.org/meetinfo/202021/cluster/6.html"
+ ],
+ "mailto:suzanne_LASTNAME@psbma.org": [
+  "http://imlem.org/meetinfo/201920/cluster/7.html",
+  "http://imlem.org/meetinfo/201819/cluster/7.html",
+  "http://imlem.org/meetinfo/201718/cluster/7.html",
+  "http://imlem.org/meetinfo/202021/cluster/7.html"
+ ],
+ "mailto:sLASTNAME@lexingtonma.org": [
+  "http://imlem.org/meetinfo/201920/cluster/8.html",
+  "http://imlem.org/meetinfo/201819/cluster/8.html",
+  "http://imlem.org/meetinfo/201718/cluster/8.html",
+  "http://imlem.org/meetinfo/202021/cluster/8.html"
+ ],
+ "mailto:wLASTNAME@lexingtonma.org": [
+  "http://imlem.org/meetinfo/201920/cluster/8.html",
+  "http://imlem.org/meetinfo/202021/cluster/8.html"
+ ],
+ "mailto:d.LASTNAME@amsacs.org": [
+  "http://imlem.org/meetinfo/201920/cluster/9.html",
+  "http://imlem.org/meetinfo/201819/cluster/9.html",
+  "http://imlem.org/meetinfo/201718/cluster/9.html",
+  "http://imlem.org/meetinfo/201617/cluster/9.html",
+  "http://imlem.org/meetinfo/202021/cluster/9.html"
+ ],
+ "mailto:kLASTNAME@concordps.org": [
+  "http://imlem.org/meetinfo/201920/cluster/11.html",
+  "http://imlem.org/meetinfo/201819/cluster/11.html",
+  "http://imlem.org/meetinfo/201718/cluster/11.html",
+  "http://imlem.org/meetinfo/202021/cluster/11.html"
+ ],
+ "mailto:nLASTNAME@billericak12.com": [
+  "http://imlem.org/meetinfo/201920/cluster/13.html",
+  "http://imlem.org/meetinfo/201819/cluster/13.html",
+  "http://imlem.org/meetinfo/201718/cluster/13.html",
+  "http://imlem.org/meetinfo/201617/cluster/13.html",
+  "http://imlem.org/meetinfo/202021/cluster/13.html"
+ ],
+ "mailto:aLASTNAME3@bostonk12.org": [
+  "http://imlem.org/meetinfo/201920/cluster/14.html",
+  "http://imlem.org/meetinfo/202021/cluster/14.html"
+ ],
+ "mailto:caitlin.LASTNAME@reading.k12.ma.us": [
+  "http://imlem.org/meetinfo/201920/cluster/15.html",
+  "http://imlem.org/meetinfo/201819/cluster/15.html",
+  "http://imlem.org/meetinfo/201718/cluster/15.html",
+  "http://imlem.org/meetinfo/202021/cluster/15.html"
+ ],
+ "mailto:rasXXX@scasd.org": [
+  "http://imlem.org/meetinfo/201920/cluster/pa.html",
+  "http://imlem.org/meetinfo/201819/cluster/pa.html",
+  "http://imlem.org/meetinfo/201718/cluster/pa.html",
+  "http://imlem.org/meetinfo/201617/cluster/pa.html",
+  "http://imlem.org/meetinfo/201516/cluster/pa.html",
+  "http://imlem.org/meetinfo/202425/cluster/pa.html",
+  "http://imlem.org/meetinfo/202021/cluster/pa.html"
+ ],
+ "http://www.matharchive.org/imlem/2018-19/201810_imlem.pdf": [
+  "http://imlem.org/meetinfo/201819/201819topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2018-19/201812_imlem.pdf": [
+  "http://imlem.org/meetinfo/201819/201819topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2018-19/201901_imlem.pdf": [
+  "http://imlem.org/meetinfo/201819/201819topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2018-19/201902_imlem.pdf": [
+  "http://imlem.org/meetinfo/201819/201819topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2018-19/201904_imlem.pdf": [
+  "http://imlem.org/meetinfo/201819/201819topics.html"
+ ],
+ "mailto:cjjXXXX@gmail.com": [
+  "http://imlem.org/meetinfo/201819/cluster/14.html"
+ ],
+ "http://www.matharchive.org/imlem/2017-18/201710_imlem.pdf": [
+  "http://imlem.org/meetinfo/201718/201718topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2017-18/201711_imlem.pdf": [
+  "http://imlem.org/meetinfo/201718/201718topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2017-18/201801_imlem.pdf": [
+  "http://imlem.org/meetinfo/201718/201718topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2017-18/201803_imlem.pdf": [
+  "http://imlem.org/meetinfo/201718/201718topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2017-18/201804_imlem.pdf": [
+  "http://imlem.org/meetinfo/201718/201718topics.html"
+ ],
+ "mailto:wLASTNAME@k12.andoverma.us": [
+  "http://imlem.org/meetinfo/201718/cluster/6.html",
+  "http://imlem.org/meetinfo/201617/cluster/6.html",
+  "http://imlem.org/meetinfo/201516/cluster/6.html"
+ ],
+ "mailto:nancy_LASTNAME@milton.edu": [
+  "http://imlem.org/meetinfo/201718/cluster/14.html"
+ ],
+ "http://www.matharchive.org/imlem/2016-17/201610_imlem.pdf": [
+  "http://imlem.org/meetinfo/201617/201617topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2016-17/201612_imlem.pdf": [
+  "http://imlem.org/meetinfo/201617/201617topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2016-17/201701_imlem.pdf": [
+  "http://imlem.org/meetinfo/201617/201617topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2016-17/201703_imlem.pdf": [
+  "http://imlem.org/meetinfo/201617/201617topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2016-17/201704_imlem.pdf": [
+  "http://imlem.org/meetinfo/201617/201617topics.html"
+ ],
+ "mailto:LASTNAME.kathryn@marbleheadschools.org": [
+  "http://imlem.org/meetinfo/201617/cluster/5.html",
+  "http://imlem.org/meetinfo/201516/cluster/5.html"
+ ],
+ "mailto:suzanne_LASTNAME@brookline.k12.ma.us": [
+  "http://imlem.org/meetinfo/201617/cluster/7.html",
+  "http://imlem.org/meetinfo/201516/cluster/7.html"
+ ],
+ "mailto:ericLASTNAME@gmail.com": [
+  "http://imlem.org/meetinfo/201617/cluster/8.html",
+  "http://imlem.org/meetinfo/201516/cluster/8.html"
+ ],
+ "mailto:rLASTNAME@bbns.org": [
+  "http://imlem.org/meetinfo/201617/cluster/8.html",
+  "http://imlem.org/meetinfo/201516/cluster/8.html"
+ ],
+ "mailto:pkelcour@TOWN.k12.ma.us": [
+  "http://imlem.org/meetinfo/201617/cluster/11.html",
+  "http://imlem.org/meetinfo/201516/cluster/11.html"
+ ],
+ "mailto:aLASTNAME@bostongreenacademy.org": [
+  "http://imlem.org/meetinfo/201617/cluster/14.html"
+ ],
+ "http://www.matharchive.org/imlem/2015-16/201510_imlem.pdf": [
+  "http://imlem.org/meetinfo/201516/201516topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2015-16/201511_imlem.pdf": [
+  "http://imlem.org/meetinfo/201516/201516topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2015-16/201601_imlem.pdf": [
+  "http://imlem.org/meetinfo/201516/201516topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2015-16/201602_imlem.pdf": [
+  "http://imlem.org/meetinfo/201516/201516topics.html"
+ ],
+ "http://www.matharchive.org/imlem/2015-16/201603_imlem.pdf": [
+  "http://imlem.org/meetinfo/201516/201516topics.html"
+ ],
+ "mailto:hLASTNAME@meadowbrook-ma.org": [
+  "http://imlem.org/meetinfo/201516/cluster/3.html"
+ ],
+ "mailto:gilles.LASTNAME@worcesteracademy.org": [
+  "http://imlem.org/meetinfo/201516/cluster/9.html"
+ ],
+ "mailto:rLASTNAME@carlisle.k12.ma.us": [
+  "http://imlem.org/meetinfo/201516/cluster/13.html"
+ ]
+}
