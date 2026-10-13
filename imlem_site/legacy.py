@@ -50,7 +50,7 @@ _FIXED = {
     '/leagueinfo/': '/about/',
     '/leagueinfo/bylaws/2003bylaws.html': '/about/bylaws/',
     '/contact/': '/contact/',
-    '/contact/whotocontact.html': '/contact/who/',
+    '/contact/whotocontact.html': '/contact/#who',
     '/links/': '/links/',
     '/coaches/': '/coaches/',
     '/favicon.ico': '/favicon.ico',

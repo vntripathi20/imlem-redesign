@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <div class="anniv">
+    <img src="/images/50-years.png" width="260" height="293" alt="IMLEM: 50 years and still counting. A pyramid of coloured cubes spelling I M L E M.">
+    <div>
+      <h1>50 years and still counting</h1>
+      <p class="lead">The league&rsquo;s 50th anniversary mark. It is the same image the old site showed on its home page.</p>
+    </div>
+  </div>
+  <h2>From the League Bylaws</h2>
+  <blockquote class="quote">
+    <p>The first contest of the Intermediate Math League was held in March, 1965. This meeting was viewed as an experiment to determine the advisability of this type of academic competition for the age levels of students in grades 7 through 9. Enthusiasm and commitment to the contest idea spread quickly. Throughout the years, the League has grown in membership from ten to forty three schools.</p>
+    <footer>&mdash; <a href="{{ url_for('bylaws') }}">League Bylaws</a> (last updated 2003)</footer>
+  </blockquote>
+  <p class="notice" role="note">The anniversary timeline, photographs and recollections have not been supplied yet.
+    {# TODO(league): supply the anniversary history (year the league was founded, milestones, photos). The site does not state a founding year because the old site and the Bylaws do not agree on one. #}</p>
+  <p><a href="{{ url_for('results') }}">Browse the results archive</a> &middot; <a href="{{ url_for('about') }}">About the league</a></p>
+</div>
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import prev_next %}
+{% block main %}
+<div class="wrap page">
+  <h1>Round topics {{ season }}</h1>
+  {{ prev_next(prev, next) }}
+  <p class="small">Jump to:
+    {% for m in meets %}<a href="#meet-{{ m.number }}">Meet {{ m.number }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+  {% for m in meets %}
+  <section class="meet" id="meet-{{ m.number }}" aria-labelledby="h-meet-{{ m.number }}">
+    <h2 id="h-meet-{{ m.number }}">Meet #{{ m.number }} &mdash; <time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time>
+      <span class="badge{{ ' badge-calc' if m.calculators }}">{{ 'Calculator meet' if m.calculators else 'No calculators' }}</span></h2>
+    <div class="table-scroll">
+    <table class="data topics">
+      <caption class="visually-hidden">Rounds in meet {{ m.number }}</caption>
+      <tbody>
+        {% for r in rounds[m.number] %}
+        <tr><th scope="row">{{ r.label }}</th><td><strong>{{ r.category if not r.label.startswith('Team') else '' }}</strong>{% if r.description %}{% if not r.label.startswith('Team') %} &mdash; {% endif %}{{ r.description }}{% endif %}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <p class="small">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF</a> (hosted externally on matharchive.org){% else %}<span class="muted">The old site has no contest link for this meet.</span>{% endif %}</p>
+  </section>
+  {% endfor %}
+  <p class="small"><a href="{{ url_for('calculators') }}">Calculator rules</a> &middot; <a href="{{ url_for('study') }}?season={{ season }}#topics">Study this season&rsquo;s topics</a></p>
+</div>
+{% endblock %}

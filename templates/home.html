@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+{% block main %}
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Middle school mathematics competition</p>
+      <h1>Intermediate Math League of Eastern Massachusetts</h1>
+      <p class="lead">Five meets a season, six rounds each, and teams from schools across the region. Find meet dates, round topics,
+        the results archive and study materials for every season.</p>
+      <p class="actions">
+        <a class="btn btn-primary" href="{{ url_for('contests') }}">Dates &amp; round topics</a>
+        <a class="btn btn-ghost" href="{{ url_for('join') }}">How to join the league</a>
+      </p>
+    </div>
+    <div class="hero-art">
+      <a href="{{ url_for('anniversary') }}"><img src="/images/50-years.png" width="260" height="293" alt="IMLEM 50 years and still counting. A pyramid of coloured cubes."></a>
+    </div>
+  </div>
+</section>
+
+<div class="wrap">
+  <section class="next-meet" aria-labelledby="next-heading">
+    {% if nxt %}
+    <div class="next-count" data-countdown="{{ countdown.iso }}">
+      <p class="count-num"><span data-count-days>{{ countdown.days if countdown.days >= 0 else 0 }}</span></p>
+      <p class="count-label">{% if countdown.days == 0 %}Meet day is today{% elif countdown.days == 1 %}day to go{% else %}days to go{% endif %}</p>
+    </div>
+    <div class="next-body">
+      <h2 id="next-heading">Next meet: {{ nxt.season }} Meet #{{ nxt.number }}</h2>
+      <p class="next-date"><time datetime="{{ nxt.date_iso }}">{{ countdown.human }}</time> &middot; {% if nxt.calculators %}Calculator meet{% else %}No calculators{% endif %}</p>
+      <ul class="plain">
+        {% for r in nxt_rounds %}{% if r.label.startswith('Round') %}
+        <li><strong>{{ r.category }}</strong>{% if r.description %} &mdash; {{ r.description }}{% endif %}</li>
+        {% endif %}{% endfor %}
+      </ul>
+      <p><a href="{{ url_for('topics', season=nxt.season) }}#meet-{{ nxt.number }}">Full round topics</a> &middot;
+         <a href="{{ url_for('calculators') }}">Calculator rules</a> &middot;
+         {% if nxt.season %}<a href="{{ url_for('season_hub', season=nxt.season) }}">{{ nxt.season }} season</a>{% endif %}</p>
+      <p class="small muted">Meet sites and times are set by each cluster; contact your cluster coordinator or the <a href="{{ url_for('contact') }}">league president</a>. {# TODO(league): the old site publishes no site list for 2026-27 yet. #}</p>
+    </div>
+    {% else %}
+    <div class="next-body">
+      <h2 id="next-heading">Upcoming meets</h2>
+      <p>No future meet dates are published yet. See <a href="{{ url_for('contests') }}">all seasons</a>.</p>
+    </div>
+    {% endif %}
+  </section>
+
+  <section class="cards" aria-label="Explore">
+    <a class="card" href="{{ url_for('results') }}"><h2>Results archive</h2><p>Team and individual rankings for {{ stats.seasons }} seasons. Search by school or student.</p></a>
+    <a class="card" href="{{ url_for('study') }}"><h2>Study materials</h2><p>Past contests by season and meet, round topics by subject, books and videos.</p></a>
+    <a class="card" href="{{ url_for('contests') }}"><h2>Contests</h2><p>Dates, sites, clusters and round topics. Calculators are allowed in meets 4 and 5.</p></a>
+    <a class="card" href="{{ url_for('about') }}"><h2>About the league</h2><p>Bylaws, officers and how the league is organised.</p></a>
+  </section>
+
+  <div class="two-col">
+    <section aria-labelledby="ann-heading">
+      <h2 id="ann-heading">Announcements</h2>
+      {% if announcements %}
+      <ul class="announce">
+        {% for a in announcements %}
+        <li><h3>{{ a.title }}</h3>{% if a.date %}<p class="small muted"><time datetime="{{ a.date }}">{{ a.date }}</time></p>{% endif %}{% if a.body %}<p>{{ a.body }}</p>{% endif %}</li>
+        {% endfor %}
+      </ul>
+      {% else %}
+      <p class="muted">No announcements right now. {# TODO(league): add items in data/announcements.json #}</p>
+      {% endif %}
+    </section>
+
+    {% if top_teams %}
+    <section aria-labelledby="top-heading">
+      <h2 id="top-heading">{{ latest_season }} top teams</h2>
+      <ol class="ranked">
+        {% for t in top_teams %}<li><span>{{ t.school }}</span><strong>{{ t.total }}</strong></li>{% endfor %}
+      </ol>
+      <p><a href="{{ url_for('results_teams', season=latest_season) }}">Full {{ latest_season }} team rankings</a></p>
+    </section>
+    {% endif %}
+  </div>
+
+  <section class="feature-50" aria-labelledby="f50">
+    <img src="/images/50-years.png" width="120" height="135" alt="" loading="lazy">
+    <div>
+      <h2 id="f50">50 years and still counting</h2>
+      <p>The league is celebrating its 50th anniversary. Read what the Bylaws record about how the league began, and browse results back to {{ stats.seasons and '2015-16' }}.</p>
+      <p><a href="{{ url_for('anniversary') }}">Visit the anniversary page</a></p>
+    </div>
+  </section>
+
+  <section class="stats-row" aria-label="Archive at a glance">
+    <p><strong>{{ stats.seasons }}</strong> seasons of results</p>
+    <p><strong>{{ stats.schools }}</strong> schools in the archive</p>
+    <p><strong>{{ stats.meets }}</strong> meets with round topics</p>
+  </section>
+</div>
+{% endblock %}

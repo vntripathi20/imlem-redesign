@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <h1>League officers by season</h1>
+  <p class="notice" role="note">The most recent list the old site published is <strong>{{ officers_last_confirmed }}</strong>. Current officers have not yet been confirmed by the league.
+    {# TODO(league): add the current officer list when confirmed. #}</p>
+  <ul class="season-list">
+    {% for k in keys %}<li><a href="{{ url_for('officers', season=k) }}">{{ k }}</a>{% if k == officers_last_confirmed %} <span class="badge">most recent published</span>{% endif %}</li>{% endfor %}
+  </ul>
+</div>
+{% endblock %}

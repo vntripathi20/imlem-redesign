@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <h1>Contests</h1>
+  <p class="lead">Each season has five meets. Each meet has five individual rounds (Mystery, Geometry, Number Theory, Arithmetic, Algebra) and a team round.
+    <a href="{{ url_for('calculators') }}">Calculators are allowed in meets 4 and 5</a>.</p>
+  <div class="table-scroll">
+  <table class="data cards-sm">
+    <caption class="visually-hidden">Seasons and the information available for each</caption>
+    <thead><tr><th scope="col">Season</th><th scope="col">Round topics</th><th scope="col">Dates &amp; sites</th><th scope="col">Clusters</th><th scope="col">Results</th></tr></thead>
+    <tbody>
+      {% for s in rows %}
+      <tr>
+        <th scope="row" data-label="Season"><a href="{{ url_for('season_hub', season=s.id) }}">{{ s.id }}</a></th>
+        <td data-label="Round topics">{% if s.has_topics %}<a href="{{ url_for('topics', season=s.id) }}">Topics</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
+        <td data-label="Dates &amp; sites">{% if s.has_dates %}<a href="{{ url_for('dates', season=s.id) }}">Dates</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
+        <td data-label="Clusters">{% if s.has_clusters %}<a href="{{ url_for('clusters', season=s.id) }}">Clusters</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
+        <td data-label="Results">{% if s.has_results %}<a href="{{ url_for('results_season', season=s.id) }}">Results</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <p class="small muted">A dash means the old site did not publish that item for the season.</p>
+</div>
+{% endblock %}

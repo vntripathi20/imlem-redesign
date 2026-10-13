@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import team_table, season_nav %}
+{% block main %}
+<div class="wrap page page-wide">
+  <h1>{{ season }} team rankings by division</h1>
+  {{ season_nav(season, 'divisions') }}
+  <p class="small">Jump to:
+    {% for t in tables %}<a href="#{{ t.id }}">{{ t.name }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+  {% for t in tables %}
+  <section id="{{ t.id }}" class="division" aria-labelledby="h-{{ t.id }}">
+    <h2 id="h-{{ t.id }}">{{ t.name }}</h2>
+    {{ team_table(t.rows, labels, n_meets, season ~ ' ' ~ t.name ~ ' division rankings', True) }}
+  </section>
+  {% endfor %}
+</div>
+{% endblock %}

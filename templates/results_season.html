@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import prev_next, season_nav %}
+{% block main %}
+<div class="wrap page">
+  <h1>{{ season }} results</h1>
+  {{ season_nav(season, 'overview') }}
+  {{ prev_next(prev, next) }}
+  <ul class="cards cards-3">
+    <li class="card-li"><a class="card" href="{{ url_for('results_teams', season=season) }}"><h2>Team rankings</h2><p>All schools, ranked overall.</p></a></li>
+    <li class="card-li"><a class="card" href="{{ url_for('results_divisions', season=season) }}"><h2>By division</h2><p>{{ divisions|length }} divisions: {{ divisions|join(', ') }}.</p></a></li>
+    <li class="card-li"><a class="card" href="{{ url_for('results_individuals', season=season) }}"><h2>Individual rankings</h2><p>Filter by name, school, division or grade.</p></a></li>
+  </ul>
+  <p>Round topics and dates for the season: <a href="{{ url_for('season_hub', season=season) }}">{{ season }} season</a>.</p>
+</div>
+{% endblock %}

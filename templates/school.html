@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page page-wide">
+  <h1>{{ name }}</h1>
+  <p class="lead">Overall team results by season.</p>
+  <div class="table-scroll">
+  <table class="data cards-sm sortable">
+    <caption class="visually-hidden">{{ name }} team results by season</caption>
+    <thead><tr><th scope="col" data-sort="text">Season</th><th scope="col" data-sort="num">Rank</th><th scope="col" data-sort="text">Div. rank</th><th scope="col" data-sort="text">Cluster</th>
+      {% for i in range(1, 6) %}<th scope="col" data-sort="num">Meet {{ i }}</th>{% endfor %}<th scope="col" data-sort="num">Total</th></tr></thead>
+    <tbody>
+      {% for r in rows %}
+      <tr>
+        <th scope="row" data-label="Season"><a href="{{ url_for('results_teams', season=r.season) }}">{{ r.season }}</a></th>
+        <td data-label="Rank" data-v="{{ r.rank_n if r.rank_n is not none else '' }}">{{ r.rank }}</td>
+        <td data-label="Div. rank">{{ r.div_rank }}</td><td data-label="Cluster">{{ r.cluster }}</td>
+        {% for sc in r.scores %}<td data-label="Meet {{ loop.index }}" data-v="{{ sc[0] if sc[0] is not none else '' }}">{{ sc[0]|score }}{% if sc[1] is not none %} <span class="rk">#{{ sc[1] }}</span>{% endif %}</td>{% endfor %}
+        <td data-label="Total" data-v="{{ r.total if r.total is not none else '' }}"><strong>{{ r.total|score }}</strong></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <p><a href="{{ url_for('results') }}">&larr; All results</a></p>
+</div>
+{% endblock %}

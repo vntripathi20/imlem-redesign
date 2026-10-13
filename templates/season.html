@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import prev_next %}
+{% block main %}
+<div class="wrap page">
+  <h1>{{ s.id }} season</h1>
+  {{ prev_next(prev, next) }}
+  <ul class="cards cards-4">
+    {% if s.has_topics %}<li class="card-li"><a class="card" href="{{ url_for('topics', season=s.id) }}"><h2>Round topics</h2><p>What each meet covered.</p></a></li>{% endif %}
+    {% if s.has_dates %}<li class="card-li"><a class="card" href="{{ url_for('dates', season=s.id) }}"><h2>Dates &amp; sites</h2><p>Meet dates and host schools.</p></a></li>{% endif %}
+    {% if s.has_clusters %}<li class="card-li"><a class="card" href="{{ url_for('clusters', season=s.id) }}"><h2>Clusters</h2><p>Member schools and coordinators.</p></a></li>{% endif %}
+    {% if s.has_results %}<li class="card-li"><a class="card" href="{{ url_for('results_season', season=s.id) }}"><h2>Results</h2><p>Team and individual rankings.</p></a></li>{% endif %}
+    {% if s.has_officers %}<li class="card-li"><a class="card" href="{{ url_for('officers', season=s.id) }}"><h2>Officers</h2><p>Officers and cluster coordinators.</p></a></li>{% endif %}
+  </ul>
+  {% if meets %}
+  <h2>Meets</h2>
+  <div class="table-scroll">
+  <table class="data cards-sm">
+    <caption class="visually-hidden">Meets in {{ s.id }}</caption>
+    <thead><tr><th scope="col">Meet</th><th scope="col">Date</th><th scope="col">Calculators</th><th scope="col">Contest</th></tr></thead>
+    <tbody>
+      {% for m in meets %}
+      <tr>
+        <th scope="row" data-label="Meet"><a href="{{ url_for('topics', season=s.id) }}#meet-{{ m.number }}">Meet {{ m.number }}</a></th>
+        <td data-label="Date"><time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time></td>
+        <td data-label="Calculators">{{ 'Allowed' if m.calculators else 'No' }}</td>
+        <td data-label="Contest">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">PDF (external)</a>{% else %}<span class="muted">No link on old site</span>{% endif %}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% endif %}
+</div>
+{% endblock %}

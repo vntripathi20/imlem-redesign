@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <h1>Contact IMLEM</h1>
+  <p class="notice" role="note"><strong>Pending confirmation by the league.</strong> Officer details come from the old site and match the {{ officers_last_confirmed }} officer list.
+    {# TODO(league): confirm the current officers. #}
+    Email addresses are written in the form the league has always used: replace <code>LASTNAME</code> with the officer&rsquo;s last name.</p>
+  <ul class="cards cards-4">
+    <li class="card-li"><a class="card" href="{{ url_for('contact_role', role='president') }}"><h2>League president</h2><p>General questions, joining, policies, hosting.</p></a></li>
+    <li class="card-li"><a class="card" href="{{ url_for('contact_role', role='tabulator') }}"><h2>Tabulator</h2><p>Statistics and website problems.</p></a></li>
+    <li class="card-li"><a class="card" href="{{ url_for('contact_role', role='treasurer') }}"><h2>Treasurer</h2><p>Dues and reimbursements.</p></a></li>
+    <li class="card-li"><a class="card" href="{{ url_for('contact_role', role='contestwriter') }}"><h2>Contest writer</h2><p>Questions about contest problems.</p></a></li>
+  </ul>
+  <h2 id="who">Who should I contact?</h2>
+  <div class="prose legacy">{{ who.body|safe }}</div>
+</div>
+{% endblock %}

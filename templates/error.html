@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page error-page">
+  <p class="eyebrow">Error {{ code }}</p>
+  <h1>{{ heading }}</h1>
+  <p class="lead">{{ message }}</p>
+  <form class="search-form" action="/results/search/" method="get" role="search">
+    <label for="err-q">Search schools and students</label>
+    <div class="row"><input id="err-q" name="q" type="search" minlength="2" maxlength="60" placeholder="School or student"><button class="btn btn-primary" type="submit">Search</button></div>
+  </form>
+  <ul class="plain link-grid">
+    <li><a href="/">Home</a></li>
+    <li><a href="/contests/">Contests</a></li>
+    <li><a href="/results/">Results</a></li>
+    <li><a href="/study/">Study materials</a></li>
+    <li><a href="/join/">How to join</a></li>
+    <li><a href="/contact/">Contact</a></li>
+  </ul>
+</div>
+{% endblock %}

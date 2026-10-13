@@ -1,0 +1,4 @@
+{
+  "_help": "Add announcements shown on the home page. Each item: {\"title\": \"...\", \"date\": \"YYYY-MM-DD\", \"body\": \"...\"}. Items without a title are ignored. The old site had no announcements, so this starts empty (TODO(league): add the first announcement).",
+  "items": []
+}

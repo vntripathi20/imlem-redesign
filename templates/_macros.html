@@ -1,0 +1,68 @@
+{# Shared building blocks #}
+
+{% macro prev_next(prev, next, noun='season') %}
+{% if (prev and prev[1]) or (next and next[1]) %}
+<nav class="prev-next" aria-label="Other {{ noun }}s">
+  {% if prev and prev[1] %}<a class="prev" href="{{ prev[1] }}"><span aria-hidden="true">&larr;</span> {{ prev[0] }}</a>{% else %}<span></span>{% endif %}
+  {% if next and next[1] %}<a class="next" href="{{ next[1] }}">{{ next[0] }} <span aria-hidden="true">&rarr;</span></a>{% endif %}
+</nav>
+{% endif %}
+{% endmacro %}
+
+{% macro pager(page_no, pages, page_url) %}
+{% if pages > 1 %}
+<nav class="pager" aria-label="Pagination">
+  {% if page_no > 1 %}<a rel="prev" href="{{ page_url(page_no - 1) }}">&larr; Previous</a>{% else %}<span></span>{% endif %}
+  <span>Page {{ page_no }} of {{ pages }}</span>
+  {% if page_no < pages %}<a rel="next" href="{{ page_url(page_no + 1) }}">Next &rarr;</a>{% else %}<span></span>{% endif %}
+</nav>
+{% endif %}
+{% endmacro %}
+
+{% macro team_table(rows, labels, n_meets, caption, show_division=True, table_id='') %}
+<div class="table-scroll">
+<table class="data cards-sm sortable" {% if table_id %}id="{{ table_id }}"{% endif %}>
+  <caption class="visually-hidden">{{ caption }}</caption>
+  <thead>
+    <tr>
+      <th scope="col" data-sort="num">Rank</th>
+      {% if show_division %}<th scope="col" data-sort="text">Div. rank</th>{% endif %}
+      <th scope="col" data-sort="text">School</th>
+      <th scope="col" data-sort="text">Cluster</th>
+      {% for i in range(1, n_meets + 1) %}
+      <th scope="col" data-sort="num">Meet {{ i }}{% if labels.get(i) %}<span class="th-sub">{{ labels[i] }}</span>{% endif %}</th>
+      {% endfor %}
+      <th scope="col" data-sort="num">Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in rows %}
+    <tr>
+      <td data-label="Rank" data-v="{{ r.rank_n if r.rank_n is not none else '' }}">{{ r.rank }}</td>
+      {% if show_division %}<td data-label="Div. rank">{{ r.div_rank }}</td>{% endif %}
+      <th scope="row" data-label="School"><a href="{{ url_for('school', name=r.school) }}">{{ r.school }}</a></th>
+      <td data-label="Cluster">{{ r.cluster }}</td>
+      {% for sc in r.scores %}
+      <td data-label="Meet {{ loop.index }}" data-v="{{ sc[0] if sc[0] is not none else '' }}">{{ sc[0]|score }}{% if sc[1] is not none %} <span class="rk">#{{ sc[1] }}</span>{% endif %}</td>
+      {% endfor %}
+      <td data-label="Total" data-v="{{ r.total if r.total is not none else '' }}"><strong>{{ r.total|score }}</strong></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% endmacro %}
+
+{% macro season_nav(season, active) %}
+<ul class="tabs" aria-label="{{ season }} sections">
+  <li><a href="{{ url_for('results_season', season=season) }}"{% if active == 'overview' %} aria-current="page"{% endif %}>Overview</a></li>
+  <li><a href="{{ url_for('results_teams', season=season) }}"{% if active == 'teams' %} aria-current="page"{% endif %}>Teams</a></li>
+  <li><a href="{{ url_for('results_divisions', season=season) }}"{% if active == 'divisions' %} aria-current="page"{% endif %}>By division</a></li>
+  <li><a href="{{ url_for('results_individuals', season=season) }}"{% if active == 'individuals' %} aria-current="page"{% endif %}>Individuals</a></li>
+</ul>
+{% endmacro %}
+
+{% macro names_note() %}
+<p class="note"><strong>About names.</strong> As on the original IMLEM site, a student is shown by first name and last initial, and
+only some students are named (mostly top finishers). Unnamed rows appear as &ldquo;&mdash;&rdquo;.</p>
+{% endmacro %}

@@ -1,0 +1,35 @@
+{
+  "_source": "Carried over from the old imlem.org /studymaterials/index.html (captured 2026-10-12). Edit this file to add or change resources.",
+  "sections": [
+    {
+      "title": "Practice and question banks",
+      "items": [
+        {"label": "IMLEM question bank", "url": "https://www.prepforstem.com/math/imlem/practice-on-all-categories/"},
+        {"label": "IMLEM quiz generator", "url": "https://www.prepforstem.com/math/imlem/imlem-test/"}
+      ]
+    },
+    {
+      "title": "Books",
+      "items": [
+        {"label": "Hard Math for Middle School: IMLEM Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-Imlem/dp/1439297428/", "note": "(listed at $10 on the old site)"},
+        {"label": "Hard Math for Middle School: IMLEM Plus Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-IMLEM/dp/1453814450/", "note": "(listed at $12 on the old site)"}
+      ]
+    },
+    {
+      "title": "Videos by Noah Abji, based on Prof. Ellison's book (Noah is a former IMLEM competitor)",
+      "items": [
+        {"label": "For IMLEM Meet 1", "url": "https://www.youtube.com/playlist?list=PLJszZsm-cRYtrYt9Urb-gd33o0ntGxRD8"},
+        {"label": "For IMLEM Meet 2", "url": "https://www.youtube.com/playlist?list=PLJszZsm-cRYtaEPRGMEO-ZD26Sef60-c1"},
+        {"label": "For IMLEM Meet 3", "url": "https://www.youtube.com/playlist?list=PLJszZsm-cRYsM6OJtqAApLGvZuv_Pxrjj"},
+        {"label": "For IMLEM Meet 4", "url": "https://www.youtube.com/playlist?list=PLJszZsm-cRYub8JmFr6UBF92tMLglRORG"},
+        {"label": "For IMLEM Meet 5", "url": "https://www.youtube.com/playlist?list=PLJszZsm-cRYsXfNwoZzUVvmAZTy8LNjzV"}
+      ]
+    },
+    {
+      "title": "From member schools",
+      "items": [
+        {"label": "Lexington Clarke Middle School's (old) study materials", "url": "https://web.archive.org/web/20170610001524/http://sch.ci.lexington.ma.us/~jfrost/mathteam", "note": "(web.archive.org snapshot)"}
+      ]
+    }
+  ]
+}
