@@ -22,21 +22,6 @@
     });
   }
 
-  // Live countdown: server renders the day count; this keeps it right if the tab stays open past midnight.
-  var cd = document.querySelector('[data-countdown]');
-  if (cd) {
-    var target = new Date(cd.getAttribute('data-countdown') + 'T00:00:00');
-    var out = cd.querySelector('[data-count-days]');
-    var tick = function () {
-      var now = new Date();
-      var today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-      var days = Math.round((target - today) / 86400000);
-      out.textContent = String(Math.max(days, 0));
-    };
-    tick();
-    setInterval(tick, 60 * 60 * 1000);
-  }
-
   // Keep keyboard focus useful after in-page jumps
   window.addEventListener('hashchange', function () {
     var el = document.getElementById(location.hash.slice(1));

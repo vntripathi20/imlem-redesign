@@ -15,7 +15,7 @@
       <caption class="visually-hidden">Rounds in meet {{ m.number }}</caption>
       <tbody>
         {% for r in rounds[m.number] %}
-        <tr><th scope="row">{{ r.label }}</th><td><strong>{{ r.category if not r.label.startswith('Team') else '' }}</strong>{% if r.description %}{% if not r.label.startswith('Team') %} &mdash; {% endif %}{{ r.description }}{% endif %}</td></tr>
+        <tr><th scope="row" class="{{ r.category|subject }}">{{ r.label }}</th><td><strong>{{ r.category if not r.label.startswith('Team') else '' }}</strong>{% if r.description %}{% if not r.label.startswith('Team') %} &mdash; {% endif %}{{ r.description }}{% endif %}</td></tr>
         {% endfor %}
       </tbody>
     </table>
