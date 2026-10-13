@@ -33,7 +33,7 @@ Deploying: see [DEPLOYMENT.md](DEPLOYMENT.md).
 | `data/announcements.json`, `data/resources.json`, `data/study-materials.json` | Editable content |
 | `templates/`, `static/` | Pages, CSS, JavaScript |
 | `files/`, `uploads/` | PDFs hosted by this site |
-| `images/` | Logo, 50th-anniversary mark, and earlier clip art / photos (stock photos, not from IMLEM meets; currently unused) |
+| `images/` | Old π logo, 50th-anniversary mark, earlier clip art, and stock photos (two are used on the home page as placeholders) |
 | `tests/` | pytest suite |
 | `docs/` | Site inventory, gap analysis, pending league decisions |
 
@@ -62,4 +62,8 @@ See [docs/pending-league-decisions.md](docs/pending-league-decisions.md): Coache
 
 ## Credits
 
-`images/icons/` is CC0 clip art from openclipart.org; `images/banner/` are Pexels-licensed stock photos (not IMLEM photos). The logo and the 50th-anniversary mark come from IMLEM.
+`images/icons/` is CC0 clip art from openclipart.org; `images/banner/` are Pexels-licensed stock photos (not IMLEM photos). The 50th-anniversary mark and the old π favicon come from IMLEM.
+
+The home page shows two of the stock photos as placeholders (`HOME_PHOTOS` in `imlem_site/config.py`). Replace them with photos from real meets once the league approves photo use, or set an entry to `None` to show no photo.
+
+The header mark and favicon (`static/img/imlem-cube.*`) are a single cube drawn for this site after the cubes in the 50th-anniversary mark. Headings use TeX Gyre Adventor, subset to Latin in `static/fonts/`, under the GUST Font License (`static/fonts/GUST-FONT-LICENSE.txt`).

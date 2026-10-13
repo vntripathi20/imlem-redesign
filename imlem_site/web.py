@@ -190,7 +190,7 @@ def register_routes(app):
                       season=season, meets=meets, rounds=rounds, nxt=nxt, days_to_next=days_to_next,
                       human_date=human_date, latest_season=res[0] if res else None,
                       earliest_season=res[-1] if res else None, top_teams=top_teams,
-                      announcements=announcements, home=True)
+                      announcements=announcements, photos=cfg.HOME_PHOTOS, home=True)
 
     # ---- about / join / rules -------------------------------------------------
     @app.route('/about/')
@@ -574,7 +574,7 @@ def register_routes(app):
 
     @app.route('/favicon.ico')
     def favicon():
-        return send_from_directory(cfg.BASE_DIR / 'images', 'logo.png', mimetype='image/png')
+        return send_from_directory(cfg.BASE_DIR / 'static' / 'img', 'imlem-cube-64.png', mimetype='image/png')
 
     @app.route('/images/<path:name>')
     def images(name):

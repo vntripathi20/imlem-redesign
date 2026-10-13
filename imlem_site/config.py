@@ -27,3 +27,11 @@ INDIVIDUALS_PER_PAGE = 100
 
 def env_flag(name, default=False):
     return os.environ.get(name, '1' if default else '0').strip().lower() in ('1', 'true', 'yes', 'on')
+
+# Home page photos. TODO(league): these are free stock photos from Pexels used as placeholders
+# (see README). Replace them with photos from real IMLEM meets once the league approves photo
+# use, or set an entry to None to show no photo there.
+HOME_PHOTOS = {
+    'band': ('/images/banner/student-writing.jpg', 'A middle school student working through a problem at a desk'),
+    'rounds': ('/images/banner/student-calculator.jpg', 'Students checking answers with calculators'),
+}

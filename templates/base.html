@@ -15,7 +15,10 @@
   <meta property="og:image" content="{{ request.url_root.rstrip('/') }}/images/50-years.png">
   <meta name="twitter:card" content="summary">
   <meta name="theme-color" content="#12294d">
-  <link rel="icon" href="/images/logo.png" type="image/png">
+  <link rel="icon" href="{{ url_for('static', filename='img/imlem-cube.svg') }}" type="image/svg+xml">
+  <link rel="icon" href="/favicon.ico" type="image/png" sizes="64x64">
+  <link rel="apple-touch-icon" href="{{ url_for('static', filename='img/apple-touch-icon.png') }}">
+  <link rel="preload" href="{{ url_for('static', filename='fonts/texgyreadventor-regular.woff') }}" as="font" type="font/woff" crossorigin>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/site.css') }}">
   <script src="{{ url_for('static', filename='js/boot.js') }}"></script>
 </head>
@@ -24,7 +27,7 @@
   <header class="site-header">
     <div class="wrap header-row">
       <a class="brand" href="{{ url_for('home') }}">
-        <img src="/images/logo.png" alt="" width="36" height="36">
+        <img src="{{ url_for('static', filename='img/imlem-cube.svg') }}" alt="" width="34" height="34">
         <span class="brand-text"><strong>{{ site_name }}</strong><span>Intermediate Math League of Eastern Massachusetts</span></span>
         <span class="visually-hidden">home</span>
       </a>

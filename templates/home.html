@@ -1,14 +1,31 @@
 {% extends 'base.html' %}
 {% block main %}
+<section class="home-band" aria-labelledby="home-h">
+  <div class="wrap band-text">
+    <h1 id="home-h">Intermediate Math League of Eastern Massachusetts</h1>
+    <p>Five meets a season for middle school math teams. Students compete in five individual rounds and a team round at every meet.</p>
+  </div>
+  {% if photos.band %}<div class="band-photo"><img src="{{ photos.band[0] }}" alt="{{ photos.band[1] }}" width="1079" height="720"></div>{% endif %}
+</section>
+
+<div class="wrap">
+  <nav class="quick-links" aria-label="Most used pages">
+    <ul>
+      {% if season %}<li><a href="{{ url_for('topics', season=season) }}">{{ season }} round topics</a></li>{% endif %}
+      <li><a href="{{ url_for('results') }}">Results archive</a></li>
+      <li><a href="{{ url_for('study') }}">Past contests</a></li>
+      <li><a href="{{ url_for('join') }}">How to join</a></li>
+    </ul>
+  </nav>
+</div>
+
 <div class="wrap home">
-
-  <section class="home-season" aria-labelledby="season-h">
-    <div class="home-intro">
-      <a class="anniv-mark" href="{{ url_for('anniversary') }}"><img src="/images/50-years.png" width="96" height="108" alt="IMLEM: 50 years and still counting"></a>
-      <h1 id="season-h">{{ season }} season</h1>
-      <p>IMLEM runs five meets a year for middle school math teams in Eastern Massachusetts. Each meet has five individual rounds and a team round.</p>
+  <section class="split" aria-labelledby="season-h">
+    <div class="split-head">
+      <h2 id="season-h">{{ season }} season</h2>
+      <a class="anniv-mark" href="{{ url_for('anniversary') }}"><img src="/images/50-years.png" width="120" height="135" alt="IMLEM: 50 years and still counting"></a>
     </div>
-
+    <div class="split-body">
     {% if meets %}
     <div class="table-scroll schedule-wrap">
     <table class="data schedule">
@@ -32,13 +49,18 @@
       </tbody>
     </table>
     </div>
+    <p class="small muted">Meet sites and start times are set by each cluster; ask your cluster coordinator or the <a href="{{ url_for('contact') }}">league president</a>. <a href="{{ url_for('calculators') }}">Calculator rules</a>.</p>
     {% else %}
     <p>No meet dates are published yet. See <a href="{{ url_for('contests') }}">all seasons</a>.</p>
     {% endif %}
+    </div>
   </section>
+</div>
 
-  {% if nxt and rounds.get(nxt.number) %}
-  <section class="next-rounds" aria-labelledby="next-h">
+{% if nxt and rounds.get(nxt.number) %}
+<section class="rounds-band" aria-labelledby="next-h">
+  {% if photos.rounds %}<div class="band-photo band-photo-left"><img src="{{ photos.rounds[0] }}" alt="{{ photos.rounds[1] }}" width="1080" height="720" loading="lazy"></div>{% endif %}
+  <div class="wrap rounds-inner">
     <h2 id="next-h">Meet {{ nxt.number }} rounds</h2>
     <p class="next-when"><time datetime="{{ nxt.date_iso }}">{{ human_date(nxt.date_iso) }}</time>. {{ 'Calculators allowed.' if nxt.calculators else 'No calculators.' }}</p>
     <ul class="rounds">
@@ -47,10 +69,12 @@
         <span class="round-topic">{% if not r.label.startswith('Team') %}<strong>{{ r.category }}</strong>{% if r.description %}: {% endif %}{% endif %}{{ r.description }}</span></li>
       {% endfor %}
     </ul>
-    <p class="small muted"><a href="{{ url_for('calculators') }}">Calculator rules</a>. Meet sites and start times are set by each cluster; ask your cluster coordinator or the <a href="{{ url_for('contact') }}">league president</a>.</p>
-  </section>
-  {% endif %}
+    <p><a href="{{ url_for('topics', season=nxt.season) }}">All {{ nxt.season }} round topics</a></p>
+  </div>
+</section>
+{% endif %}
 
+<div class="wrap home">
   <div class="home-cols">
     {% if top_teams %}
     <section aria-labelledby="top-h">
