@@ -5,12 +5,21 @@ from datetime import date
 
 from flask import current_app, g
 
-from .importer import build_database
+from .importer import IMPORT_VERSION, build_database
+
+
+def _built_version(path):
+    try:
+        with sqlite3.connect(f'file:{path.as_posix()}?mode=ro', uri=True) as db:
+            return db.execute('PRAGMA user_version').fetchone()[0]
+    except sqlite3.Error:
+        return None
 
 
 def ensure_database(app):
+    """Build the database if it is missing or was made by an older importer."""
     path = app.config['DB_PATH']
-    if not path.exists():
+    if not path.exists() or _built_version(path) != IMPORT_VERSION:
         app.logger.info('Building %s from %s', path, app.config['ARCHIVE_DIR'])
         build_database(app.config['ARCHIVE_DIR'], path)
 

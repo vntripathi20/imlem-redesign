@@ -11,4 +11,4 @@ env/
 
 # Generated from archive/ by scripts/import_archive.py (rebuilt automatically on first start)
 data/imlem.sqlite
-data/imlem.building
+data/imlem.building*

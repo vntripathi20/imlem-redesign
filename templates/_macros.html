@@ -57,7 +57,7 @@
 <ul class="tabs" aria-label="{{ season }} sections">
   <li><a href="{{ url_for('results_season', season=season) }}"{% if active == 'overview' %} aria-current="page"{% endif %}>Overview</a></li>
   <li><a href="{{ url_for('results_teams', season=season) }}"{% if active == 'teams' %} aria-current="page"{% endif %}>Teams</a></li>
-  <li><a href="{{ url_for('results_divisions', season=season) }}"{% if active == 'divisions' %} aria-current="page"{% endif %}>By division</a></li>
+  <li><a href="{{ url_for('results_divisions', season=season) }}"{% if active == 'divisions' %} aria-current="page"{% endif %}>Divisions</a></li>
   <li><a href="{{ url_for('results_individuals', season=season) }}"{% if active == 'individuals' %} aria-current="page"{% endif %}>Individuals</a></li>
 </ul>
 {% endmacro %}

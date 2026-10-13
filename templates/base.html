@@ -34,7 +34,7 @@
       <nav id="site-nav" class="site-nav" aria-label="Primary">
         <ul>
           {% for label, href, key in nav %}
-          <li><a href="{{ href }}"{% if request.path.startswith(href) and href != '/' %} aria-current="page"{% endif %}{% if key == 'join' %} class="nav-cta"{% endif %}>{{ label }}</a></li>
+          <li><a href="{{ href }}"{% if request.path.startswith(href) and href != '/' %} aria-current="page"{% endif %}>{{ label }}</a></li>
           {% endfor %}
         </ul>
       </nav>
@@ -58,8 +58,8 @@
   <footer class="site-footer">
     <div class="wrap footer-grid">
       <div>
-        <p class="footer-brand"><img src="/images/50-years.png" alt="IMLEM: 50 years and still counting" width="88" height="99" loading="lazy"></p>
-        <p class="small">{{ site_full_name }}</p>
+        <p class="footer-name">{{ site_full_name }}</p>
+        <p class="small">Middle school math meets since March 1965 (<a href="/about/bylaws/">League Bylaws</a>).</p>
       </div>
       <nav aria-label="League">
         <h2>League</h2>
