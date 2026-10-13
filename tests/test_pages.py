@@ -36,13 +36,38 @@ def test_html_basics(client, path):
         assert ' alt=' in img, img
 
 
-def test_home_has_next_meet_and_countdown(client):
-    from datetime import date
+def test_home_leads_with_season_schedule(client):
     html = client.get('/').get_data(as_text=True)
     assert 'Intermediate Math League of Eastern Massachusetts' in html
-    assert 'season-table' in html
-    if date.today() <= date(2027, 4, 1):          # while the 2026-27 season still has meets ahead
-        assert 'data-countdown' in html and 'Next meet:' in html
+    main = html.split('<main', 1)[1]
+    # the season's meet table comes before everything else on the page
+    assert 'class="data schedule"' in main or 'No meet dates are published yet' in main
+    assert main.count('50-years.png') <= 1
+
+
+def test_home_marks_the_next_meet(app):
+    from datetime import date
+    from unittest import mock
+    import imlem_site.web as web
+    with mock.patch.object(web, 'date', wraps=date) as d:
+        d.today.return_value = date(2026, 10, 12)
+        html = app.test_client().get('/').get_data(as_text=True)
+    assert '2026-27 season' in html
+    assert 'Next meet, in 3 days' in html
+    assert 'Meet 1 rounds' in html and 'subj-geometry' in html
+
+
+def test_round_labels_have_no_html_entities(client):
+    html = client.get('/contests/2026-27/topics/').get_data(as_text=True)
+    assert '&amp;nbsp;' not in html and 'Round&nbsp;' not in html
+    assert '>Round 1<' in html
+
+
+def test_2025_26_meet_3_date_is_consistent(client):
+    teams = client.get('/results/2025-26/teams/').get_data(as_text=True)
+    indiv = client.get('/results/2025-26/individuals/').get_data(as_text=True)
+    assert 'Jan. 4, 2026' not in teams
+    assert 'Jan. 8, 2026' in teams and 'Jan. 8, 2026' in indiv
 
 
 def test_next_meet_uses_today(app):

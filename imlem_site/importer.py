@@ -9,6 +9,7 @@ silently dropped.
 """
 import html as htmllib
 import json
+import os
 import re
 import sqlite3
 from datetime import datetime
@@ -296,7 +297,8 @@ def build_database(archive_dir, db_path):
     root = Path(archive_dir)
     db_path = Path(db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = db_path.with_suffix('.building')
+    # Per-process temp file so two workers starting at once can't corrupt each other's build.
+    tmp = db_path.with_suffix(f'.building.{os.getpid()}')
     tmp.unlink(missing_ok=True)
     report, summary = [], {}
     db = sqlite3.connect(tmp)

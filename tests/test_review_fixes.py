@@ -21,8 +21,8 @@ def test_no_literal_or_double_escaped_entities(client, path):
 
 def test_round_labels_render_as_plain_text(client):
     html = client.get('/contests/2026-27/topics/').get_data(as_text=True)
-    assert len(re.findall(r'<th scope="row">Round [1-5]</th>', html)) == 25
-    assert '<th scope="row">Team Round</th>' in html
+    assert len(re.findall(r'<th scope="row"[^>]*>Round [1-5]</th>', html)) == 25
+    assert re.search(r'<th scope="row"[^>]*>Team Round</th>', html)
 
 
 def test_database_has_no_entities_in_text(app):
@@ -71,26 +71,23 @@ def test_css_pins_columns_and_keeps_tabs_on_one_row():
     css = (Path(__file__).resolve().parent.parent / 'static' / 'css' / 'site.css').read_text(encoding='utf-8')
     assert re.search(r'\.table-wide \.c-rank[^{]*\{[^}]*position: sticky', css)
     assert re.search(r'\.tabs \{[^}]*flex-wrap: nowrap[^}]*overflow-x: auto', css)
+    assert 'nth-child(4)' not in css, 'pinning must follow the c-rank/c-name classes, not a column position'
     assert 'border-radius: 999px' not in css and 'border-radius: 99' not in css, 'no pill buttons'
 
 
 def test_home_is_a_season_table_not_a_hero(client, app):
     from imlem_site import db as D
     html = client.get('/').get_data(as_text=True)
-    assert 'class="hero' not in html and 'class="btn' not in html and 'eyebrow' not in html
+    assert 'class="hero' not in html and 'eyebrow' not in html
+    assert 'btn-primary' not in html and 'btn-ghost' not in html and 'nav-cta' not in html, 'no pill / gold buttons'
     assert 'class="cards' not in html and 'stats-row' not in html and 'next-count' not in html
-    assert 'class="nav-cta"' not in html
     assert len(re.findall(r'<img[^>]*50-years', html)) == 1, 'anniversary graphic appears once'
     body = html.split('<main', 1)[1]
-    assert body.index('season-table') < body.index('Latest results') < body.index('Announcements')
-    rows = re.findall(r'<tr[^>]*>\s*<th scope="row">Meet \d', body)
-    assert len(rows) == 5
+    assert body.index('class="data schedule"') < body.index('Announcements'), 'the schedule leads the page'
+    assert len(re.findall(r'<tr[^>]*>\s*<th scope="row">\d</th>', body)) == 5, 'five meets in the season table'
     with app.app_context():
         nxt = D.next_meet()
-    marked = len(re.findall(r'class="is-next"', html))
-    assert marked == (1 if nxt else 0)
-    if nxt:
-        assert 'Next meet:' in html and 'next-tag' in html
+    assert len(re.findall(r'class="is-next"', html)) == (1 if nxt else 0)
 
 
 def test_join_is_a_plain_nav_link(client):

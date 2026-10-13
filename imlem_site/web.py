@@ -98,6 +98,10 @@ def human_date(iso):
 # --------------------------------------------------------------------------- filters/hooks
 
 def register_filters(app):
+    @app.template_filter('subject')
+    def subject_class(category):
+        return 'subj-' + re.sub(r'[^a-z]+', '-', (category or '').lower()).strip('-')
+
     @app.template_filter('score')
     def score(v):
         return '' if v is None else v
@@ -112,10 +116,10 @@ def register_filters(app):
             'site_name': cfg.SITE_NAME, 'site_full_name': cfg.SITE_FULL_NAME,
             'officers_last_confirmed': cfg.OFFICERS_LAST_CONFIRMED,
             'nav': [
-                ('About', url_for('about'), 'about'),
                 ('Contests', url_for('contests'), 'contests'),
                 ('Results', url_for('results'), 'results'),
-                ('Study Materials', url_for('study'), 'study'),
+                ('Study materials', url_for('study'), 'study'),
+                ('About', url_for('about'), 'about'),
                 ('Join', url_for('join'), 'join'),
                 ('Contact', url_for('contact'), 'contact'),
             ],
@@ -166,15 +170,15 @@ def register_routes(app):
     # ---- home -----------------------------------------------------------------
     @app.route('/')
     def home():
-        nxt = D.next_meet()
-        countdown = None
-        if nxt:
-            days = (date.fromisoformat(nxt['date_iso']) - date.today()).days
-            countdown = {'days': max(days, 0), 'iso': nxt['date_iso'], 'human': human_date(nxt['date_iso'])}
-        # The season table shows the season of the next meet, else the most recent season with a schedule.
-        latest_sched = D.q1('SELECT season FROM meets ORDER BY season DESC LIMIT 1')
-        sched_season = nxt['season'] if nxt else (latest_sched['season'] if latest_sched else None)
-        season_meets = D.meets_for(sched_season) if sched_season else []
+        today = date.today()
+        nxt = D.next_meet(today)
+        # Show the season of the next meet; after the last meet of a season, the most recent season.
+        season = nxt['season'] if nxt else (D.seasons() or [None])[0]
+        meets = D.meets_for(season) if season else []
+        rounds = {}
+        for r in D.q('SELECT * FROM rounds WHERE season=? ORDER BY meet, seq', season):
+            rounds.setdefault(r['meet'], []).append(r)
+        days_to_next = (date.fromisoformat(nxt['date_iso']) - today).days if nxt else None
         res = D.results_seasons()
         top_teams = []
         if res:
@@ -183,8 +187,9 @@ def register_routes(app):
         return render('home.html', title=f'{cfg.SITE_NAME} — {cfg.SITE_FULL_NAME}',
                       description='IMLEM is a middle school math league in Eastern Massachusetts. '
                                   'Meet dates, round topics, a results archive and study materials.',
-                      nxt=nxt, countdown=countdown, sched_season=sched_season, season_meets=season_meets,
-                      latest_season=res[0] if res else None, top_teams=top_teams,
+                      season=season, meets=meets, rounds=rounds, nxt=nxt, days_to_next=days_to_next,
+                      human_date=human_date, latest_season=res[0] if res else None,
+                      earliest_season=res[-1] if res else None, top_teams=top_teams,
                       announcements=announcements, home=True)
 
     # ---- about / join / rules -------------------------------------------------
