@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <title>IMLEM</title>
-  <g stroke="#12294d" stroke-width="1.2" stroke-linejoin="round">
-    <path d="M16 2.5 29 10 16 17.5 3 10Z" fill="#f2b632"/>
-    <path d="M3 10 16 17.5V30.5L3 23Z" fill="#e8edf5"/>
-    <path d="M29 10 16 17.5V30.5L29 23Z" fill="#b7c3d8"/>
-  </g>
-</svg>

@@ -574,7 +574,7 @@ def register_routes(app):
 
     @app.route('/favicon.ico')
     def favicon():
-        return send_from_directory(cfg.BASE_DIR / 'static' / 'img', 'imlem-cube-64.png', mimetype='image/png')
+        return send_from_directory(cfg.BASE_DIR / 'images', 'logo.png', mimetype='image/png')
 
     @app.route('/images/<path:name>')
     def images(name):
