@@ -19,7 +19,7 @@
         {% for m in cs.meets %}
         <li>
           <span class="meet-name">Meet {{ m.number }} <span class="muted">&middot; {{ m.date_text }}</span></span>
-          {% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF (external)</a>{% else %}<span class="muted">No link on the old site</span>{% endif %}
+          {% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF (external)</a>{% else %}<span class="muted">PDF not available</span>{% endif %}
           <a href="{{ url_for('topics', season=cs.season) }}#meet-{{ m.number }}">Topics</a>
         </li>
         {% endfor %}
@@ -67,7 +67,7 @@
 
   <section id="resources" aria-labelledby="h-res">
     <h2 id="h-res">Books, videos &amp; practice</h2>
-    <p class="small muted">Carried over from the old Study Materials page. These are external sites; the league does not host or endorse their content beyond listing them.</p>
+    <p class="small muted">These links open other websites.</p>
     {% for sec in resources %}
       <h3>{{ sec.title }}</h3>
       <ul class="linklist">

@@ -207,7 +207,7 @@ def register_routes(app):
                       description='The IMLEM League Bylaws, last updated 2003: team make-up, test description, '
                                   'meet procedures, officers and awards.',
                       crumbs=[('About', url_for('about')), ('Bylaws', None)], page=p, heading='League Bylaws',
-                      notice='The Bylaws were last updated in 2003, as stated on the old site.', wide=True)
+                      notice='The Bylaws were last updated in 2003.', wide=True)
 
     @app.route('/about/officers/')
     def officers_index():
@@ -226,10 +226,7 @@ def register_routes(app):
                       page=p, heading=f'League Officers and Cluster Coordinators, {season}',
                       prev=(older, url_for('officers', season=older) if older else None),
                       next=(newer, url_for('officers', season=newer) if newer else None),
-                      pending_note=season == cfg.OFFICERS_LAST_CONFIRMED,
-                      notice=(f'The most recent officer list the old site published is {cfg.OFFICERS_LAST_CONFIRMED}. '
-                              'Current officers are not yet confirmed.'
-                              if season == cfg.OFFICERS_LAST_CONFIRMED else None))
+                      )
 
     @app.route('/join/')
     def join():
@@ -254,7 +251,7 @@ def register_routes(app):
 
     @app.route('/coaches/')
     def coaches():
-        return render('coaches.html', title="Coaches' Corner (coming soon)",
+        return render('coaches.html', title="Coaches' Corner",
                       crumbs=[("Coaches' Corner", None)], robots=NOINDEX)
 
     # ---- contests -------------------------------------------------------------
@@ -541,8 +538,7 @@ def register_routes(app):
         p = page_or_404('links', 'links')
         return render('content.html', title='Links to other sites',
                       description='Math leagues, competitions, enrichment programs and summer camps.',
-                      crumbs=[('Links', None)], page=p, heading='Links to Other Sites',
-                      notice='These links were carried over from the old site and have not all been re-checked.')
+                      crumbs=[('Links', None)], page=p, heading='Links to Other Sites')
 
     @app.route('/contact/')
     def contact():
@@ -561,7 +557,7 @@ def register_routes(app):
             abort(404)
         p = page_or_404('contact', role)
         return render('content.html', title=p['title'], crumbs=[('Contact', url_for('contact')), (p['title'], None)],
-                      page=p, heading=p['title'], contact_notice=True)
+                      page=p, heading=p['title'])
 
     # ---- files ----------------------------------------------------------------
     @app.route('/files/<path:name>')

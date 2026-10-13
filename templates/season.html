@@ -23,7 +23,7 @@
         <th scope="row" data-label="Meet"><a href="{{ url_for('topics', season=s.id) }}#meet-{{ m.number }}">Meet {{ m.number }}</a></th>
         <td data-label="Date"><time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time></td>
         <td data-label="Calculators">{{ 'Allowed' if m.calculators else 'No' }}</td>
-        <td data-label="Contest">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">PDF (external)</a>{% else %}<span class="muted">No link on old site</span>{% endif %}</td>
+        <td data-label="Contest">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">PDF (external)</a>{% else %}<span class="muted" aria-label="Not available">&mdash;</span>{% endif %}</td>
       </tr>
       {% endfor %}
     </tbody>

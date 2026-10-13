@@ -1,5 +1,5 @@
 {
-  "_source": "Carried over from the old imlem.org /studymaterials/index.html (captured 2026-10-12). Edit this file to add or change resources.",
+  "_source": "Study resources shown on /study/. First imported from the old imlem.org /studymaterials/index.html (2026-10-12). Edit this file to add or change resources.",
   "sections": [
     {
       "title": "Practice and question banks",
@@ -11,8 +11,8 @@
     {
       "title": "Books",
       "items": [
-        {"label": "Hard Math for Middle School: IMLEM Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-Imlem/dp/1439297428/", "note": "(listed at $10 on the old site)"},
-        {"label": "Hard Math for Middle School: IMLEM Plus Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-IMLEM/dp/1453814450/", "note": "(listed at $12 on the old site)"}
+        {"label": "Hard Math for Middle School: IMLEM Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-Imlem/dp/1439297428/"},
+        {"label": "Hard Math for Middle School: IMLEM Plus Edition, by Glenn Ellison", "url": "http://www.amazon.com/Hard-Math-Middle-School-IMLEM/dp/1453814450/"}
       ]
     },
     {
