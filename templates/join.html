@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import pending %}
 {% block main %}
 <div class="wrap page">
   <h1>How to join the league</h1>
-  <p class="lead">There is no online registration. A school joins IMLEM by contacting the league president.</p>
+  <p class="intro">There is no online registration. A school joins IMLEM by contacting the league president.</p>
 
   <h2>Steps</h2>
   <ol>
@@ -11,8 +12,8 @@
     <li><strong>Ask about dues.</strong> Dues and reimbursements go to the league treasurer (see <a href="{{ url_for('contact') }}#who">who to contact</a>).</li>
   </ol>
 
-  <p class="notice" role="note"><strong>Pending confirmation by the league.</strong> The contact details below are those published on the old site and match the {{ officers_last_confirmed }} officer list. Fees, deadlines and the new-member process are not described on the old site.
-    {# TODO(league): confirm the current president, and add dues, deadlines and any new-member steps. #}</p>
+  {{ pending('The contact details below are those published on the old site and match the ' ~ officers_last_confirmed ~ ' officer list. Fees, deadlines and the new-member process are not described on the old site.') }}
+  {# TODO(league): confirm the current president, and add dues, deadlines and any new-member steps. #}
 
   {% if president %}
   <h2>League president (as published on the old site)</h2>

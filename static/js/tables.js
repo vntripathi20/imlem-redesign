@@ -25,6 +25,7 @@
       btn.innerHTML = th.innerHTML;
       th.textContent = '';
       th.appendChild(btn);
+      btn.setAttribute('aria-label', 'Sort by ' + th.textContent.replace(/\s+/g, ' ').trim());
       btn.addEventListener('click', function () {
         var dir = th.getAttribute('aria-sort') === 'ascending' ? 'descending' : 'ascending';
         Array.prototype.forEach.call(heads, function (h) { h.removeAttribute('aria-sort'); });

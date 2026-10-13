@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import prev_next %}
+{% from '_macros.html' import prev_next, linklist %}
 {% block main %}
 <div class="wrap page">
   <h1>{{ s.id }} season</h1>
   {{ prev_next(prev, next) }}
-  <ul class="cards cards-4">
-    {% if s.has_topics %}<li class="card-li"><a class="card" href="{{ url_for('topics', season=s.id) }}"><h2>Round topics</h2><p>What each meet covered.</p></a></li>{% endif %}
-    {% if s.has_dates %}<li class="card-li"><a class="card" href="{{ url_for('dates', season=s.id) }}"><h2>Dates &amp; sites</h2><p>Meet dates and host schools.</p></a></li>{% endif %}
-    {% if s.has_clusters %}<li class="card-li"><a class="card" href="{{ url_for('clusters', season=s.id) }}"><h2>Clusters</h2><p>Member schools and coordinators.</p></a></li>{% endif %}
-    {% if s.has_results %}<li class="card-li"><a class="card" href="{{ url_for('results_season', season=s.id) }}"><h2>Results</h2><p>Team and individual rankings.</p></a></li>{% endif %}
-    {% if s.has_officers %}<li class="card-li"><a class="card" href="{{ url_for('officers', season=s.id) }}"><h2>Officers</h2><p>Officers and cluster coordinators.</p></a></li>{% endif %}
-  </ul>
+  {% set items = [] %}
+  {% if s.has_topics %}{% set _ = items.append(('Round topics', url_for('topics', season=s.id), 'what each meet covered')) %}{% endif %}
+  {% if s.has_dates %}{% set _ = items.append(('Dates and sites', url_for('dates', season=s.id), 'meet dates and host schools')) %}{% endif %}
+  {% if s.has_clusters %}{% set _ = items.append(('Clusters', url_for('clusters', season=s.id), 'member schools and coordinators')) %}{% endif %}
+  {% if s.has_results %}{% set _ = items.append(('Results', url_for('results_season', season=s.id), 'team and individual rankings')) %}{% endif %}
+  {% if s.has_officers %}{% set _ = items.append(('Officers', url_for('officers', season=s.id), 'officers and cluster coordinators')) %}{% endif %}
+  {{ linklist(items) }}
   {% if meets %}
   <h2>Meets</h2>
   <div class="table-scroll">

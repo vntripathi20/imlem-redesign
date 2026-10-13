@@ -4,8 +4,8 @@
 <div class="wrap page">
   <h1>Study materials</h1>
   <p class="lead">Practice with past contests, find the rounds that cover a topic, and see books and videos the league has pointed students to.</p>
-  <p class="notice" role="note"><strong>The contest archive is hosted externally.</strong> Past contest PDFs live on <a class="external" href="http://www.matharchive.org/imlem/" rel="noopener">{{ archive_host }}</a>,
-    not on this site. The links below open that archive in a new page of its own.</p>
+  <p class="aside-note"><strong>The contest archive is hosted externally.</strong> Past contest PDFs live on <a class="external" href="http://www.matharchive.org/imlem/" rel="noopener">{{ archive_host }}</a>,
+    not on this site. The links below open that archive.</p>
   <ul class="jump plain">
     <li><a href="#contests">Past contests</a></li><li><a href="#topics">Find by topic</a></li><li><a href="#resources">Books, videos &amp; practice</a></li>{% if hosted %}<li><a href="#hosted">Files on this site</a></li>{% endif %}
   </ul>
@@ -40,7 +40,7 @@
         <select id="s-season" name="season"><option value="">All seasons</option>{% for s in all_seasons %}<option{% if s == f.season %} selected{% endif %}>{{ s }}</option>{% endfor %}</select></div>
       <div><label for="s-meet">Meet</label>
         <select id="s-meet" name="meet"><option value="">All meets</option>{% for n in range(1, 6) %}<option value="{{ n }}"{% if f.meet == n|string %} selected{% endif %}>Meet {{ n }}</option>{% endfor %}</select></div>
-      <div class="filter-actions"><button class="btn btn-primary" type="submit">Apply</button> <a class="btn btn-ghost" href="{{ url_for('study') }}#topics">Reset</a></div>
+      <div class="filter-actions"><button class="btn btn-primary" type="submit">Apply</button> <a class="reset-link" href="{{ url_for('study') }}#topics">Reset</a></div>
     </form>
     <p class="small" role="status">{{ total }} round{{ '' if total == 1 else 's' }}{% if total %} &middot; page {{ page_no }} of {{ pages }}{% endif %}</p>
     {% if rows %}
@@ -68,17 +68,14 @@
   <section id="resources" aria-labelledby="h-res">
     <h2 id="h-res">Books, videos &amp; practice</h2>
     <p class="small muted">Carried over from the old Study Materials page. These are external sites; the league does not host or endorse their content beyond listing them.</p>
-    <div class="cards cards-3">
     {% for sec in resources %}
-      <div class="card static"><h3>{{ sec.title }}</h3>
-        <ul class="plain">
-        {% for it in sec['items'] %}
-          <li>{% if it.url %}<a class="external" href="{{ it.url }}" rel="noopener">{{ it.label }}</a>{% else %}{{ it.label }}{% endif %}{% if it.note %} <span class="muted">{{ it.note }}</span>{% endif %}</li>
-        {% endfor %}
-        </ul>
-      </div>
+      <h3>{{ sec.title }}</h3>
+      <ul class="linklist">
+      {% for it in sec['items'] %}
+        <li>{% if it.url %}<a class="external" href="{{ it.url }}" rel="noopener">{{ it.label }}</a>{% else %}{{ it.label }}{% endif %}{% if it.note %} <span class="muted">{{ it.note }}</span>{% endif %}</li>
+      {% endfor %}
+      </ul>
     {% endfor %}
-    </div>
   </section>
 
   {% if hosted %}

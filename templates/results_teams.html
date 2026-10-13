@@ -9,7 +9,7 @@
     <input id="table-filter" type="search" data-filter-table="teams" placeholder="Type a school name" autocomplete="off">
     <span class="small muted" data-filter-count aria-live="polite"></span>
   </div>
-  {{ team_table(rows, labels, n_meets, season ~ ' overall team rankings', True, 'teams') }}
+  {{ team_table(rows, labels, n_meets, season ~ ' overall team rankings', True, 'teams', True) }}
   <p class="small muted">Click a column heading to sort. &ldquo;Div. rank&rdquo; is the school&rsquo;s rank within its division (e.g. Euc-1). &ldquo;#&rdquo; shows the school&rsquo;s rank in that meet.</p>
 </div>
 {% endblock %}

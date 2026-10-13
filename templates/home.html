@@ -1,96 +1,86 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import linklist %}
 {% block main %}
-<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">Middle school mathematics competition</p>
+<div class="wrap page">
+  <div class="home-grid">
+    <div class="home-main">
       <h1>Intermediate Math League of Eastern Massachusetts</h1>
-      <p class="lead">Five meets a season, six rounds each, and teams from schools across the region. Find meet dates, round topics,
-        the results archive and study materials for every season.</p>
-      <p class="actions">
-        <a class="btn btn-primary" href="{{ url_for('contests') }}">Dates &amp; round topics</a>
-        <a class="btn btn-ghost" href="{{ url_for('join') }}">How to join the league</a>
-      </p>
-    </div>
-    <div class="hero-art">
-      <a href="{{ url_for('anniversary') }}"><img src="/images/50-years.png" width="260" height="293" alt="IMLEM 50 years and still counting. A pyramid of coloured cubes."></a>
-    </div>
-  </div>
-</section>
+      <p class="intro">A middle school mathematics league. Each season has five meets; each meet has five individual rounds and a team round.</p>
 
-<div class="wrap">
-  <section class="next-meet" aria-labelledby="next-heading">
-    {% if nxt %}
-    <div class="next-count" data-countdown="{{ countdown.iso }}">
-      <p class="count-num"><span data-count-days>{{ countdown.days if countdown.days >= 0 else 0 }}</span></p>
-      <p class="count-label">{% if countdown.days == 0 %}Meet day is today{% elif countdown.days == 1 %}day to go{% else %}days to go{% endif %}</p>
-    </div>
-    <div class="next-body">
-      <h2 id="next-heading">Next meet: {{ nxt.season }} Meet #{{ nxt.number }}</h2>
-      <p class="next-date"><time datetime="{{ nxt.date_iso }}">{{ countdown.human }}</time> &middot; {% if nxt.calculators %}Calculator meet{% else %}No calculators{% endif %}</p>
-      <ul class="plain">
-        {% for r in nxt_rounds %}{% if r.label.startswith('Round') %}
-        <li><strong>{{ r.category }}</strong>{% if r.description %} &mdash; {{ r.description }}{% endif %}</li>
-        {% endif %}{% endfor %}
-      </ul>
-      <p><a href="{{ url_for('topics', season=nxt.season) }}#meet-{{ nxt.number }}">Full round topics</a> &middot;
-         <a href="{{ url_for('calculators') }}">Calculator rules</a> &middot;
-         {% if nxt.season %}<a href="{{ url_for('season_hub', season=nxt.season) }}">{{ nxt.season }} season</a>{% endif %}</p>
-      <p class="small muted">Meet sites and times are set by each cluster; contact your cluster coordinator or the <a href="{{ url_for('contact') }}">league president</a>. {# TODO(league): the old site publishes no site list for 2026-27 yet. #}</p>
-    </div>
-    {% else %}
-    <div class="next-body">
-      <h2 id="next-heading">Upcoming meets</h2>
-      <p>No future meet dates are published yet. See <a href="{{ url_for('contests') }}">all seasons</a>.</p>
-    </div>
-    {% endif %}
-  </section>
-
-  <section class="cards" aria-label="Explore">
-    <a class="card" href="{{ url_for('results') }}"><h2>Results archive</h2><p>Team and individual rankings for {{ stats.seasons }} seasons. Search by school or student.</p></a>
-    <a class="card" href="{{ url_for('study') }}"><h2>Study materials</h2><p>Past contests by season and meet, round topics by subject, books and videos.</p></a>
-    <a class="card" href="{{ url_for('contests') }}"><h2>Contests</h2><p>Dates, sites, clusters and round topics. Calculators are allowed in meets 4 and 5.</p></a>
-    <a class="card" href="{{ url_for('about') }}"><h2>About the league</h2><p>Bylaws, officers and how the league is organised.</p></a>
-  </section>
-
-  <div class="two-col">
-    <section aria-labelledby="ann-heading">
-      <h2 id="ann-heading">Announcements</h2>
-      {% if announcements %}
-      <ul class="announce">
-        {% for a in announcements %}
-        <li><h3>{{ a.title }}</h3>{% if a.date %}<p class="small muted"><time datetime="{{ a.date }}">{{ a.date }}</time></p>{% endif %}{% if a.body %}<p>{{ a.body }}</p>{% endif %}</li>
-        {% endfor %}
-      </ul>
-      {% else %}
-      <p class="muted">No announcements right now. {# TODO(league): add items in data/announcements.json #}</p>
+      {% if sched_season %}
+      <section aria-labelledby="season-heading">
+        <h2 id="season-heading">{{ sched_season }} season</h2>
+        {% if nxt %}
+        <p class="next-line" data-countdown="{{ countdown.iso }}">Next meet: <strong>Meet {{ nxt.number }}, {{ countdown.human }}</strong>
+          &mdash; <span data-count-days>{{ countdown.days }}</span> day{{ '' if countdown.days == 1 else 's' }} away.</p>
+        {% endif %}
+        <table class="data season-table">
+          <caption class="visually-hidden">Meets in the {{ sched_season }} season</caption>
+          <thead><tr><th scope="col">Meet</th><th scope="col">Date</th><th scope="col">Calculators</th><th scope="col">Round topics</th></tr></thead>
+          <tbody>
+            {% for m in season_meets %}
+            <tr{% if nxt and m.number == nxt.number and m.season == nxt.season %} class="is-next" aria-label="Next meet"{% endif %}>
+              <th scope="row">Meet {{ m.number }}{% if nxt and m.number == nxt.number and m.season == nxt.season %} <span class="next-tag">next</span>{% endif %}</th>
+              <td><time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time></td>
+              <td>{{ 'Yes' if m.calculators else 'No' }}</td>
+              <td><a href="{{ url_for('topics', season=m.season) }}#meet-{{ m.number }}">Topics</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        <p class="small">Calculators are allowed in meets 4 and 5 only; see the <a href="{{ url_for('calculators') }}">calculator rules</a>.
+          Sites and times are set by each cluster: contact your cluster coordinator or the <a href="{{ url_for('contact') }}">league president</a>.
+          {# TODO(league): the old site publishes no site list for 2026-27 yet; add a dates-and-sites page when available. #}
+          <a href="{{ url_for('season_hub', season=sched_season) }}">{{ sched_season }} season page</a></p>
+      </section>
       {% endif %}
-    </section>
 
-    {% if top_teams %}
-    <section aria-labelledby="top-heading">
-      <h2 id="top-heading">{{ latest_season }} top teams</h2>
-      <ol class="ranked">
-        {% for t in top_teams %}<li><span>{{ t.school }}</span><strong>{{ t.total }}</strong></li>{% endfor %}
-      </ol>
-      <p><a href="{{ url_for('results_teams', season=latest_season) }}">Full {{ latest_season }} team rankings</a></p>
-    </section>
-    {% endif %}
-  </div>
+      {% if latest_season %}
+      <section aria-labelledby="results-heading">
+        <h2 id="results-heading">Latest results: {{ latest_season }}</h2>
+        <p><a href="{{ url_for('results_teams', season=latest_season) }}">Team rankings</a> &middot;
+           <a href="{{ url_for('results_divisions', season=latest_season) }}">By division</a> &middot;
+           <a href="{{ url_for('results_individuals', season=latest_season) }}">Individual rankings</a> &middot;
+           <a href="{{ url_for('results') }}">All seasons</a> &middot;
+           <a href="{{ url_for('search') }}">Search by school or student</a></p>
+        {% if top_teams %}
+        <table class="data top-teams">
+          <caption>Top five teams, {{ latest_season }}</caption>
+          <thead><tr><th scope="col">Rank</th><th scope="col">School</th><th scope="col">Total</th></tr></thead>
+          <tbody>
+            {% for t in top_teams %}<tr><td>{{ t.rank }}</td><th scope="row"><a href="{{ url_for('school', name=t.school) }}">{{ t.school }}</a></th><td><strong>{{ t.total }}</strong></td></tr>{% endfor %}
+          </tbody>
+        </table>
+        {% endif %}
+      </section>
+      {% endif %}
 
-  <section class="feature-50" aria-labelledby="f50">
-    <img src="/images/50-years.png" width="120" height="135" alt="" loading="lazy">
-    <div>
-      <h2 id="f50">50 years and still counting</h2>
-      <p>The league is celebrating its 50th anniversary. Read what the Bylaws record about how the league began, and browse results back to {{ stats.earliest }}.</p>
-      <p><a href="{{ url_for('anniversary') }}">Visit the anniversary page</a></p>
+      <section aria-labelledby="ann-heading">
+        <h2 id="ann-heading">Announcements</h2>
+        {% if announcements %}
+        <ul class="announce">
+          {% for a in announcements %}
+          <li><h3>{{ a.title }}</h3>{% if a.date %}<p class="small muted"><time datetime="{{ a.date }}">{{ a.date }}</time></p>{% endif %}{% if a.body %}<p>{{ a.body }}</p>{% endif %}</li>
+          {% endfor %}
+        </ul>
+        {% else %}
+        <p class="muted">No announcements at the moment.{# TODO(league): add items in data/announcements.json #}</p>
+        {% endif %}
+      </section>
     </div>
-  </section>
 
-  <section class="stats-row" aria-label="Archive at a glance">
-    <p><strong>{{ stats.seasons }}</strong> seasons of results</p>
-    <p><strong>{{ stats.schools }}</strong> schools in the archive</p>
-    <p><strong>{{ stats.meets }}</strong> meets with round topics</p>
-  </section>
+    <aside class="home-aside" aria-label="About the league">
+      <a class="anniv-mark" href="{{ url_for('anniversary') }}"><img src="/images/50-years.png" width="140" height="158" alt="IMLEM: 50 years and still counting"></a>
+      <h2>The league</h2>
+      {{ linklist([
+        ('About IMLEM', url_for('about'), ''),
+        ('How to join', url_for('join'), ''),
+        ('League Bylaws', url_for('bylaws'), ''),
+        ('Study materials', url_for('study'), ''),
+        ('Contests by season', url_for('contests'), ''),
+        ('Contact', url_for('contact'), ''),
+      ]) }}
+    </aside>
+  </div>
 </div>
 {% endblock %}

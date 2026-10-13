@@ -1,9 +1,9 @@
 {% extends 'base.html' %}
 {% from '_macros.html' import season_nav, pager, names_note %}
-{% macro th(col, label, sub='') %}
+{% macro th(col, label, sub='', cls='') %}
   {%- set active = f.sort == col -%}
   {%- set nxt = 'desc' if (active and f.dir == 'asc') else 'asc' -%}
-  <th scope="col"{% if active %} aria-sort="{{ 'ascending' if f.dir == 'asc' else 'descending' }}"{% endif %}><a class="sort-link" href="{{ sort_url(col, nxt) }}">{{ label }}{% if sub %}<span class="th-sub">{{ sub }}</span>{% endif %}{% if active %}<span aria-hidden="true"> {{ '▲' if f.dir == 'asc' else '▼' }}</span>{% endif %}</a></th>
+  <th scope="col"{% if cls %} class="{{ cls }}"{% endif %}{% if active %} aria-sort="{{ 'ascending' if f.dir == 'asc' else 'descending' }}"{% endif %}><a class="sort-link" href="{{ sort_url(col, nxt) }}">{{ label }}{% if sub %}<span class="th-sub">{{ sub }}</span>{% endif %}{% if active %}<span aria-hidden="true"> {{ '▲' if f.dir == 'asc' else '▼' }}</span>{% endif %}</a></th>
 {% endmacro %}
 {% block main %}
 <div class="wrap page page-wide">
@@ -18,19 +18,19 @@
       <select id="f-gr" name="grade"><option value="">All</option>{% for g in grades %}<option{% if g == f.grade %} selected{% endif %}>{{ g }}</option>{% endfor %}</select></div>
     <input type="hidden" name="sort" value="{{ f.sort }}"><input type="hidden" name="dir" value="{{ f.dir }}">
     <div class="filter-actions"><button class="btn btn-primary" type="submit">Apply</button>
-      <a class="btn btn-ghost" href="{{ url_for('results_individuals', season=season) }}">Reset</a></div>
+      <a class="reset-link" href="{{ url_for('results_individuals', season=season) }}">Reset</a></div>
   </form>
   {{ names_note() }}
   <p class="small" role="status">{{ total }} student{{ '' if total == 1 else 's' }}{% if total %} &middot; showing page {{ page_no }} of {{ pages }}{% endif %}</p>
   {% if rows %}
-  <div class="table-scroll">
+  <div class="table-scroll table-wide table-tall" tabindex="0" role="region" aria-label="{{ season }} individual rankings (scrolls sideways)">
   <table class="data cards-sm individuals">
     <caption class="visually-hidden">{{ season }} individual rankings</caption>
     <thead>
       <tr>
-        {{ th('rank', 'Rank') }}
+        {{ th('rank', 'Rank', '', 'c-rank') }}{{ th('name', 'Name', '', 'c-name') }}
+        {{ th('grade', 'Gr.') }}{{ th('school', 'School') }}{{ th('division', 'Division') }}
         <th scope="col">Div. rank</th><th scope="col">Grade rank</th>
-        {{ th('name', 'Name') }}{{ th('grade', 'Gr.') }}{{ th('school', 'School') }}{{ th('division', 'Division') }}
         {% for i in range(1, n_meets + 1) %}<th scope="col">Meet {{ i }}{% if labels.get(i) %}<span class="th-sub">{{ labels[i] }}</span>{% endif %}</th>{% endfor %}
         {{ th('total', 'Total') }}{{ th('total5', 'All meets', '(5-meet total)') }}
       </tr>
@@ -38,13 +38,13 @@
     <tbody>
       {% for r in rows %}
       <tr>
-        <td data-label="Rank">{{ r.overall_rank }}</td>
-        <td data-label="Div. rank">{{ r.div_rank }}</td>
-        <td data-label="Grade rank">{{ r.grade_rank }}</td>
-        <th scope="row" data-label="Name"><a href="{{ url_for('student', season=season, seq=r.seq) }}">{{ r.name|name_or_dash }}</a></th>
+        <td class="c-rank" data-label="Rank">{{ r.overall_rank }}</td>
+        <th scope="row" class="c-name" data-label="Name"><a href="{{ url_for('student', season=season, seq=r.seq) }}">{{ r.name|name_or_dash }}</a></th>
         <td data-label="Gr.">{{ r.grade }}</td>
         <td data-label="School">{{ r.school }}</td>
         <td data-label="Division">{{ r.division }}</td>
+        <td data-label="Div. rank">{{ r.div_rank }}</td>
+        <td data-label="Grade rank">{{ r.grade_rank }}</td>
         {% for t in r.meet_totals %}<td data-label="Meet {{ loop.index }}">{{ t|score }}</td>{% endfor %}
         <td data-label="Total"><strong>{{ r.total|score }}</strong></td>
         <td data-label="All meets">{{ r.total5|score }}</td>

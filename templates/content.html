@@ -1,13 +1,12 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import prev_next %}
+{% from '_macros.html' import prev_next, pending %}
 {% block main %}
 <div class="wrap page{% if wide %} page-wide{% endif %}">
   <h1>{{ heading }}</h1>
-  {% if notice %}<p class="notice" role="note">{{ notice }}</p>{% endif %}
+  {% if notice and pending_note %}{{ pending(notice) }}{% elif notice %}<p class="aside-note">{{ notice }}</p>{% endif %}
   {% if contact_notice %}
-  <p class="notice" role="note">Contact details are carried over from the old imlem.org site. Officer names there match the {{ officers_last_confirmed }} officer list.
-    {# TODO(league): confirm the current officers and update these pages. #}
-    <strong>Pending confirmation by the league.</strong></p>
+  {{ pending('Contact details are carried over from the old imlem.org site. Officer names there match the ' ~ officers_last_confirmed ~ ' officer list.') }}
+  {# TODO(league): confirm the current officers and update these pages. #}
   {% endif %}
   {% if prev or next %}{{ prev_next(prev, next) }}{% endif %}
   <div class="prose legacy">

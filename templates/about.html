@@ -1,16 +1,17 @@
 {% extends 'base.html' %}
+{% from '_macros.html' import linklist %}
 {% block main %}
 <div class="wrap page">
   <h1>About the league</h1>
-  <p class="lead">IMLEM is a league of middle schools that compete in five meets each season. Schools are grouped into geographic
+  <p class="intro">IMLEM is a league of middle schools that compete in five meets each season. Schools are grouped into geographic
     clusters, and teams compete within divisions.</p>
-  <div class="cards">
-    <a class="card" href="{{ url_for('join') }}"><h2>How to join</h2><p>Schools join by contacting the league president.</p></a>
-    <a class="card" href="{{ url_for('bylaws') }}"><h2>League Bylaws</h2><p>Team make-up, test description, meet procedures, officers and awards. Last updated 2003.</p></a>
-    <a class="card" href="{{ url_for('officers_index') }}"><h2>Officers &amp; cluster coordinators</h2><p>Published for {{ officer_seasons|length }} seasons, {{ officer_seasons[-1] if officer_seasons }} to {{ officer_seasons[0] if officer_seasons }}.</p></a>
-    <a class="card" href="{{ url_for('anniversary') }}"><h2>50th anniversary</h2><p>50 years and still counting.</p></a>
-    <a class="card" href="{{ url_for('coaches') }}"><h2>Coaches&rsquo; Corner</h2><p>Coming soon.</p></a>
-    <a class="card" href="{{ url_for('contact') }}"><h2>Contact</h2><p>Who to contact for which kind of question.</p></a>
-  </div>
+  {{ linklist([
+    ('How to join', url_for('join'), 'schools join by contacting the league president'),
+    ('League Bylaws', url_for('bylaws'), 'team make-up, test description, meet procedures, officers and awards (last updated 2003)'),
+    ('Officers and cluster coordinators', url_for('officers_index'), 'published for ' ~ officer_seasons|length ~ ' seasons, ' ~ (officer_seasons[-1] if officer_seasons) ~ ' to ' ~ (officer_seasons[0] if officer_seasons)),
+    ('50th anniversary', url_for('anniversary'), ''),
+    ("Coaches' Corner", url_for('coaches'), 'coming soon'),
+    ('Contact', url_for('contact'), 'who to contact for which kind of question'),
+  ]) }}
 </div>
 {% endblock %}

@@ -9,7 +9,7 @@
   {% for m in meets %}
   <section class="meet" id="meet-{{ m.number }}" aria-labelledby="h-meet-{{ m.number }}">
     <h2 id="h-meet-{{ m.number }}">Meet #{{ m.number }} &mdash; <time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time>
-      <span class="badge{{ ' badge-calc' if m.calculators }}">{{ 'Calculator meet' if m.calculators else 'No calculators' }}</span></h2>
+      <span class="tag">{{ 'Calculator meet' if m.calculators else 'No calculators' }}</span></h2>
     <div class="table-scroll">
     <table class="data topics">
       <caption class="visually-hidden">Rounds in meet {{ m.number }}</caption>
