@@ -106,7 +106,12 @@
         <label for="home-q">School or student name</label>
         <div class="row"><input id="home-q" name="q" type="search" minlength="2" maxlength="60"><button class="btn" type="submit">Search</button></div>
       </form>
-      <p class="small">Results go back to {{ earliest_season }}. <a href="{{ url_for('results') }}">Browse by season</a>.</p>
+      <p class="small">Results go back to {{ earliest_season }}.</p>
+      <ul class="link-row small">
+        <li><a href="{{ url_for('results') }}">By season</a></li>
+        <li><a href="{{ url_for('schools_index') }}">By school</a></li>
+        <li><a href="{{ url_for('records') }}">Records and trends</a></li>
+      </ul>
     </section>
 
     {% if announcements %}

@@ -367,6 +367,10 @@ input, select { font: inherit; width: 100%; min-height: 2.75rem; padding: .5rem 
   .cards-sm td, .cards-sm tbody th { justify-content: flex-start; align-items: baseline; gap: .5rem; }
   .cards-sm td::before, .cards-sm tbody th[data-label]::before { content: attr(data-label); font-weight: 600; color: var(--muted); text-align: left; margin-right: auto; }
   .cards-sm tbody th { font-size: 1rem; }
+  .topic-map.cards-sm tbody th { display: block; text-align: left; }
+  .topic-map.cards-sm tbody th::before { content: none; }
+  .topic-map.cards-sm td { display: block; text-align: left; }
+  .topic-map.cards-sm td::before { display: block; margin-bottom: .1rem; color: var(--navy); }
   .filters { grid-template-columns: 1fr 1fr; }
 }
 
@@ -386,6 +390,9 @@ input, select { font: inherit; width: 100%; min-height: 2.75rem; padding: .5rem 
 
 /* ---------- shared layout bits ---------- */
 .two-up { display: grid; gap: .5rem 3rem; align-items: start; }
+.two-up > * { min-width: 0; }
+table.compact td, table.compact th { white-space: normal; }
+table.compact .nowrap { white-space: nowrap; }
 @media (min-width: 56rem) { .two-up { grid-template-columns: 1fr 1fr; } }
 .nowrap { white-space: nowrap; }
 .h-small { font-size: var(--step-0); margin-top: 1.75rem; }
@@ -420,6 +427,11 @@ table.narrow { max-width: 36rem; }
 .chart-wrap figcaption { font-weight: 700; color: var(--navy); margin-bottom: .35rem; }
 .chart { display: block; width: 100%; height: auto; overflow: visible; }
 .chart-wrap { max-width: 50rem; }
+@media (max-width: 47.99rem) {
+  /* keep chart text legible on phones: scroll sideways instead of shrinking */
+  .chart-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: .25rem; }
+  .chart { min-width: 34rem; }
+}
 .chart .tick { font-family: var(--font-sans); font-size: 12px; fill: #4b5a72; font-variant-numeric: tabular-nums; }
 .chart .val { font-family: var(--font-sans); font-size: 13px; font-weight: 700; fill: var(--ink); }
 .chart .mark { cursor: default; }
@@ -454,7 +466,7 @@ table.narrow { max-width: 36rem; }
   border-radius: 50%; background: var(--navy); color: var(--white); font: 700 .9rem var(--font-sans); }
 
 /* ---------- study: topic map and practice ---------- */
-.topic-map { min-width: 48rem; }
+@media (min-width: 48rem) { .topic-map { min-width: 48rem; } }
 .topic-map thead th { white-space: nowrap; }
 .topic-map thead th .swatch { box-shadow: inset -2px -2px 0 rgba(0, 0, 0, .25), 0 0 0 1px rgba(255, 255, 255, .5); }
 .topic-map tbody th { min-width: 9.5rem; }
