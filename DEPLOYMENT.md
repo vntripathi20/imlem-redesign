@@ -1,72 +1,79 @@
-# Deployment Runbook
+# Deployment
 
-This app has no separate database — `data/*.json` and `uploads/` are the entire dataset. Treat them accordingly: back them up, and don't lose the host they live on.
+The site is a read-only Flask app. It has **no accounts, no forms, no uploads and no secrets to manage**, and it needs no database server: results live in a SQLite file that is generated from `archive/` (committed to git) the first time the app starts.
 
-## 1. Required environment variables
+Nothing in this repository deploys the site anywhere. Pick a host from the options below when the league decides.
 
-| Variable | Required | Purpose |
+## What a host needs
+
+- Python 3.10 or newer
+- `pip install -r requirements.txt`
+- HTTPS in front of the app (the old imlem.org's HTTPS was broken; do not repeat that). Flask does not terminate TLS itself, so use your host's HTTPS, Caddy, nginx, or a platform load balancer.
+- A writable `data/` directory on first start (the SQLite file is written there once, about 10 MB, takes a few seconds). To avoid a first-request delay, run `python scripts/import_archive.py` during your build step.
+
+## Configuration (environment variables)
+
+| Variable | Default | Purpose |
 |---|---|---|
-| `IMLEM_SECRET_KEY` | Yes, unless `FLASK_DEBUG=1` | Signs session cookies. The app refuses to start without it outside debug mode. |
-| `FLASK_DEBUG` | No (default off) | Set to `1` only for local development. Never set in production — it enables the interactive debugger and disables the `Secure` cookie flag. |
-| `PORT` | No (default `5000`) | Port the dev server binds to. Most hosting platforms set this for you. |
+| `IMLEM_SITE_URL` | derived from the request | Public base URL, e.g. `https://imlem.org`. Used for canonical links and `sitemap.xml`. Set it in production. |
+| `IMLEM_TRUST_PROXY` | `0` | Set to `1` when behind a reverse proxy/load balancer so the app trusts `X-Forwarded-Proto/Host` (needed for correct HTTPS URLs and the HSTS header). |
+| `IMLEM_DB` | `data/imlem.sqlite` | Location of the generated database. |
+| `PORT`, `HOST` | `5000`, `127.0.0.1` | Only for `python app.py`. |
+| `FLASK_DEBUG` | `0` | Local development only. Never enable in production. |
+| `IMLEM_SECRET_KEY` | random per process | Not used by any current feature (the site sets no cookies). If a feature that uses sessions is ever added, set this to a fixed random value: `python -c "import secrets; print(secrets.token_hex(32))"`. |
 
-Generate a secret key once and store it with your host's secret manager (not in git):
+No secret is stored in the repository.
+
+## Running it
+
+**Linux / macOS (any standard Python host):**
 
 ```bash
-python -c "import secrets; print(secrets.token_hex(32))"
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt
+python scripts/import_archive.py            # optional: prebuild the database
+IMLEM_SITE_URL=https://imlem.org IMLEM_TRUST_PROXY=1 gunicorn -w 2 -b 127.0.0.1:8000 app:app
 ```
 
-## 2. Running it
-
-**Local development** (debug on, relaxed cookies, auto-reload):
+**Windows:**
 
 ```powershell
-$env:FLASK_DEBUG = "1"
-py app.py
+python -m venv .venv; .\.venv\Scripts\pip install -r requirements.txt
+$env:IMLEM_SITE_URL = "https://imlem.org"
+.\.venv\Scripts\waitress-serve --listen=127.0.0.1:8000 app:app
 ```
 
-**Production-style run** (no debug, real secret key, served by Waitress instead of Flask's dev server):
+### Hosting options
 
-```powershell
-$env:IMLEM_SECRET_KEY = "<your generated key>"
-waitress-serve --host=0.0.0.0 --port=5000 app:app
-```
+| Option | Notes |
+|---|---|
+| A small VPS (e.g. Ubuntu) with Caddy or nginx + gunicorn | Cheapest and simplest. Caddy gets HTTPS certificates automatically. Run gunicorn under systemd. |
+| Platform-as-a-service (Render, Fly.io, Railway, Heroku-style) | Start command `gunicorn app:app`; set `IMLEM_SITE_URL` and `IMLEM_TRUST_PROXY=1`. Use a build step of `pip install -r requirements.txt && python scripts/import_archive.py`. The platform provides HTTPS. |
+| Shared hosting with Python/WSGI (cPanel "Setup Python App") | Point the WSGI entry at `app:app`. Run `python scripts/import_archive.py` once from a shell. |
+| Docker / any container host | Base image `python:3.12-slim`, `pip install -r requirements.txt`, `CMD gunicorn -b 0.0.0.0:8000 app:app`. |
 
-On Linux hosting, `gunicorn` is the equivalent:
+Because the content is static between releases, you can also put a CDN in front of the app.
 
-```bash
-IMLEM_SECRET_KEY="<your generated key>" gunicorn -w 2 -b 0.0.0.0:5000 app:app
-```
+## Security notes
 
-Either way, put a real reverse proxy / load balancer in front (nginx, Caddy, or whatever your host provides) to terminate HTTPS. Flask itself is not doing TLS.
+- Responses carry a strict Content-Security-Policy (`self` only), `X-Content-Type-Options`, `X-Frame-Options: DENY`, a referrer policy, and HSTS when served over HTTPS.
+- The app accepts only GET/HEAD; request bodies are capped at 64 KB. There is nothing to submit, so there is no CSRF surface.
+- All content pages migrated from the old site are re-serialised through an allow-list sanitizer (`imlem_site/sanitize.py`). Database queries are parameterised and read-only (`mode=ro`).
+- The earlier prototype had admin and coach accounts with default passwords. That code and those accounts are gone. Those passwords exist in older git history, so never reuse them anywhere.
 
-## 3. HTTPS is required for login to work in production
+## Updating content
 
-With `FLASK_DEBUG` unset, `SESSION_COOKIE_SECURE` is automatically `True`, meaning the browser will only send the session cookie over HTTPS. If you deploy behind plain HTTP, login will appear to "do nothing" (the cookie just won't stick). Get HTTPS terminated at your reverse proxy/host before testing login on the deployed URL.
+Everything is plain files in git:
 
-## 4. Before going live: rotate the seeded credentials
+| To change | Edit |
+|---|---|
+| Announcements on the home page | `data/announcements.json` |
+| Study resources (books, videos, links) | `data/resources.json` |
+| Files hosted here (PDFs) | put the PDF in `uploads/`, then add it to `data/study-materials.json` |
+| Contest PDFs | They are hosted externally on matharchive.org; this site only links to them |
+| New season's results, topics, dates | Add the new season's pages to `archive/imlem.org/...` in the same format and re-run `python scripts/import_archive.py`, then run `pytest` |
+| Officers, contact details (**pending league confirmation**) | The migrated old pages are in the database; see `docs/pending-league-decisions.md` for how to replace them |
 
-The app ships with two seed accounts (see `data/users.json`):
+## Backups
 
-- `admin@imlem.org` / `admin123`
-- `coach@imlem.org` / `coach123`
-
-These passwords have been typed into chat and exist in git history — **do not leave them active on a public deployment.** There's no self-service password-change UI yet, so rotate them manually:
-
-```bash
-python -c "from werkzeug.security import generate_password_hash; print(generate_password_hash('your-new-password'))"
-```
-
-Paste the resulting hash into the matching account's `passwordHash` field in `data/users.json`, then restart the app.
-
-## 5. Back up `data/` and `uploads/` regularly
-
-There is no database to restore from if these are lost — they *are* the database. Zip both directories on a schedule (cron, your host's backup feature, or even a manual habit before any major change) and keep copies somewhere other than the same host.
-
-## 6. Review real content before IMLEM staff start using it
-
-Double check `data/divisions.json` for any divisions/schools left over from development/testing that shouldn't be on the live site, and confirm the meet schedule in `data/meets.json` reflects the real season.
-
-## 7. Day-to-day usage needs no server access
-
-Once deployed, IMLEM's admin and coaches only need the site URL and their login credentials — everything else (creating divisions/schools/coach accounts, recording scores, uploading study materials, editing rosters) happens through the Admin/Coach dashboards in the browser. No one but you needs shell or host access.
+`archive/`, `data/*.json` and `uploads/` are in git; the SQLite file is generated and can be rebuilt any time. Backing up the repository is enough.

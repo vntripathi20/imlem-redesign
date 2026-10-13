@@ -1,50 +1,65 @@
-# IMLEM Website Redesign
+# IMLEM website
 
-A Python-backed academic archive system for the Intermediate Math League of Eastern Massachusetts.
+The site for the Intermediate Math League of Eastern Massachusetts: contest dates and round topics, a results archive (11 seasons, filterable and searchable), study materials, league information and contact details. It replaces the old static site at imlem.org and keeps every old URL working through redirects.
 
-## What is included
+Server-rendered Flask, no JavaScript required (small scripts add sorting, filtering and a countdown). Results are stored in SQLite, generated from the untouched copy of the old site in `archive/`.
 
-- Flask backend serving a JSON API and the frontend
-- Plain HTML/CSS/JS frontend (no build step, no Node)
-- Study materials archive by year and meet
-- Meet information management
-- Admin and coach login with role-scoped dashboards
-- File-based JSON storage for archive data
-- PDF upload support with year/meet/type assignment
-
-## Quick start (local development)
-
-1. Install Python dependencies
+## Run it locally
 
 ```powershell
-py -m pip install -r requirements.txt
-```
-
-2. Start the application in debug mode
-
-```powershell
+python -m venv .venv
+.\.venv\Scripts\pip install -r requirements-dev.txt
 $env:FLASK_DEBUG = "1"
-py app.py
+.\.venv\Scripts\python app.py
 ```
 
-3. Open the site at `http://localhost:5000`
+Open <http://127.0.0.1:5000>. On first start the app builds `data/imlem.sqlite` from `archive/` (a few seconds). On Linux/macOS use `python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt && FLASK_DEBUG=1 .venv/bin/python app.py`.
 
-For a production-style run instead, see [DEPLOYMENT.md](DEPLOYMENT.md).
+Run the tests: `.\.venv\Scripts\python -m pytest`
 
-## Folder layout
+Deploying: see [DEPLOYMENT.md](DEPLOYMENT.md).
 
-- `app.py` — Flask backend, API, and page serving
-- `templates/` — HTML page shell for the frontend
-- `static/` — frontend CSS and JavaScript (hash-routed single page)
-- `data/` — JSON content storage for archive, meets, divisions/schools, statistics, and users
-- `uploads/` — PDF uploads served by Flask
-- `images/` — site images
-- `images/icons/` — section icons and the hero illustration; CC0 public-domain clip art from [openclipart.org](https://openclipart.org), used as-is
-- `images/banner/` — the homepage student banner; free-to-use photos from [Pexels](https://www.pexels.com/license/) (Pexels License — free for commercial use, no attribution required), resized/recompressed for the web. These are stock photos, not photos from actual IMLEM meets
+## Layout
 
-## Notes
+| Path | What it is |
+|---|---|
+| `app.py` | Entry point (`app:app` for gunicorn/waitress) |
+| `imlem_site/web.py` | Routes, security headers, sitemap/robots |
+| `imlem_site/legacy.py` | Old imlem.org path to new URL mapping (drives all redirects) |
+| `imlem_site/importer.py`, `scripts/import_archive.py` | Builds `data/imlem.sqlite` from `archive/` without modifying it |
+| `imlem_site/sanitize.py` | Cleans migrated old pages (allow-list, link rewriting) |
+| `scripts/verify_import.py` | Proves every archived result row reached the database |
+| `archive/imlem.org/` | **Byte-for-byte copy of the old site (253 files). Never edit.** `archive/*.json` hold the crawl's link graph and errors |
+| `data/announcements.json`, `data/resources.json`, `data/study-materials.json` | Editable content |
+| `templates/`, `static/` | Pages, CSS, JavaScript |
+| `files/`, `uploads/` | PDFs hosted by this site |
+| `images/` | Logo, 50th-anniversary mark, and earlier clip art / photos (stock photos, not from IMLEM meets; currently unused) |
+| `tests/` | pytest suite |
+| `docs/` | Site inventory, gap analysis, pending league decisions |
 
-- Historical study materials remain in `data/study-materials.json` and `uploads/`
-- The Flask backend appends new meet and file entries, preserving past records
-- Schools live inside divisions (`data/divisions.json`); coaches log in and manage only their own school's info, roster, and view their results
-- Admins create coach accounts, divisions, schools, and meets from the Admin Dashboard
+## URL map (old to new)
+
+| Old | New |
+|---|---|
+| `/statistics/YYYYYY/YYYYYY_team.html` | `/results/YYYY-YY/teams/` |
+| `/statistics/YYYYYY/YYYYYY_team_bydivision.html` | `/results/YYYY-YY/divisions/` |
+| `/statistics/YYYYYY/YYYYYY_individual.html` | `/results/YYYY-YY/individuals/` |
+| `/meetinfo/YYYYYY/YYYYYYtopics.html` | `/contests/YYYY-YY/topics/` |
+| `/meetinfo/YYYYYY/YYYYYYdatessites.html` | `/contests/YYYY-YY/dates/` |
+| `/meetinfo/YYYYYY/cluster/N.html` | `/contests/YYYY-YY/clusters/N/` |
+| `/leagueinfo/...officers.html`, `/leagueinfo/bylaws/...` | `/about/officers/YYYY-YY/`, `/about/bylaws/` |
+| `/studymaterials/`, `/contact/...`, `/links/`, `/coaches/` | `/study/`, `/contact/...`, `/links/`, `/coaches/` |
+
+`tests/test_legacy_redirects.py` requests every URL the old site served and fails if any does not end on a working page.
+
+## Privacy and indexing
+
+Individual results, student pages and student search show first name + last initial, grade and school, as the old site did (and only for some students). Pending league approval, those pages are `noindex` and are left out of `sitemap.xml`. Team and school pages are indexable. The switch lives in `imlem_site/config.py`.
+
+## Known gaps
+
+See [docs/pending-league-decisions.md](docs/pending-league-decisions.md): Coaches' Corner, current officers, student-name approval, and the 50th-anniversary history.
+
+## Credits
+
+`images/icons/` is CC0 clip art from openclipart.org; `images/banner/` are Pexels-licensed stock photos (not IMLEM photos). The logo and the 50th-anniversary mark come from IMLEM.
