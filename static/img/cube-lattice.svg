@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="34.64" height="60" viewBox="0 0 34.64 60">
+  <!-- Tumbling-blocks tile: isometric cubes after the 50th-anniversary pyramid. Drawn faint over navy bands. -->
+  <g fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1">
+    <path d="M17.32 0 34.64 10V30L17.32 40 0 30V10Z M17.32 20V40 M17.32 20 0 10 M17.32 20 34.64 10"/>
+    <path d="M0 30 17.32 40V60L0 70-17.32 60V40Z M0 50V70 M0 50-17.32 40 M0 50 17.32 40"/>
+    <path d="M34.64 30 51.96 40V60L34.64 70 17.32 60V40Z M34.64 50V70 M34.64 50 17.32 40 M34.64 50 51.96 40"/>
+  </g>
+  <g fill="#fff" fill-opacity=".035">
+    <path d="M17.32 0 34.64 10 17.32 20 0 10Z"/>
+    <path d="M0 30 17.32 40 0 50-17.32 40Z"/>
+    <path d="M34.64 30 51.96 40 34.64 50 17.32 40Z"/>
+  </g>
+</svg>

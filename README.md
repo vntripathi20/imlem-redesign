@@ -66,4 +66,4 @@ See [docs/pending-league-decisions.md](docs/pending-league-decisions.md): Coache
 
 The home page shows two of the stock photos as placeholders (`HOME_PHOTOS` in `imlem_site/config.py`). Replace them with photos from real meets once the league approves photo use, or set an entry to `None` to show no photo.
 
-Headings use TeX Gyre Schola (the TeX project's Century Schoolbook), subset to Latin in `static/fonts/`, under the GUST Font License (`static/fonts/GUST-FONT-LICENSE.txt`). The six-colour stripe under each title band uses the cube colours of the 50th-anniversary mark, one per round.
+Headings use TeX Gyre Schola (the TeX project's Century Schoolbook), subset to Latin in `static/fonts/`, under the GUST Font License (`static/fonts/GUST-FONT-LICENSE.txt`). The six-colour stripe under each title band uses the cube colours of the 50th-anniversary mark, one per round, and the faint cube texture on the home page bands (`static/img/cube-lattice.svg`) was drawn for this site after the same mark.

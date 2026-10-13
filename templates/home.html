@@ -9,7 +9,6 @@
         {% if season %}<li><a href="{{ url_for('topics', season=season) }}">{{ season }} round topics</a></li>{% endif %}
         <li><a href="{{ url_for('results') }}">Results archive</a></li>
         <li><a href="{{ url_for('study') }}">Past contests</a></li>
-        <li><a href="{{ url_for('join') }}">How to join</a></li>
       </ul>
     </div>
     {% if photos.band %}<figure class="band-photo"><img src="{{ photos.band[0] }}" alt="{{ photos.band[1] }}" width="1079" height="720"></figure>{% endif %}
