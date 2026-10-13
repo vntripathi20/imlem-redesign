@@ -5,12 +5,24 @@ from datetime import date
 
 from flask import current_app, g
 
-from .importer import build_database
+from .importer import IMPORTER_VERSION, build_database
+
+
+def _db_version(path):
+    try:
+        con = sqlite3.connect(f'file:{path.as_posix()}?mode=ro', uri=True)
+        try:
+            return con.execute('PRAGMA user_version').fetchone()[0]
+        finally:
+            con.close()
+    except sqlite3.Error:
+        return -1
 
 
 def ensure_database(app):
+    """Build the database on first start, and rebuild it if it came from an older importer."""
     path = app.config['DB_PATH']
-    if not path.exists():
+    if not path.exists() or _db_version(path) != IMPORTER_VERSION:
         app.logger.info('Building %s from %s', path, app.config['ARCHIVE_DIR'])
         build_database(app.config['ARCHIVE_DIR'], path)
 
@@ -91,9 +103,28 @@ def meets_for(season):
     return q('SELECT * FROM meets WHERE season=? ORDER BY number', season)
 
 
+_ABBR = {1: 'Jan.', 2: 'Feb.', 3: 'Mar.', 4: 'Apr.', 5: 'May', 6: 'June', 7: 'July', 8: 'Aug.', 9: 'Sept.',
+         10: 'Oct.', 11: 'Nov.', 12: 'Dec.'}
+
+
+def short_date(iso):
+    d = date.fromisoformat(iso)
+    return f'{_ABBR[d.month]} {d.day}, {d.year}'
+
+
 def meet_labels(season, source):
+    """Meet dates for table headings.
+
+    One source of truth: the season's published schedule (the Round Topics page, table ``meets``).
+    A few old ranking pages print a different date for a meet than the schedule does (see
+    docs/pending-league-decisions.md); the heading shows the schedule date everywhere. The ranking
+    page's own label is used only when the schedule has no date for that meet.
+    """
     rows = q('SELECT meet, label FROM meet_labels WHERE season=? AND source=? ORDER BY meet', season, source)
-    return {r['meet']: r['label'] for r in rows}
+    labels = {r['meet']: r['label'] for r in rows}
+    for m in q('SELECT number, date_iso FROM meets WHERE season=? AND date_iso IS NOT NULL', season):
+        labels[m['number']] = short_date(m['date_iso'])
+    return labels
 
 
 def season_divisions(season):

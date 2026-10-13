@@ -7,6 +7,7 @@ The archive is read, never written. Rebuild any time:
 Every parsing surprise is collected in ``report`` and printed, so nothing is
 silently dropped.
 """
+import html as htmllib
 import json
 import re
 import sqlite3
@@ -16,6 +17,9 @@ from pathlib import Path
 
 from . import sanitize
 from .legacy import season_id
+
+# Bump when the importer's output changes; an older data/imlem.sqlite is rebuilt automatically.
+IMPORTER_VERSION = 2
 
 SCHEMA = """
 CREATE TABLE seasons (id TEXT PRIMARY KEY, code TEXT NOT NULL, start_year INTEGER NOT NULL);
@@ -82,6 +86,11 @@ class _Tables(HTMLParser):
 
 def _text(s):
     return re.sub(r'\s+', ' ', s.replace('\xa0', ' ')).strip()
+
+
+def _plain(fragment):
+    """Text of an HTML fragment: tags removed, entities decoded (&nbsp; -> space), whitespace collapsed."""
+    return _text(htmllib.unescape(re.sub(r'<[^>]+>', '', fragment)))
 
 
 def _int(s):
@@ -213,7 +222,8 @@ def import_topics(db, root, season, report):
     html = _read(path)
     found = 0
     for m in _MEET_H2.finditer(html):
-        number, heading, rest = int(m.group(1)), _text(re.sub(r'<[^>]+>', '', m.group(2))), m.group(3)
+        number, rest = int(m.group(1)), m.group(3)
+        heading = _plain(m.group(2))
         hm = re.match(r'Meet #\d -- (.*?)(?: -- (.*))?$', heading)
         date_text = hm.group(1) if hm else ''
         tag = (hm.group(2) if hm else '') or ''
@@ -231,8 +241,7 @@ def import_topics(db, root, season, report):
         seq = 0
         for tr in re.findall(r'<tr[^>]*>(.*?)</tr>', rest, re.S):
             cells = re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', tr, re.S)
-            cells = [_text(re.sub(r'<[^>]+>', '', c)) for c in cells if _text(re.sub(r'<[^>]+>', '', c)) or True]
-            cells = [c for c in cells if c != '']
+            cells = [c for c in (_plain(c) for c in cells) if c != '']
             if len(cells) < 2:
                 continue
             label, topic = cells[-2], cells[-1]
@@ -292,7 +301,8 @@ def build_database(archive_dir, db_path):
     report, summary = [], {}
     db = sqlite3.connect(tmp)
     db.executescript(SCHEMA)
-    seasons = sorted({p.name for p in (root / 'statistics').iterdir() if re.fullmatch(r'\d{6}', p.name)}
+    db.execute(f'PRAGMA user_version = {int(IMPORTER_VERSION)}')
+    seasons =sorted({p.name for p in (root / 'statistics').iterdir() if re.fullmatch(r'\d{6}', p.name)}
                      | {p.name for p in (root / 'meetinfo').iterdir() if re.fullmatch(r'\d{6}', p.name)})
     for code in seasons:
         season = season_id(code)

@@ -170,27 +170,22 @@ def register_routes(app):
         countdown = None
         if nxt:
             days = (date.fromisoformat(nxt['date_iso']) - date.today()).days
-            countdown = {'days': days, 'iso': nxt['date_iso'], 'human': human_date(nxt['date_iso'])}
-            nxt_rounds = D.q('SELECT * FROM rounds WHERE season=? AND meet=? ORDER BY seq', nxt['season'], nxt['number'])
-        else:
-            nxt_rounds = []
+            countdown = {'days': max(days, 0), 'iso': nxt['date_iso'], 'human': human_date(nxt['date_iso'])}
+        # The season table shows the season of the next meet, else the most recent season with a schedule.
+        latest_sched = D.q1('SELECT season FROM meets ORDER BY season DESC LIMIT 1')
+        sched_season = nxt['season'] if nxt else (latest_sched['season'] if latest_sched else None)
+        season_meets = D.meets_for(sched_season) if sched_season else []
         res = D.results_seasons()
         top_teams = []
         if res:
             top_teams = D.q("SELECT * FROM teams WHERE season=? AND scope='overall' ORDER BY seq LIMIT 5", res[0])
-        stats = {
-            'seasons': len(res),
-            'schools': D.q1('SELECT COUNT(DISTINCT school_lc) AS n FROM teams')['n'],
-            'meets': D.q1('SELECT COUNT(*) AS n FROM meets')['n'],
-            'earliest': res[-1] if res else '',
-        }
         announcements = [a for a in load_json('announcements.json', {}).get('items', []) if a.get('title')]
         return render('home.html', title=f'{cfg.SITE_NAME} — {cfg.SITE_FULL_NAME}',
                       description='IMLEM is a middle school math league in Eastern Massachusetts. '
                                   'Meet dates, round topics, a results archive and study materials.',
-                      nxt=nxt, nxt_rounds=nxt_rounds, countdown=countdown,
+                      nxt=nxt, countdown=countdown, sched_season=sched_season, season_meets=season_meets,
                       latest_season=res[0] if res else None, top_teams=top_teams,
-                      stats=stats, announcements=announcements, home=True)
+                      announcements=announcements, home=True)
 
     # ---- about / join / rules -------------------------------------------------
     @app.route('/about/')
@@ -226,6 +221,7 @@ def register_routes(app):
                       page=p, heading=f'League Officers and Cluster Coordinators, {season}',
                       prev=(older, url_for('officers', season=older) if older else None),
                       next=(newer, url_for('officers', season=newer) if newer else None),
+                      pending_note=season == cfg.OFFICERS_LAST_CONFIRMED,
                       notice=(f'The most recent officer list the old site published is {cfg.OFFICERS_LAST_CONFIRMED}. '
                               'Current officers are not yet confirmed.'
                               if season == cfg.OFFICERS_LAST_CONFIRMED else None))
@@ -429,7 +425,9 @@ def register_routes(app):
             'SELECT division FROM individuals WHERE season=? GROUP BY division ORDER BY MIN(seq)', season)]
         grades = [r['grade'] for r in D.q('SELECT DISTINCT grade FROM individuals WHERE season=? ORDER BY grade', season)]
         labels = D.meet_labels(season, 'individual')
-        n_meets = max(len(labels), len(rows[0]['meet_totals']) if rows else 0)
+        # Column count comes from the data (2019-20 has four meets), not from the label dict.
+        sample = D.q1('SELECT meet_totals FROM individuals WHERE season=? LIMIT 1', season)
+        n_meets = len(json.loads(sample['meet_totals']))
         base = {k: v for k, v in args.items() if k != 'page'}
         return render('results_individuals.html', title=f'{season} individual rankings',
                       description=f'IMLEM {season} individual rankings.',
