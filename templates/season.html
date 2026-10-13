@@ -13,17 +13,21 @@
   {{ linklist(items) }}
   {% if meets %}
   <h2>Meets</h2>
+  {% if meets|selectattr('date_iso')|list and (meets|last).date_iso >= today_iso %}
+  <p><a class="cal-link" href="{{ url_for('calendar', season=s.id) }}" download>Add the {{ s.id }} meets to your calendar</a></p>
+  {% endif %}
   <div class="table-scroll">
   <table class="data cards-sm">
     <caption class="visually-hidden">Meets in {{ s.id }}</caption>
-    <thead><tr><th scope="col">Meet</th><th scope="col">Date</th><th scope="col">Calculators</th><th scope="col">Contest</th></tr></thead>
+    <thead><tr><th scope="col">Meet</th><th scope="col">Date</th><th scope="col">Calculators</th><th scope="col">Contest</th><th scope="col">Practice</th></tr></thead>
     <tbody>
       {% for m in meets %}
       <tr>
         <th scope="row" data-label="Meet"><a href="{{ url_for('topics', season=s.id) }}#meet-{{ m.number }}">Meet {{ m.number }}</a></th>
         <td data-label="Date"><time{% if m.date_iso %} datetime="{{ m.date_iso }}"{% endif %}>{{ m.date_text }}</time></td>
         <td data-label="Calculators">{{ 'Allowed' if m.calculators else 'No' }}</td>
-        <td data-label="Contest">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">PDF (external)</a>{% else %}<span class="muted" aria-label="Not available">&mdash;</span>{% endif %}</td>
+        <td data-label="Contest">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">PDF (external)</a>{% elif m.date_iso and m.date_iso >= today_iso %}<span class="muted">Upcoming</span>{% else %}<span class="muted" aria-label="Not available">&mdash;</span>{% endif %}</td>
+        <td data-label="Practice"><a href="{{ url_for('practice', number=m.number) }}">Past Meet {{ m.number }} contests</a></td>
       </tr>
       {% endfor %}
     </tbody>

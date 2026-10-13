@@ -40,7 +40,7 @@
     {% for r in rows %}
     <tr>
       <td class="c-rank" data-label="Rank" data-v="{{ r.rank_n if r.rank_n is not none else '' }}">{{ r.rank }}</td>
-      <th scope="row" class="c-name" data-label="School"><a href="{{ url_for('school', name=r.school) }}">{{ r.school }}</a></th>
+      <th scope="row" class="c-name" data-label="School"><a href="{{ school_url(r.school) }}">{{ r.school }}</a></th>
       {% if show_division %}<td data-label="Div. rank">{{ r.div_rank }}</td>{% endif %}
       <td data-label="Cluster">{{ r.cluster }}</td>
       {% for sc in r.scores %}
@@ -80,5 +80,25 @@ only some students are named (mostly top finishers). Unnamed rows appear as &ldq
   {% for label, href, desc in items %}
   <li><a href="{{ href }}">{{ label }}</a>{% if desc %}<span class="desc"> &mdash; {{ desc }}</span>{% endif %}</li>
   {% endfor %}
+</ul>
+{% endmacro %}
+
+{# Jump to another season's version of the same page (a plain GET form, no script needed). #}
+{% macro season_switcher(seasons, current, to) %}
+<form class="season-switch" action="{{ url_for('season_go') }}" method="get">
+  <input type="hidden" name="to" value="{{ to }}">
+  <label for="season-switch-{{ to }}">Season</label>
+  <select id="season-switch-{{ to }}" name="season">
+    {% for s in seasons %}<option{% if s == current %} selected{% endif %}>{{ s }}</option>{% endfor %}
+  </select>
+  <button class="btn btn-ghost btn-small" type="submit">Go</button>
+</form>
+{% endmacro %}
+
+{% macro results_nav(active) %}
+<ul class="tabs" aria-label="Results archive sections">
+  <li><a href="{{ url_for('results') }}"{% if active == 'seasons' %} aria-current="page"{% endif %}>Seasons</a></li>
+  <li><a href="{{ url_for('schools_index') }}"{% if active == 'schools' %} aria-current="page"{% endif %}>Schools</a></li>
+  <li><a href="{{ url_for('records') }}"{% if active == 'records' %} aria-current="page"{% endif %}>Records and trends</a></li>
 </ul>
 {% endmacro %}

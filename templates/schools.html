@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% from '_macros.html' import results_nav %}
+{% block main %}
+<div class="wrap page">
+  <h1>Schools</h1>
+  {{ results_nav('schools') }}
+  <p class="intro">{{ count }} schools appear in the results archive, {{ active_count }} of them in {{ latest }}. Each school&rsquo;s page shows every season it competed, with its league and division finishes and meet scores.</p>
+  <div class="toolbar">
+    <label for="school-filter">Find a school</label>
+    <input id="school-filter" type="search" data-filter-table="schools" placeholder="Type part of a name" autocomplete="off">
+    <span class="small muted" data-filter-count aria-live="polite"></span>
+  </div>
+  <div class="table-scroll">
+  <table class="data cards-sm sortable" id="schools">
+    <caption class="visually-hidden">Schools in the IMLEM results archive</caption>
+    <thead><tr>
+      <th scope="col" data-sort="text">School</th>
+      <th scope="col" data-sort="num">Seasons</th>
+      <th scope="col" data-sort="text">First and latest season</th>
+      <th scope="col" data-sort="num">Best league finish</th>
+      <th scope="col" data-sort="num">{{ latest }} finish</th>
+    </tr></thead>
+    <tbody>
+    {% for letter, items in groups %}{% for s in items %}
+      <tr>
+        <th scope="row" data-label="School"><a href="{{ url_for('school_page', slug=s.slug) }}">{{ s.name }}</a>{% if s.teams|length > 1 %} <span class="small muted">({{ s.teams|length }} teams)</span>{% endif %}</th>
+        <td data-label="Seasons" data-v="{{ s.seasons|length }}">{{ s.seasons|length }}</td>
+        <td data-label="Seasons in archive">{{ s.first }}{% if s.last != s.first %} to {{ s.last }}{% endif %}</td>
+        <td data-label="Best league finish" data-v="{{ s.best_rank or '' }}">{% if s.best_rank %}{{ s.best_rank }}<span class="muted small"> in {{ s.best_season }}</span>{% endif %}</td>
+        <td data-label="{{ latest }} finish" data-v="{{ s.latest_rank or '' }}">{{ s.latest_rank or '' }}{% if not s.latest_rank %}<span class="muted" aria-label="Did not compete">&mdash;</span>{% endif %}</td>
+      </tr>
+    {% endfor %}{% endfor %}
+    </tbody>
+  </table>
+  </div>
+  <p class="small muted">Finishes are a school&rsquo;s main team in the overall league standings. Click a column heading to sort.</p>
+</div>
+{% endblock %}

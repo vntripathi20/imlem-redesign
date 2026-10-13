@@ -2,9 +2,9 @@
 {% from '_macros.html' import names_note %}
 {% block main %}
 <div class="wrap page">
-  <h1>Search the results archive</h1>
+  <h1>Search</h1>
   <form class="search-form" action="{{ url_for('search') }}" method="get" role="search">
-    <label for="q">School or student name</label>
+    <label for="q">School, student or math topic</label>
     <div class="row">
       <input id="q" name="q" type="search" minlength="2" maxlength="60" value="{{ term }}" required>
       <label class="visually-hidden" for="season">Season (students only)</label>
@@ -17,10 +17,17 @@
   <section aria-labelledby="sch"><h2 id="sch">Schools ({{ schools|length }})</h2>
     {% if schools %}
     <ul class="plain result-list">
-      {% for s in schools %}<li><a href="{{ url_for('school', name=s.school) }}">{{ s.school }}</a> <span class="muted">&middot; in {{ s.seasons }} season{{ '' if s.seasons == 1 else 's' }}, latest {{ s.latest }}</span></li>{% endfor %}
+      {% for s in schools %}<li><a href="{{ url_for('school_page', slug=s.slug) }}">{{ s.name }}</a> <span class="muted">{{ s.seasons|length }} season{{ '' if s.seasons|length == 1 else 's' }}, {{ s.first }}{% if s.last != s.first %} to {{ s.last }}{% endif %}</span></li>{% endfor %}
     </ul>
     {% else %}<p class="muted">No schools match.</p>{% endif %}
   </section>
+  {% if topics %}
+  <section aria-labelledby="top"><h2 id="top">Study topics ({{ topics|length }})</h2>
+    <ul class="plain result-list">
+      {% for r in topics %}<li class="{{ r.category|subject }}"><span class="swatch" aria-hidden="true"></span><a href="{{ url_for('practice', number=r.meet) }}">Meet {{ r.meet }}, {{ r.category }}</a> <span class="muted">{{ r.description }}</span></li>{% endfor %}
+    </ul>
+  </section>
+  {% endif %}
   <section aria-labelledby="stu"><h2 id="stu">Students ({{ students|length }}{% if students|length == 200 %}+{% endif %})</h2>
     {{ names_note() }}
     {% if students %}

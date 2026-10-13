@@ -1,15 +1,90 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import prev_next, season_nav, linklist %}
+{% from '_macros.html' import prev_next, season_nav, season_switcher %}
 {% block main %}
-<div class="wrap page">
+<div class="wrap page page-wide">
   <h1>{{ season }} results</h1>
   {{ season_nav(season, 'overview') }}
-  {{ prev_next(prev, next) }}
-  {{ linklist([
-    ('Team rankings', url_for('results_teams', season=season), 'all schools, ranked overall'),
-    ('By division', url_for('results_divisions', season=season), divisions|length ~ ' divisions: ' ~ divisions|join(', ')),
-    ('Individual rankings', url_for('results_individuals', season=season), 'filter by name, school, division or grade'),
-  ]) }}
-  <p>Round topics and dates for the season: <a href="{{ url_for('season_hub', season=season) }}">{{ season }} season</a>.</p>
+  <div class="season-bar">
+    {{ prev_next(prev, next) }}
+    {{ season_switcher(all_seasons, season, 'results_season') }}
+  </div>
+
+  {% if o %}
+  <p class="intro">{{ o.teams }} teams from {{ o.schools }} schools and {{ '{:,}'.format(o.students) }} students competed in {{ o.n_meets }} meets.</p>
+
+  <section class="podium-sec" aria-labelledby="h-podium">
+    <h2 id="h-podium">League standings</h2>
+    <ol class="podium">
+      {% for t in o.podium %}
+      <li class="place-{{ t.rank_n }}">
+        <span class="place">{{ t.rank_n }}{{ {1: 'st', 2: 'nd', 3: 'rd'}[t.rank_n] }}</span>
+        <a class="team" href="{{ school_url(t.school) }}">{{ t.school }}</a>
+        <span class="pts">{{ '{:,}'.format(t.total) }} points</span>
+      </li>
+      {% endfor %}
+    </ol>
+    <p><a href="{{ url_for('results_teams', season=season) }}">Full team rankings</a></p>
+  </section>
+
+  <div class="two-up">
+    <section aria-labelledby="h-div">
+      <h2 id="h-div">Division winners</h2>
+      <table class="data compact">
+        <caption class="visually-hidden">Winner of each division, {{ season }}</caption>
+        <thead><tr><th scope="col">Division</th><th scope="col">Winner</th><th scope="col" class="num">Total</th></tr></thead>
+        <tbody>
+        {% for d in o.division_winners %}
+          <tr><td><a href="{{ url_for('results_divisions', season=season) }}#{{ d.division|lower|replace(' ', '-') }}">{{ d.division }}</a> <span class="muted small">{{ d.size }} teams</span></td>
+            <th scope="row">{% for t in d.teams %}<a href="{{ school_url(t.school) }}">{{ t.school }}</a>{% if not loop.last %}, {% endif %}{% endfor %}</th>
+            <td class="num">{{ d.teams[0].total }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </section>
+
+    <section aria-labelledby="h-meets">
+      <h2 id="h-meets">Meet by meet</h2>
+      <table class="data compact">
+        <caption class="visually-hidden">Team scores at each meet, {{ season }}</caption>
+        <thead><tr><th scope="col">Meet</th><th scope="col" class="num hide-xs">Teams</th><th scope="col" class="num">Average</th><th scope="col">High score</th><th scope="col" class="num">Perfect 18s</th></tr></thead>
+        <tbody>
+        {% for m in o.meets %}
+          <tr><th scope="row" class="nowrap">Meet {{ m.number }}</th><td class="num hide-xs">{{ m.teams }}</td><td class="num">{{ m.average }}</td>
+            <td><strong>{{ m.high }}</strong> <span class="small">{{ m.high_teams|join(', ') }}</span></td>
+            <td class="num">{{ o.perfect_meets[m.number - 1] }}</td></tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <p class="small muted">Team scores are out of 216. &ldquo;Perfect 18s&rdquo; counts students who answered all three of their rounds correctly at that meet.
+        {{ o.perfect_season }} student{{ ' was' if o.perfect_season == 1 else 's were' }} perfect in all {{ o.counting_meets }} meets that count toward the season total.</p>
+    </section>
+  </div>
+
+  {% if o.gains %}
+  <section aria-labelledby="h-gain">
+    <h2 id="h-gain">Biggest gains over {{ o.previous }}</h2>
+    <table class="data compact narrow">
+      <caption class="visually-hidden">Teams whose season total rose the most since {{ o.previous }}</caption>
+      <thead><tr><th scope="col">Team</th><th scope="col" class="num">{{ o.previous }}</th><th scope="col" class="num">{{ season }}</th><th scope="col" class="num">Change</th></tr></thead>
+      <tbody>
+      {% for g in o.gains %}
+        <tr><th scope="row"><a href="{{ school_url(g.school) }}">{{ g.school }}</a></th><td class="num">{{ g.before }}</td><td class="num">{{ g.total }}</td><td class="num"><strong>+{{ g.gain }}</strong></td></tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    <p class="small muted">Season totals of teams that competed in every meet of both seasons.</p>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="h-more">
+    <h2 id="h-more">Full results</h2>
+    <ul class="linklist">
+      <li><a href="{{ url_for('results_teams', season=season) }}">Team rankings</a><span class="desc"> &mdash; every team, ranked overall, with meet-by-meet scores</span></li>
+      <li><a href="{{ url_for('results_divisions', season=season) }}">Division rankings</a><span class="desc"> &mdash; {{ divisions|length }} divisions: {{ divisions|join(', ') }}</span></li>
+      <li><a href="{{ url_for('results_individuals', season=season) }}">Individual rankings</a><span class="desc"> &mdash; filter by name, school, division or grade</span></li>
+      <li><a href="{{ url_for('season_hub', season=season) }}">{{ season }} season</a><span class="desc"> &mdash; dates, round topics and clusters</span></li>
+    </ul>
+  </section>
+  {% endif %}
 </div>
 {% endblock %}

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <h1>How IMLEM meets work</h1>
+  <p class="intro">A guide for students, families and new coaches. It summarizes the <a href="{{ url_for('bylaws') }}">League Bylaws</a>
+    and the <a href="{{ url_for('calculators') }}">calculator rules</a>; where this page and the Bylaws differ, the Bylaws apply.</p>
+
+  <nav class="toc" aria-label="On this page">
+    <ol>
+      <li><a href="#short">The short version</a></li>
+      <li><a href="#teams">Teams</a></li>
+      <li><a href="#rounds">The rounds</a></li>
+      <li><a href="#scoring">Scoring</a></li>
+      <li><a href="#calculators">Calculators</a></li>
+      <li><a href="#meet-day">Meet day</a></li>
+      <li><a href="#leagues">Clusters and divisions</a></li>
+      <li><a href="#awards">Awards</a></li>
+      <li><a href="#questions">Questions about scores</a></li>
+    </ol>
+  </nav>
+
+  <section id="short" aria-labelledby="h-short" class="guide-sec">
+    <h2 id="h-short">The short version</h2>
+    <p>IMLEM is a math league for middle school teams. There are five meets a season. At each meet, every student on a school&rsquo;s team
+      takes three 10-minute rounds of three questions, and the whole team works together on a 15-minute team round. Teams score up to
+      216 points a meet, students up to 18. The test writer publishes each meet&rsquo;s topics at the start of the season, so students can prepare.</p>
+    {% if meets %}<p>This season&rsquo;s dates are on the <a href="{{ url_for('home') }}">home page</a> and the <a href="{{ url_for('topics', season=season) }}">{{ season }} round topics</a> page.</p>{% endif %}
+  </section>
+
+  <section id="teams" aria-labelledby="h-teams" class="guide-sec">
+    <h2 id="h-teams">Teams</h2>
+    <ul>
+      <li>A team has <strong>ten students</strong>: at most seven eighth graders, with seventh and sixth graders making up the rest.</li>
+      <li>Students below sixth grade may compete as sixth graders. Students in grades 9 to 12 may not compete, and no student may compete for more than three years.</li>
+      <li>The Bylaws call seven eighth graders and three seventh graders the most advantageous mix. A team with fewer than ten students can still compete, but is less likely to score highly.</li>
+      <li><strong>Alternates</strong> may come along to gain experience; each cluster decides how many (generally no more than ten). Once the competition starts, an alternate cannot replace a regular.</li>
+      <li>A school may enter more than one team if it pays dues for each team. A student who has competed as a regular for one team stays on that team for the rest of the season. Every meet needs at least one adult for every 20 students.</li>
+    </ul>
+    <p class="source">League Bylaws, sections I and III</p>
+  </section>
+
+  <section id="rounds" aria-labelledby="h-rounds" class="guide-sec">
+    <h2 id="h-rounds">The rounds</h2>
+    <p>Each meet has five individual rounds, run one after another, then a team round. Each student on the team is entered in three of the five
+      individual rounds, and each round should have exactly six students from the team.</p>
+    <div class="table-scroll">
+    <table class="data cards-sm rounds-table">
+      <caption class="visually-hidden">The six rounds of an IMLEM meet</caption>
+      <thead><tr><th scope="col">Round</th><th scope="col">Time</th><th scope="col">Questions</th><th scope="col">Points</th><th scope="col">What it covers</th></tr></thead>
+      <tbody>
+        <tr><th scope="row" class="subj-mystery" data-label="Round"><span class="swatch" aria-hidden="true"></span>1. Mystery</th><td data-label="Time">10 min</td><td data-label="Questions">3</td><td data-label="Points">2 each</td>
+          <td data-label="Covers">No published topic list. Problems reward clear, well-organized thinking; some define new symbols or operations, and question 3 takes more complex reasoning.</td></tr>
+        <tr><th scope="row" class="subj-geometry" data-label="Round"><span class="swatch" aria-hidden="true"></span>2. Geometry</th><td data-label="Time">10 min</td><td data-label="Questions">3</td><td data-label="Points">2 each</td>
+          <td data-label="Covers">Perimeter, area and volume; parallel lines, polygons, supplementary and complementary angles, the Pythagorean Theorem, 30-60-90 and 45-45-90 triangles.</td></tr>
+        <tr><th scope="row" class="subj-number-theory" data-label="Round"><span class="swatch" aria-hidden="true"></span>3. Number Theory</th><td data-label="Time">10 min</td><td data-label="Questions">3</td><td data-label="Points">2 each</td>
+          <td data-label="Covers">Multiples and factors, primes and composites, divisibility, place value, bases (at most one question), rounding, factorization, sets.</td></tr>
+        <tr><th scope="row" class="subj-arithmetic" data-label="Round"><span class="swatch" aria-hidden="true"></span>4. Arithmetic</th><td data-label="Time">10 min</td><td data-label="Questions">3</td><td data-label="Points">2 each</td>
+          <td data-label="Covers">Calculation with whole numbers, fractions, decimals, percents, roots and powers.</td></tr>
+        <tr><th scope="row" class="subj-algebra" data-label="Round"><span class="swatch" aria-hidden="true"></span>5. Algebra</th><td data-label="Time">10 min</td><td data-label="Questions">3</td><td data-label="Points">2 each</td>
+          <td data-label="Covers">Any concepts from the algebra curriculum.</td></tr>
+        <tr><th scope="row" class="subj-team-round" data-label="Round"><span class="swatch" aria-hidden="true"></span>Team round</th><td data-label="Time">15 min</td><td data-label="Questions">6</td><td data-label="Points">6 each</td>
+          <td data-label="Covers">All ten regulars work together. Five questions use the meet&rsquo;s topics; the sixth combines the answers to the first five.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Each meet&rsquo;s specific topics are published at the start of the season. They have been the same for every season since 2015-16, so past contests make
+      good practice: see the <a href="{{ url_for('study') }}#topic-map">topic map</a> and the practice page for each meet.</p>
+    <p class="source">League Bylaws, sections II and III; round topics {{ season }}</p>
+  </section>
+
+  <section id="scoring" aria-labelledby="h-scoring" class="guide-sec">
+    <h2 id="h-scoring">Scoring</h2>
+    <div class="score-grid">
+      <div class="score-card">
+        <h3>A student at one meet</h3>
+        <p class="total"><strong>18</strong> points</p>
+        <p class="sum">3 rounds &times; 3 questions &times; 2 points</p>
+        <p>The team round does not count toward a student&rsquo;s own score.</p>
+      </div>
+      <div class="score-card">
+        <h3>A team at one meet</h3>
+        <p class="total"><strong>216</strong> points</p>
+        <p class="sum">180 from the five rounds + 36 from the team round</p>
+        <p>Six students per round, five rounds, up to 6 points each, plus the team round.</p>
+      </div>
+    </div>
+    <ul>
+      <li><strong>A team&rsquo;s season total</strong> is the sum of its meet scores.</li>
+      <li><strong>A student&rsquo;s season total</strong> in the published results counts every meet except their lowest: the best four of five meets (best three of four in 2019-20, which had four meets). The results also show the sum of all meets in brackets.</li>
+      <li>A student seen cheating gets no score for the day, and no one else may take their place.</li>
+    </ul>
+    <p class="source">League Bylaws, sections II, III and IV; season totals checked against every row of the published results</p>
+  </section>
+
+  <section id="calculators" aria-labelledby="h-calc" class="guide-sec">
+    <h2 id="h-calc">Calculators</h2>
+    <p>Calculators are allowed only at <strong>meets 4 and 5</strong>, and every team member should bring one to those meets. Programmable and graphing calculators are not allowed.</p>
+    <p class="source"><a href="{{ url_for('calculators') }}">Calculator rules</a>; League Bylaws, sections II and III</p>
+  </section>
+
+  <section id="meet-day" aria-labelledby="h-day" class="guide-sec">
+    <h2 id="h-day">Meet day</h2>
+    <ol class="steps">
+      <li><strong>Opening.</strong> The cluster&rsquo;s vice-president takes a roll call of schools, collects the team rosters, presents blue ribbons from the previous meet, and sends students to the testing rooms.</li>
+      <li><strong>Five individual rounds.</strong> Students write their name, school, grade and &ldquo;Regular&rdquo; or &ldquo;Alternate&rdquo; on the back of each test (a missing label can disqualify that round). Each round lasts 10 minutes, with a one-minute warning.</li>
+      <li><strong>Team round.</strong> Each team works in its own room or area for 15 minutes, with five- and one-minute warnings. One student acts as secretary and hands in the team&rsquo;s answers.</li>
+      <li><strong>Scores go up as they come in.</strong> Each round&rsquo;s results are posted between tests. The host school serves refreshments.</li>
+      <li><strong>Closing.</strong> Final results are announced, and the top-scoring students in each grade receive certificates.</li>
+    </ol>
+    <p>Meet sites and start times are set by each cluster. Ask your school&rsquo;s math team coach, or see <a href="{{ url_for('contact') }}#who">who to contact</a>.</p>
+    <p class="source">League Bylaws, sections IV and VII</p>
+  </section>
+
+  <section id="leagues" aria-labelledby="h-leagues" class="guide-sec">
+    <h2 id="h-leagues">Clusters and divisions</h2>
+    <dl class="terms">
+      <dt>Clusters</dt>
+      <dd>Schools are grouped into geographic clusters, and meets are run by cluster. Each fall, each cluster elects a vice-president, who runs its meets, and chooses host schools for the season&rsquo;s dates.</dd>
+      <dt>Divisions</dt>
+      <dd>For the standings, teams are also placed in divisions of similar strength, with names such as Euclid, Pythagoras and Hypatia. The league president recommends divisions each spring from the average of a team&rsquo;s scores over the previous three years. New teams are placed after meets 1 and 2.</dd>
+    </dl>
+    <p>See every season&rsquo;s <a href="{{ url_for('results') }}">divisions and standings</a>, or look up a <a href="{{ url_for('schools_index') }}">school&rsquo;s history</a>.</p>
+    <p class="source">League Bylaws, section VI</p>
+  </section>
+
+  <section id="awards" aria-labelledby="h-awards" class="guide-sec">
+    <h2 id="h-awards">Awards</h2>
+    <div class="two-up">
+      <div>
+        <h3>At every meet</h3>
+        <ul>
+          <li>A gold certificate to the highest-scoring 6th, 7th and 8th grader at the meet.</li>
+          <li>Blue ribbons for the division winners of the previous meet.</li>
+        </ul>
+      </div>
+      <div>
+        <h3>At the end of the season</h3>
+        <ul>
+          <li>Rotating plaques for the first-, second- and third-place teams in the league.</li>
+          <li>Plaques for the top two schools in each division (teams must compete in all five meets).</li>
+          <li>A plaque for the most improved school, by change in points from the previous season.</li>
+          <li>Awards for the top ten students in each grade (more if there are ties), and a plaque for the top 6th, 7th and 8th grader in each division.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="source">League Bylaws, sections IV and IX</p>
+  </section>
+
+  <section id="questions" aria-labelledby="h-q" class="guide-sec">
+    <h2 id="h-q">Questions about scores</h2>
+    <p>Students ask about scores through their coach. Problems are settled at the meet where possible; appeals about grading, tabulation or how an answer was read go
+      by email within 7 days of the meet to the cluster vice-president, the test writer, the tabulator and the president. The test writer makes the final decision on contest questions.</p>
+    <p class="source">League Bylaws, section V</p>
+  </section>
+</div>
+{% endblock %}

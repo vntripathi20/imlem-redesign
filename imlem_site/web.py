@@ -13,6 +13,9 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 
 from . import config as cfg
 from . import db as D
+from . import stats as S
+from .charts import ordinal
+from .explore import register_explore
 from .legacy import new_url_for_old_path, season_code
 
 SEASON_RE = re.compile(r'^\d{4}-\d{2}$')
@@ -49,6 +52,7 @@ def create_app(test_config=None):
     register_filters(app)
     register_hooks(app)
     register_routes(app)
+    register_explore(app, render, valid_season)
     register_errors(app)
     return app
 
@@ -110,6 +114,10 @@ def register_filters(app):
     def name_or_dash(v):
         return v if v else '—'
 
+    # A global (not a context variable) so macros imported without context can use it too.
+    app.jinja_env.globals['school_url'] = lambda team: url_for('school_page', slug=S.school_slug_for_team(team))
+    app.jinja_env.globals['ordinal'] = ordinal
+
     @app.context_processor
     def inject():
         return {
@@ -124,6 +132,7 @@ def register_filters(app):
                 ('Contact', url_for('contact'), 'contact'),
             ],
             'current_year': date.today().year,
+            'today_iso': date.today().isoformat(),
         }
 
 
@@ -348,9 +357,11 @@ def register_routes(app):
         res = D.results_seasons()
         older, newer = D.neighbours(season, res)
         return render('results_season.html', title=f'{season} results',
-                      description=f'IMLEM {season} team and individual results.',
+                      description=f'IMLEM {season} results: league champions, division winners, meet-by-meet '
+                                  'scores, and links to full team and individual rankings.',
                       crumbs=[('Results', url_for('results')), (season, None)], season=season,
-                      divisions=D.season_divisions(season),
+                      divisions=D.season_divisions(season), o=S.season_overview(season),
+                      slug=S.school_slug_for_team, all_seasons=res,
                       prev=(older, url_for('results_season', season=older) if older else None),
                       next=(newer, url_for('results_season', season=newer) if newer else None))
 
@@ -457,32 +468,25 @@ def register_routes(app):
     def search():
         term = request.args.get('q', '').strip()[:60]
         season = request.args.get('season', '').strip()
-        schools, students = [], []
+        schools, students, topics = [], [], []
         if len(term) >= 2:
             pat = D.like(term.lower())
-            schools = D.q("SELECT school, COUNT(DISTINCT season) AS seasons, MAX(season) AS latest FROM teams "
-                          "WHERE scope='overall' AND school_lc LIKE ? ESCAPE '\\' GROUP BY school ORDER BY school LIMIT 60", pat)
+            t = term.lower()
+            schools = [s for s in S.schools() if t in s['name'].lower() or any(t in n.lower() for n in s['teams'])][:60]
+            topics = D.q("SELECT meet, category, description FROM rounds WHERE label LIKE 'Round%' AND "
+                         "(description LIKE ? ESCAPE '\\' OR category LIKE ? ESCAPE '\\') "
+                         "GROUP BY meet, category, description ORDER BY meet, category", pat, pat)
             sql = "SELECT * FROM individuals WHERE name<>'' AND name_lc LIKE ? ESCAPE '\\'"
             args = [pat]
             if SEASON_RE.match(season):
                 sql += ' AND season=?'
                 args.append(season)
             students = D.q(sql + ' ORDER BY season DESC, overall_rank_n, seq LIMIT 200', *args)
-        return render('search.html', title=f'Search results for “{term}”' if term else 'Search the results archive',
+        return render('search.html', title=f'Search results for “{term}”' if term else 'Search',
                       crumbs=[('Results', url_for('results')), ('Search', None)], robots=NOINDEX,
-                      term=term, season=season, schools=schools, students=students, seasons=D.results_seasons(),
+                      term=term, season=season, schools=schools, students=students, topics=topics,
+                      seasons=D.results_seasons(),
                       too_short=bool(term) and len(term) < 2)
-
-    @app.route('/results/school/')
-    def school():
-        name = request.args.get('name', '').strip()[:100]
-        rows = D.q("SELECT * FROM teams WHERE scope='overall' AND school=? ORDER BY season DESC", name) if name else []
-        if not rows:
-            abort(404)
-        return render('school.html', title=f'{name}: team results by season',
-                      description=f'{name} team rankings in the IMLEM results archive.',
-                      crumbs=[('Results', url_for('results')), (name, None)], name=name,
-                      rows=[D.decode_json_columns(r, 'scores') for r in rows])
 
     # ---- study ----------------------------------------------------------------
     @app.route('/study/')
@@ -522,15 +526,23 @@ def register_routes(app):
         res = load_json('resources.json', {'sections': []})
         hosted = load_json('study-materials.json', {'years': []})
         base = {k: v for k, v in args.items() if k != 'page'}
+        map_season = D.q1('SELECT MAX(season) AS s FROM rounds')['s']
+        topic_map = {(r['meet'], r['category']): r['description'] for r in
+                     D.q("SELECT meet, category, description FROM rounds WHERE season=? AND label LIKE 'Round%'", map_season)}
+        map_meets = D.meets_for(map_season)
+        past_counts = {r['number']: r['n'] for r in D.q(
+            'SELECT number, COUNT(*) AS n FROM meets WHERE contest_url IS NOT NULL GROUP BY number')}
         return render('study.html', title='Study materials',
                       description='Past IMLEM contests by season and meet, round topics by subject, books, videos and '
                                   'practice resources.',
-                      crumbs=[('Study Materials', None)], rows=rows, total=total, page_no=pg, pages=pages, base=base,
+                      crumbs=[('Study materials', None)], rows=rows, total=total, page_no=pg, pages=pages, base=base,
                       page_url=lambda n: url_for('study', **dict(base, page=n)) + '#topics',
                       cats=cats, all_seasons=[r['season'] for r in D.q('SELECT DISTINCT season FROM meets ORDER BY season DESC')],
                       contest_seasons=contest_seasons, resources=res['sections'], hosted=hosted['years'],
                       f={'season': season, 'meet': meet, 'topic': cat, 'q': term},
-                      archive_host=cfg.CONTEST_ARCHIVE_HOST)
+                      archive_host=cfg.CONTEST_ARCHIVE_HOST, topic_map=topic_map, map_season=map_season,
+                      map_meets=map_meets, past_counts=past_counts,
+                      map_subjects=['Geometry', 'Number Theory', 'Arithmetic', 'Algebra'])
 
     # ---- links / contact ------------------------------------------------------
     @app.route('/links/')
@@ -584,8 +596,10 @@ def register_routes(app):
 
     @app.route('/sitemap.xml')
     def sitemap():
-        paths = ['/', '/about/', '/about/bylaws/', '/about/officers/', '/join/', '/contests/', '/results/', '/study/',
-                 '/links/', '/contact/', '/rules/calculators/', '/50th/']
+        paths = ['/', '/about/', '/about/bylaws/', '/about/officers/', '/about/how-meets-work/', '/join/', '/contests/',
+                 '/results/', '/results/records/', '/schools/', '/study/', '/links/', '/contact/', '/rules/calculators/',
+                 '/50th/'] + [f'/study/meet/{n}/' for n in range(1, 6)]
+        paths += [f'/schools/{sc["slug"]}/' for sc in S.schools()]
         for s in D.seasons():
             sm = D.season_summary(s)
             paths.append(f'/contests/{s}/')

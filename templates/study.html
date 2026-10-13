@@ -3,15 +3,38 @@
 {% block main %}
 <div class="wrap page">
   <h1>Study materials</h1>
-  <p class="lead">Practice with past contests, find the rounds that cover a topic, and see books and videos the league has pointed students to.</p>
-  <p class="aside-note"><strong>The contest archive is hosted externally.</strong> Past contest PDFs live on <a class="external" href="http://www.matharchive.org/imlem/" rel="noopener">{{ archive_host }}</a>,
-    not on this site. The links below open that archive.</p>
+  <p class="intro">Every meet has had the same round topics each season since 2015-16. The best practice for an upcoming meet is the same meet from past seasons.</p>
+
+  <section id="topic-map" aria-labelledby="h-map">
+    <h2 id="h-map">Topic map</h2>
+    <p class="small muted">Topics for each meet, from the {{ map_season }} schedule. Round 1 is always Mystery, which has no published topics, and every meet ends with a team round on the meet&rsquo;s topics.</p>
+    <div class="table-scroll">
+    <table class="data topic-map cards-sm">
+      <caption class="visually-hidden">Round topics for each meet</caption>
+      <thead><tr><th scope="col">Meet</th>{% for c in map_subjects %}<th scope="col" class="{{ c|subject }}"><span class="swatch" aria-hidden="true"></span>{{ c }}</th>{% endfor %}</tr></thead>
+      <tbody>
+      {% for m in map_meets %}
+        <tr>
+          <th scope="row" data-label="Meet"><a class="map-meet" href="{{ url_for('practice', number=m.number) }}">Meet {{ m.number }}</a>
+            <span class="map-date">{{ m.date_text.rsplit(', ', 1)[0] }}</span>
+            {% if m.calculators %}<span class="tag">Calculators</span>{% endif %}
+            <a class="small" href="{{ url_for('practice', number=m.number) }}">{{ past_counts.get(m.number, 0) }} past contests</a></th>
+          {% for c in map_subjects %}<td data-label="{{ c }}">{{ topic_map.get((m.number, c)) or '' }}</td>{% endfor %}
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+  </section>
+
+  <p class="aside-note"><strong>Past contests are hosted externally, on <a class="external" href="http://www.matharchive.org/imlem/" rel="noopener">{{ archive_host }}</a>.</strong>
+    The contest links on this site open PDFs there.</p>
   <ul class="jump plain">
-    <li><a href="#contests">Past contests</a></li><li><a href="#topics">Find by topic</a></li><li><a href="#resources">Books, videos &amp; practice</a></li>{% if hosted %}<li><a href="#hosted">Files on this site</a></li>{% endif %}
+    <li><a href="#contests">Past contests by season</a></li><li><a href="#topics">Search round topics</a></li><li><a href="#resources">Books, videos &amp; practice</a></li>{% if hosted %}<li><a href="#hosted">Files on this site</a></li>{% endif %}
   </ul>
 
   <section id="contests" aria-labelledby="h-contests">
-    <h2 id="h-contests">Past contests by season and meet</h2>
+    <h2 id="h-contests">Past contests by season</h2>
     {% for cs in contest_seasons %}
     <details class="season-details"{% if loop.first %} open{% endif %}>
       <summary>{{ cs.season }}</summary>
@@ -19,7 +42,7 @@
         {% for m in cs.meets %}
         <li>
           <span class="meet-name">Meet {{ m.number }} <span class="muted">&middot; {{ m.date_text }}</span></span>
-          {% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF (external)</a>{% else %}<span class="muted">PDF not available</span>{% endif %}
+          {% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF (external)</a>{% elif m.date_iso and m.date_iso >= today_iso %}<span class="muted">Upcoming</span>{% else %}<span class="muted">PDF not available</span>{% endif %}
           <a href="{{ url_for('topics', season=cs.season) }}#meet-{{ m.number }}">Topics</a>
         </li>
         {% endfor %}
@@ -29,8 +52,8 @@
   </section>
 
   <section id="topics" aria-labelledby="h-topics">
-    <h2 id="h-topics">Find rounds by topic</h2>
-    <p>Search every round&rsquo;s topic across all seasons. Meets 1&ndash;5 run in the order of the season, so earlier meets cover foundations and later meets build on them.
+    <h2 id="h-topics">Search round topics</h2>
+    <p>Search every round&rsquo;s topic across all seasons, then open the contest that used it.
       {# TODO(league): the old site gives no difficulty ratings; add them here if the league wants difficulty labels. #}</p>
     <form class="filters" method="get" action="{{ url_for('study') }}#topics">
       <div><label for="s-q">Search topics</label><input id="s-q" name="q" type="search" maxlength="60" value="{{ f.q }}" placeholder="e.g. Pythagorean"></div>

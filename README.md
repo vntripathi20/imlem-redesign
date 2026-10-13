@@ -1,8 +1,8 @@
 # IMLEM website
 
-The site for the Intermediate Math League of Eastern Massachusetts: contest dates and round topics, a results archive (11 seasons, filterable and searchable), study materials, league information and contact details. It replaces the old static site at imlem.org and keeps every old URL working through redirects.
+The site for the Intermediate Math League of Eastern Massachusetts: contest dates and round topics (with calendar downloads), a results archive (11 seasons, with school histories, season summaries and league records), a plain-language guide to how meets work, study materials organized by meet, league information and contact details. It replaces the old static site at imlem.org and keeps every old URL working through redirects.
 
-Server-rendered Flask, no JavaScript required (small scripts add sorting, filtering and a countdown). Results are stored in SQLite, generated from the untouched copy of the old site in `archive/`.
+Server-rendered Flask, no JavaScript required (small scripts add table sorting and filtering, the mobile menu, and chart tooltips). Results are stored in SQLite, generated from the untouched copy of the old site in `archive/`.
 
 ## Run it locally
 
@@ -25,6 +25,9 @@ Deploying: see [DEPLOYMENT.md](DEPLOYMENT.md).
 |---|---|
 | `app.py` | Entry point (`app:app` for gunicorn/waitress) |
 | `imlem_site/web.py` | Routes, security headers, sitemap/robots |
+| `imlem_site/explore.py` | Schools, records, meet guide, calendar files, practice pages, season switcher |
+| `imlem_site/stats.py` | Everything computed from the results: school histories, season summaries, records |
+| `imlem_site/charts.py` | Small server-rendered SVG charts (rank by season, columns by season) |
 | `imlem_site/legacy.py` | Old imlem.org path to new URL mapping (drives all redirects) |
 | `imlem_site/importer.py`, `scripts/import_archive.py` | Builds `data/imlem.sqlite` from `archive/` without modifying it |
 | `imlem_site/sanitize.py` | Cleans migrated old pages (allow-list, link rewriting) |
@@ -51,6 +54,19 @@ Deploying: see [DEPLOYMENT.md](DEPLOYMENT.md).
 | `/studymaterials/`, `/contact/...`, `/links/`, `/coaches/` | `/study/`, `/contact/...`, `/links/`, `/coaches/` |
 
 `tests/test_legacy_redirects.py` requests every URL the old site served and fails if any does not end on a working page.
+
+## Pages built from the results
+
+| Page | What it shows |
+|---|---|
+| `/schools/`, `/schools/<name>/` | Every school; each school's teams with league and division finish, meet scores and totals by season, and a chart of its league finish. A school's second teams (`Lexington Diamond 2`) share its page. |
+| `/results/YYYY-YY/` | The top three, each division's winner, meet-by-meet averages and high scores, perfect individual meets, biggest gains on the previous season |
+| `/results/records/` | League champions, most titles and division wins, highest season totals and meet scores, participation and scoring by season |
+| `/about/how-meets-work/` | Teams, rounds, scoring, calculators, meet day, clusters and divisions, awards, appeals; each section names the Bylaws section it summarizes |
+| `/study/` and `/study/meet/<n>/` | A topic map of the season, and for each meet its topics plus every past contest for that meet |
+| `/contests/YYYY-YY/calendar.ics` | The season's meets as all-day calendar events |
+
+Facts these pages state are checked against the data in `tests/test_explore.py`: a team's season total is the sum of its meets; a student's season total drops their lowest meet (best four of five; best three of four in 2019-20); and each meet's round topics have been identical every season since 2015-16. Division places come from the results' division codes (`Pyt-3` is 3rd in Pythagoras); the rank column in the division tables is the league-wide rank. These pages use counts only, never student names.
 
 ## Privacy and indexing
 
