@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page">
+  <h1>Practice for Meet {{ number }}</h1>
+  <nav class="tabs-wrap" aria-label="Practice pages">
+    <ul class="tabs">
+      {% for n in range(1, 6) %}<li><a href="{{ url_for('practice', number=n) }}"{% if n == number %} aria-current="page"{% endif %}>Meet {{ n }}</a></li>{% endfor %}
+    </ul>
+  </nav>
+  <p class="intro">Meet {{ number }} has covered the same topics every season since 2015-16, so each past Meet {{ number }} contest is practice for the next one.
+    {% if upcoming %}The next Meet {{ number }} is on <strong><time datetime="{{ upcoming.date_iso }}">{{ upcoming.date_text }}</time></strong>.{% endif %}
+    {{ 'Calculators are allowed at this meet.' if calculators else 'No calculators at this meet.' }}</p>
+
+  <div class="two-up practice-grid">
+    <section aria-labelledby="h-topics">
+      <h2 id="h-topics">Meet {{ number }} topics</h2>
+      <ul class="rounds rounds-light">
+        {% for r in rounds %}
+        <li class="{{ r.category|subject }}"><span class="round-label">{{ r.label }}</span>
+          <span class="round-topic">{% if not r.label.startswith('Team') %}<strong>{{ r.category }}</strong>{% if r.description %}: {% endif %}{% endif %}{{ r.description }}</span></li>
+        {% endfor %}
+      </ul>
+      <p class="small muted">Mystery has no published topics. The team round&rsquo;s first five questions use the meet&rsquo;s topics; the sixth combines their answers.</p>
+    </section>
+
+    <section aria-labelledby="h-past">
+      <h2 id="h-past">Past Meet {{ number }} contests</h2>
+      <p class="small muted">{{ with_pdf }} contests, newest first. Each opens as a PDF on {{ archive_host }}.</p>
+      <ol class="contest-list">
+        {% for m in past %}
+        <li>
+          {% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">{{ m.season }} Meet {{ number }}</a>{% else %}<span>{{ m.season }} Meet {{ number }}</span>{% endif %}
+          <span class="muted small">{{ m.date_text }}{% if not m.contest_url %}{% if m.date_iso and nxt and m.date_iso >= nxt.date_iso %}, upcoming{% else %}, PDF not available{% endif %}{% endif %}</span>
+        </li>
+        {% endfor %}
+      </ol>
+    </section>
+  </div>
+
+  <h2>How to use past contests</h2>
+  <ol class="steps">
+    <li><strong>Time yourself.</strong> Each individual round is 3 questions in 10 minutes; the team round is 6 questions in 15 minutes.</li>
+    <li><strong>Do the rounds you will be entered in.</strong> At a meet you take three of the five individual rounds; ask your coach which ones.</li>
+    <li><strong>Check, then redo.</strong> Work through anything you missed, then try the same round from another season.</li>
+  </ol>
+  <p><a href="{{ url_for('study') }}">All study materials</a> &middot; <a href="{{ url_for('guide') }}">How meets work</a></p>
+</div>
+{% endblock %}

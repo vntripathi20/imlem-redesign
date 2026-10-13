@@ -26,6 +26,6 @@
   </table>
   </div>
   <p class="small muted">Blank cells are blank on the original results.</p>
-  <p><a href="{{ url_for('results_individuals', season=season) }}">&larr; Back to {{ season }} individual rankings</a> &middot; <a href="{{ url_for('school', name=r.school) }}">{{ r.school }} team results</a></p>
+  <p><a href="{{ url_for('results_individuals', season=season) }}">&larr; Back to {{ season }} individual rankings</a> &middot; <a href="{{ school_url(r.school) }}">{{ r.school }} team results</a></p>
 </div>
 {% endblock %}

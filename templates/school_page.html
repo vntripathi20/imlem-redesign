@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block main %}
+<div class="wrap page page-wide">
+  <h1>{{ school.name }}</h1>
+  <p class="intro">{{ school.name }} appears in the IMLEM results for {{ school.seasons|length }} season{{ '' if school.seasons|length == 1 else 's' }}{% if school.first != school.last %}, from {{ school.first }} to {{ school.last }}{% else %} ({{ school.first }}){% endif %}.
+    {% if school.teams|length > 1 %}In some seasons the school entered more than one team: {{ school.teams|join(', ') }}.{% endif %}</p>
+
+  <dl class="facts">
+    {% if school.best_rank %}<div><dt>Best league finish</dt><dd>{{ ordinal(school.best_rank) }} <span class="muted">in {{ school.best_season }}</span></dd></div>{% endif %}
+    <div><dt>League championships</dt><dd>{{ honours.league_titles|length }}{% if honours.league_titles %} <span class="muted">({{ honours.league_titles|join(', ') }})</span>{% endif %}</dd></div>
+    <div><dt>Top-three league finishes</dt><dd>{{ honours.podiums|length }}</dd></div>
+    <div><dt>Division wins</dt><dd>{{ honours.division_wins|length }}</dd></div>
+  </dl>
+
+  {% if chart %}
+  <section aria-labelledby="h-trend">
+    <h2 id="h-trend">League finish by season</h2>
+    <p class="small muted">{{ school.name }}&rsquo;s place in the overall standings each season. Higher on the chart is better; a gap is a season with no team.</p>
+    <figure class="chart-wrap">{{ chart|safe }}</figure>
+  </section>
+  {% endif %}
+
+  <section aria-labelledby="h-seasons">
+    <h2 id="h-seasons">Season by season</h2>
+    <div class="table-scroll">
+    <table class="data cards-sm">
+      <caption class="visually-hidden">{{ school.name }} results by season</caption>
+      <thead><tr>
+        <th scope="col">Season</th>{% if school.teams|length > 1 %}<th scope="col">Team</th>{% endif %}
+        <th scope="col">League finish</th><th scope="col">Division</th>
+        {% for i in range(1, 6) %}<th scope="col" class="num">Meet {{ i }}</th>{% endfor %}
+        <th scope="col" class="num">Total</th><th scope="col">Students</th>
+      </tr></thead>
+      <tbody>
+      {% for h in history %}
+        <tr>
+          <th scope="row" data-label="Season"><a href="{{ url_for('results_season', season=h.season) }}">{{ h.season }}</a></th>
+          {% if school.teams|length > 1 %}<td data-label="Team">{{ h.team }}</td>{% endif %}
+          <td data-label="League finish">{% if h.rank_n %}{{ ordinal(h.rank_n) }}{% if h.rank and h.rank.startswith('T') %} (tie){% endif %} <span class="muted small">of {{ h.of }}</span>{% else %}{{ h.rank or '—' }}{% endif %}</td>
+          <td data-label="Division">{% if h.division %}{{ h.division }}{% if h.div_rank_n %} <span class="muted small">{{ ordinal(h.div_rank_n) }}</span>{% endif %}{% else %}&mdash;{% endif %}</td>
+          {% for i in range(5) %}<td class="num" data-label="Meet {{ i + 1 }}">{% if i < h.scores|length and h.scores[i] is not none %}{% if h.scores[i] == max_meet %}<strong title="Perfect score">{{ h.scores[i] }}</strong>{% else %}{{ h.scores[i] }}{% endif %}{% else %}<span class="muted">&mdash;</span>{% endif %}</td>{% endfor %}
+          <td class="num" data-label="Total"><strong>{{ h.total }}</strong></td>
+          <td data-label="Students">{% if h.students %}<a href="{{ url_for('results_individuals', season=h.season, school=school.name) }}">{{ h.students }} listed</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+    </div>
+    <p class="small muted">A team scores up to {{ max_meet }} points a meet. The season total adds up every meet.{% if school.teams|length > 1 %} Students are listed under the school, not a particular team.{% endif %}</p>
+  </section>
+  <p><a href="{{ url_for('schools_index') }}">All schools</a></p>
+</div>
+{% endblock %}

@@ -8,7 +8,7 @@ PAGES = [
     '/contests/2025-26/', '/contests/2026-27/topics/', '/contests/2024-25/dates/', '/contests/2024-25/clusters/',
     '/contests/2024-25/clusters/1/', '/rules/calculators/', '/results/', '/results/2025-26/',
     '/results/2025-26/teams/', '/results/2025-26/divisions/', '/results/2025-26/individuals/',
-    '/results/2019-20/individuals/', '/results/search/?q=lexington', '/results/school/?name=Lexington+Clarke',
+    '/results/2019-20/individuals/', '/results/search/?q=lexington', '/schools/lexington-clarke/',
     '/study/', '/study/?topic=Geometry&meet=3', '/links/', '/contact/', '/contact/president/', '/coaches/', '/50th/',
     '/robots.txt', '/sitemap.xml', '/favicon.ico',
 ]
@@ -134,8 +134,9 @@ def test_study_page_links_out_and_says_so(client):
 
 def test_study_topic_filter(client):
     html = client.get('/study/?topic=Geometry&season=2026-27').get_data(as_text=True)
-    assert 'Angle measures in plane figures' in html
-    assert 'Divisibility rules' not in html
+    found = html.split('id="topics"', 1)[1].split('id="resources"', 1)[0]   # the filtered results, not the topic map
+    assert 'Angle measures in plane figures' in found
+    assert 'Divisibility rules' not in found
 
 
 def test_404_page_is_helpful(client):
