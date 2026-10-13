@@ -182,6 +182,7 @@ def register_routes(app):
             'seasons': len(res),
             'schools': D.q1('SELECT COUNT(DISTINCT school_lc) AS n FROM teams')['n'],
             'meets': D.q1('SELECT COUNT(*) AS n FROM meets')['n'],
+            'earliest': res[-1] if res else '',
         }
         announcements = [a for a in load_json('announcements.json', {}).get('items', []) if a.get('title')]
         return render('home.html', title=f'{cfg.SITE_NAME} — {cfg.SITE_FULL_NAME}',
@@ -321,9 +322,11 @@ def register_routes(app):
         if not re.fullmatch(r'\d{1,2}|pa', cluster):
             abort(404)
         p = page_or_404('cluster', f'{season}/{cluster}')
+        # Some seasons (e.g. 2020-21) have cluster pages but no all-clusters index page.
+        index_url = url_for('clusters', season=season) if D.page('clusters', season) else None
         return render('content.html', title=f'{season} Cluster {cluster.upper() if cluster == "pa" else cluster}',
                       crumbs=[('Contests', url_for('contests')), (season, url_for('season_hub', season=season)),
-                              ('Clusters', url_for('clusters', season=season)), (cluster, None)],
+                              ('Clusters', index_url), (cluster, None)],
                       page=p, heading=p['title'])
 
     # ---- results --------------------------------------------------------------
