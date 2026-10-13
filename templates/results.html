@@ -2,7 +2,7 @@
 {% block main %}
 <div class="wrap page">
   <h1>Results archive</h1>
-  <p class="lead">Team and individual results for every season on the old site, {{ rows[-1].season }} to {{ rows[0].season }}.</p>
+  <p class="lead">Team and individual results for every season from {{ rows[-1].season }} to {{ rows[0].season }}.</p>
   <form class="search-form" action="{{ url_for('search') }}" method="get" role="search">
     <label for="q">Search by school or student name</label>
     <div class="row">

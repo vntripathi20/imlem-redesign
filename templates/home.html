@@ -101,19 +101,23 @@
       <p class="small">Results go back to {{ earliest_season }}. <a href="{{ url_for('results') }}">Browse by season</a>.</p>
     </section>
 
+    {% if announcements %}
     <section aria-labelledby="ann-h">
       <h2 id="ann-h">Announcements</h2>
-      {% if announcements %}
       <ul class="announce">
         {% for a in announcements %}
         <li><h3>{{ a.title }}</h3>{% if a.date %}<p class="small muted"><time datetime="{{ a.date }}">{{ a.date }}</time></p>{% endif %}{% if a.body %}<p>{{ a.body }}</p>{% endif %}</li>
         {% endfor %}
       </ul>
-      {% else %}
-      <p class="muted">None right now. {# TODO(league): add items in data/announcements.json #}</p>
-      {% endif %}
-      <p class="small"><a href="{{ url_for('join') }}">How a school joins the league</a></p>
     </section>
+    {% else %}
+    {# TODO(league): announcements appear here once added to data/announcements.json #}
+    <section aria-labelledby="new-h">
+      <h2 id="new-h">New to IMLEM?</h2>
+      <p>Schools join by contacting the league president. The <a href="{{ url_for('bylaws') }}">League Bylaws</a> explain team make-up and how meets run.</p>
+      <p><a href="{{ url_for('join') }}">How to join</a></p>
+    </section>
+    {% endif %}
   </div>
 </div>
 {% endblock %}

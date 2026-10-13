@@ -20,7 +20,7 @@
       </tbody>
     </table>
     </div>
-    <p class="small">{% if m.contest_url %}<a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF</a> (hosted externally on matharchive.org){% else %}<span class="muted">The old site has no contest link for this meet.</span>{% endif %}</p>
+    {% if m.contest_url %}<p class="small"><a class="external" href="{{ m.contest_url }}" rel="noopener">Contest PDF</a> (hosted on matharchive.org)</p>{% endif %}
   </section>
   {% endfor %}
   <p class="small"><a href="{{ url_for('calculators') }}">Calculator rules</a> &middot; <a href="{{ url_for('study') }}?season={{ season }}#topics">Study this season&rsquo;s topics</a></p>

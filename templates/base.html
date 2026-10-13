@@ -69,7 +69,6 @@
           <li><a href="{{ url_for('join') }}">How to join</a></li>
           <li><a href="{{ url_for('bylaws') }}">Bylaws</a></li>
           <li><a href="{{ url_for('officers_index') }}">Officers</a></li>
-          <li><a href="{{ url_for('coaches') }}">Coaches&rsquo; Corner</a></li>
           <li><a href="{{ url_for('anniversary') }}">50th anniversary</a></li>
         </ul>
       </nav>
@@ -86,7 +85,7 @@
       </nav>
     </div>
     <div class="wrap footer-base">
-      <p class="small">&copy; {{ current_year }} {{ site_full_name }}. Results and pages from 2015&ndash;16 on were carried over from the previous imlem.org site.</p>
+      <p class="small">&copy; {{ current_year }} {{ site_full_name }}</p>
     </div>
   </footer>
   <script src="{{ url_for('static', filename='js/site.js') }}" defer></script>

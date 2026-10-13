@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
-{% from '_macros.html' import pending %}
 {% block main %}
 <div class="wrap page">
   <h1>Contact IMLEM</h1>
-  <p class="intro">Four league roles handle questions. Email addresses are written the way the league has always published them: replace <code>LASTNAME</code> with the officer&rsquo;s last name.</p>
+  <p class="intro">Four league officers handle questions. In the email addresses on their pages, replace <code>LASTNAME</code> with the officer&rsquo;s last name.</p>
 
   <table class="data roles">
     <caption class="visually-hidden">League roles</caption>
@@ -15,7 +14,6 @@
       <tr><th scope="row"><a href="{{ url_for('contact_role', role='contestwriter') }}">Contest writer</a></th><td>Contest questions</td></tr>
     </tbody>
   </table>
-  {{ pending('Officer details come from the old site and match its ' ~ officers_last_confirmed ~ ' officer list.') }}
   {# TODO(league): confirm the current officers. #}
 
   <h2 id="who">Who should I contact?</h2>

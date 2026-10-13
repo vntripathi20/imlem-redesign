@@ -2,9 +2,11 @@
 {% block main %}
 <div class="wrap page">
   <h1>Coaches&rsquo; Corner</h1>
-  <p class="intro"><strong>Coming soon.</strong> This section is being rebuilt and is not available yet.
-    {# TODO(league): the old Coaches' Corner is password protected and was not migrated. Add its content once the league provides it. #}</p>
-  <p>In the meantime, the <a href="{{ url_for('contests') }}">contest dates</a>, <a href="{{ url_for('about') }}">Bylaws</a>
-    and <a href="{{ url_for('contact') }}">contact information</a> are available on this site. Questions? See <a href="{{ url_for('contact') }}#who">who to contact</a>.</p>
+  {# TODO(league): the old Coaches' Corner is password protected and was not migrated. Add its content once the league
+     provides it, then link it again from the footer, About and Join pages. #}
+  <p class="intro">Coaches&rsquo; Corner is for coaches at member schools. For access or coaching questions, contact the
+    <a href="{{ url_for('contact_role', role='president') }}">league president</a>.</p>
+  <p>Meet dates and round topics are on the <a href="{{ url_for('contests') }}">contests</a> page, and the rules are in the
+    <a href="{{ url_for('bylaws') }}">League Bylaws</a> and <a href="{{ url_for('calculators') }}">calculator rules</a>.</p>
 </div>
 {% endblock %}

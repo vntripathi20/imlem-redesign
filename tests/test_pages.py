@@ -95,18 +95,21 @@ def test_calculator_rules_text(client):
     assert 'Programmable or graphing calculators are NOT allowed' in html
 
 
-def test_coaches_placeholder_is_clearly_marked(client):
-    resp = client.get('/coaches/')
-    html = resp.get_data(as_text=True)
-    assert 'Coming soon' in html
-    assert 'noindex' in html
+def test_coaches_page_points_to_the_president_and_is_not_linked(client):
+    html = client.get('/coaches/').get_data(as_text=True)
+    assert 'Coming soon' not in html and 'noindex' in html
+    assert '/contact/president/' in html
+    # until the league supplies Coaches' Corner content, other pages do not link to it
+    for p in ['/', '/about/', '/join/', '/contests/']:
+        main_and_footer = client.get(p).get_data(as_text=True).split('<main', 1)[1]
+        assert 'href="/coaches/"' not in main_and_footer, p
 
 
 def test_join_page_directs_to_president_without_a_form(client):
     html = client.get('/join/').get_data(as_text=True)
     assert 'contacting the league president' in html
     assert '<form' not in html.split('<main', 1)[1].split('</main>')[0]
-    assert 'Pending confirmation by the league' in html
+    assert 'Pending confirmation' not in html and 'old site' not in html
 
 
 def test_contact_keeps_obfuscated_emails_and_routing_table(client):
@@ -117,7 +120,7 @@ def test_contact_keeps_obfuscated_emails_and_routing_table(client):
     assert 'mailto:' not in html and '<form' not in html.split('<main', 1)[1].split('</main>')[0]
     pres = client.get('/contact/president/').get_data(as_text=True)
     assert 'kelly_LASTNAME@wayland.k12.ma.us' in pres
-    assert '2022-23' in pres
+    assert 'Pending confirmation' not in pres and 'old imlem.org' not in pres
 
 
 def test_study_page_links_out_and_says_so(client):
@@ -161,3 +164,22 @@ def test_robots(client):
 def test_no_founding_year_is_invented(client):
     for p in ['/', '/50th/']:
         assert '1974' not in client.get(p).get_data(as_text=True)
+
+
+def test_pages_read_as_finished(client):
+    """No visible references to the old site, placeholders or pending notes (TODOs live in comments and docs)."""
+    import html as _html
+    import re as _re
+    bad = _re.compile(r"old site|old imlem|original imlem|previous imlem|carried over|pending confirmation|"
+                      r"coming soon|placeholder|being rebuilt|re-checked|TODO", _re.I)
+    pages = ['/', '/about/', '/about/bylaws/', '/about/officers/', '/about/officers/2022-23/', '/join/', '/50th/',
+             '/coaches/', '/contests/', '/contests/2026-27/', '/contests/2026-27/topics/', '/results/',
+             '/results/2025-26/', '/results/2025-26/individuals/', '/study/', '/links/', '/contact/',
+             '/contact/president/', '/contact/who/', '/nope']
+    for p in pages:
+        body = client.get(p).get_data(as_text=True)
+        body = _re.sub(r'<!--.*?-->', ' ', body, flags=_re.S)
+        body = _re.sub(r'<(script|style)[^>]*>.*?</\1>', ' ', body, flags=_re.S)
+        text = _html.unescape(_re.sub(r'<[^>]+>', ' ', body))
+        found = bad.search(text)
+        assert not found, f'{p}: ...{text[max(0, found.start() - 40):found.end() + 40]}...'

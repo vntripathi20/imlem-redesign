@@ -83,7 +83,7 @@ def test_home_is_a_season_table_not_a_hero(client, app):
     assert 'class="cards' not in html and 'stats-row' not in html and 'next-count' not in html
     assert len(re.findall(r'<img[^>]*50-years', html)) == 1, 'anniversary graphic appears once'
     body = html.split('<main', 1)[1]
-    assert body.index('class="data schedule"') < body.index('Announcements'), 'the schedule leads the page'
+    assert body.index('class="data schedule"') < body.index('class="home-cols"'), 'the schedule leads the page'
     assert len(re.findall(r'<tr[^>]*>\s*<th scope="row">\d</th>', body)) == 5, 'five meets in the season table'
     with app.app_context():
         nxt = D.next_meet()
@@ -100,7 +100,7 @@ def test_contact_roles_are_a_table_not_cards(client):
     assert 'class="card' not in html and 'class="notice' not in html
     main = html.split('<main', 1)[1]
     assert main.count('<table class="data roles"') == 1
-    assert 'Pending confirmation by the league' in main
+    assert 'Pending confirmation' not in main
 
 
 def test_yellow_notice_style_is_gone_from_pages(client):

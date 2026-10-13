@@ -1,21 +1,21 @@
 # Pending league decisions and TODOs
 
-Nothing below was invented. Where the old site did not say, the new site shows a visible "pending" note, and the code carries a `TODO(league)` comment (search for it: `grep -rn "TODO(league)"`).
+Nothing below was invented. The public pages read as finished: they show what the league has published and leave out what it has not, with no visible "pending" notes. Each open item is tracked here and by a `TODO(league)` comment in the code (`grep -rn "TODO(league)"`).
 
 | # | Item | Status | Where in the site / code |
 |---|---|---|---|
 | 1 | **Student names**: first name + last initial, grade, school. The old site names only some students (e.g. 39 of 1,226 in 2015-16, 107 of 967 in 2025-26). | **Pending league approval.** Until approved, individual rankings, student pages and student search are `noindex` and excluded from `sitemap.xml`. | `imlem_site/config.py` (`STUDENT_NAMES_APPROVED_FOR_INDEXING`), `web.py` |
-| 2 | **Current officers.** The most recent officer list on the old site is 2022-23. Contact pages show the same people, labelled with that year. | **Pending confirmation.** No current officer is named by this project. | `config.py` (`OFFICERS_LAST_CONFIRMED`), `templates/contact.html`, `join.html`, `content.html`, `officers_index.html`; contact text itself is in the archive pages `archive/imlem.org/contact/*.html` |
-| 3 | **Coaches' Corner.** Password-protected on the old site; not audited or migrated. | Placeholder page ("Coming soon") marked noindex. Send the content when available. | `templates/coaches.html` |
-| 4 | **How to join.** The old site only says to contact the president. Fees, deadlines and new-member steps are not stated. | Page explains the old site's process; the missing details are marked. | `templates/join.html` |
-| 5 | **50th anniversary.** The old site has only the anniversary image. The Bylaws say the first contest was in March 1965; the old SPA prototype claimed "since 1974". The site states no founding year. | Page shows the mark and quotes the Bylaws; history is marked as not yet supplied. | `templates/anniversary.html` |
+| 2 | **Current officers.** The most recent officer list on the old site is 2022-23. Contact pages show the same people. | **Pending confirmation.** No current officer is named by this project. The pages no longer carry a visible notice, so update them as soon as the league confirms. | `config.py` (`OFFICERS_LAST_CONFIRMED`), `templates/contact.html`, `join.html`, `content.html`, `officers_index.html`; contact text itself is in the archive pages `archive/imlem.org/contact/*.html` |
+| 3 | **Coaches' Corner.** Password-protected on the old site; not audited or migrated. | `/coaches/` (noindex) tells coaches to contact the president. Other pages do not link to it until content is supplied. | `templates/coaches.html` |
+| 4 | **How to join.** The old site only says to contact the president. Fees, deadlines and new-member steps are not stated. | Page explains the process (contact the president). Fees, deadlines and steps are left out until supplied. | `templates/join.html` |
+| 5 | **50th anniversary.** The old site has only the anniversary image. The Bylaws say the first contest was in March 1965; the old SPA prototype claimed "since 1974". The site states no founding year. | Page shows the mark and quotes the Bylaws. Add history when supplied. | `templates/anniversary.html` |
 | 6 | **Meet sites and times** for 2026-27 and the 2025-26 dates/sites page were never published on the old site. | The home page says sites are set by clusters; no site list is shown. | `templates/home.html`, `topics.html` |
-| 7 | **Announcements.** The old site had none. | Empty list; add items in the JSON file. | `data/announcements.json` |
+| 7 | **Announcements.** The old site had none. | Empty list; the home page shows a short "New to IMLEM?" block instead. Add items in the JSON file. | `data/announcements.json` |
 | 8 | **Difficulty levels** for study materials: the old site gives none. | Study topics can be filtered by season, meet number (1 to 5), and subject. No difficulty is claimed. | `templates/study.html` |
-| 9 | **Contest PDFs** are hosted by matharchive.org. Per the league's decision they are linked, not mirrored. 2019-20 meet 5 and 2024-25 meet 5 link to nothing on the old site; the new site says so. | Done | `study.html`, `topics.html` |
+| 9 | **Contest PDFs** are hosted by matharchive.org. Per the league's decision they are linked, not mirrored. 2019-20 meet 5 and 2024-25 meet 5 link to nothing on the old site; the new site shows "PDF not available". | Done | `study.html`, `topics.html` |
 | 10 | **Four meet dates are inconsistent inside the old site** (table below). The site shows the date from the season's published schedule (the Round Topics page) on every page, and leaves the archive untouched. | **League to confirm the four dates.** If a schedule date is wrong, tell the maintainer; the archive copy stays untouched and a correction goes in the importer. | `imlem_site/db.py` (`meet_labels`), `archive/` |
 | 11 | **Division naming** differs by year (e.g. "DaVinci" vs "da Vinci"). Kept as published. | As published | |
-| 12 | **Links page** was carried over unchanged and not re-checked. Some external sites may have moved or died. | Marked on the page | `/links/` |
+| 12 | **Links page** was carried over unchanged and not re-checked. Some external sites may have moved or died. | Not marked on the page; re-check before launch | `/links/` |
 | 13 | **Old site HTTPS** was broken. The new site must be served over HTTPS. | See DEPLOYMENT.md | |
 
 ## Meet dates that disagree in the old site's own pages
