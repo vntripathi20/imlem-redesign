@@ -7,7 +7,9 @@ The archive is read, never written. Rebuild any time:
 Every parsing surprise is collected in ``report`` and printed, so nothing is
 silently dropped.
 """
+import html as _html
 import json
+import os
 import re
 import sqlite3
 from datetime import datetime
@@ -81,7 +83,7 @@ class _Tables(HTMLParser):
 
 
 def _text(s):
-    return re.sub(r'\s+', ' ', s.replace('\xa0', ' ')).strip()
+    return re.sub(r'\s+', ' ', _html.unescape(s).replace('\xa0', ' ')).strip()
 
 
 def _int(s):
@@ -101,6 +103,18 @@ def _tables(html):
     p = _Tables()
     p.feed(html)
     return p.tables
+
+
+# Bump whenever the importer's output changes; ensure_database() rebuilds older databases.
+IMPORT_VERSION = 2
+
+# Known errors in the old site's pages. The archive/ copy stays byte-for-byte; the fix is
+# applied at import and listed in docs/data-corrections.md.
+LABEL_CORRECTIONS = {
+    # The 2025-26 overall team page says "Jan. 4, 2026" (a Sunday); the round-topics page,
+    # the individual rankings and all eleven by-division tables say Jan. 8, 2026.
+    ('2025-26', 'team', 3): 'Jan. 8, 2026',
+}
 
 
 def _meet_labels(header_row):
@@ -177,6 +191,10 @@ def import_teams(db, root, season, report):
     code = season.replace('-', '')
     overall = _tables(_read(root / 'statistics' / code / f'{code}_team.html'))[0]
     for meet, label in _meet_labels(overall['rows'][0]):
+        fixed = LABEL_CORRECTIONS.get((season, 'team', meet))
+        if fixed and fixed != label:
+            report.append(f'{season} team meet {meet}: corrected label {label!r} -> {fixed!r}')
+            label = fixed
         db.execute('INSERT INTO meet_labels VALUES (?,?,?,?)', (season, 'team', meet, label))
     _team_rows(db, season, 'overall', overall, report)
     divisions = []
@@ -287,7 +305,8 @@ def build_database(archive_dir, db_path):
     root = Path(archive_dir)
     db_path = Path(db_path)
     db_path.parent.mkdir(parents=True, exist_ok=True)
-    tmp = db_path.with_suffix('.building')
+    # Per-process temp file so two workers starting at once can't corrupt each other's build.
+    tmp = db_path.with_suffix(f'.building.{os.getpid()}')
     tmp.unlink(missing_ok=True)
     report, summary = [], {}
     db = sqlite3.connect(tmp)
@@ -305,6 +324,7 @@ def build_database(archive_dir, db_path):
                 'divisions': import_teams(db, root, season, report),
             }
     summary['pages'] = import_pages(db, root, report)
+    db.execute(f'PRAGMA user_version = {IMPORT_VERSION}')
     db.commit()
     db.close()
     tmp.replace(db_path)
