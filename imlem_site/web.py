@@ -190,7 +190,7 @@ def register_routes(app):
                       season=season, meets=meets, rounds=rounds, nxt=nxt, days_to_next=days_to_next,
                       human_date=human_date, latest_season=res[0] if res else None,
                       earliest_season=res[-1] if res else None, top_teams=top_teams,
-                      announcements=announcements, home=True)
+                      announcements=announcements, photos=cfg.HOME_PHOTOS, home=True)
 
     # ---- about / join / rules -------------------------------------------------
     @app.route('/about/')
