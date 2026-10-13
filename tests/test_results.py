@@ -7,7 +7,7 @@ from scripts import verify_import  # noqa: F401  (imported so the test fails lou
 
 
 def rows(html):
-    return re.findall(r'<tr>\s*<td data-label="Rank">', html)
+    return re.findall(r'<tr>\s*<td class="c-rank" data-label="Rank">', html)
 
 
 def test_import_is_complete(app):
