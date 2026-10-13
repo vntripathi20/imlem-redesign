@@ -14,6 +14,7 @@ from werkzeug.middleware.proxy_fix import ProxyFix
 from . import config as cfg
 from . import db as D
 from . import stats as S
+from .charts import ordinal
 from .explore import register_explore
 from .legacy import new_url_for_old_path, season_code
 
@@ -115,6 +116,7 @@ def register_filters(app):
 
     # A global (not a context variable) so macros imported without context can use it too.
     app.jinja_env.globals['school_url'] = lambda team: url_for('school_page', slug=S.school_slug_for_team(team))
+    app.jinja_env.globals['ordinal'] = ordinal
 
     @app.context_processor
     def inject():

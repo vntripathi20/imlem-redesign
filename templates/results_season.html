@@ -46,10 +46,10 @@
       <h2 id="h-meets">Meet by meet</h2>
       <table class="data compact">
         <caption class="visually-hidden">Team scores at each meet, {{ season }}</caption>
-        <thead><tr><th scope="col">Meet</th><th scope="col" class="num">Teams</th><th scope="col" class="num">Average</th><th scope="col">High score</th><th scope="col" class="num">Perfect 18s</th></tr></thead>
+        <thead><tr><th scope="col">Meet</th><th scope="col" class="num hide-xs">Teams</th><th scope="col" class="num">Average</th><th scope="col">High score</th><th scope="col" class="num">Perfect 18s</th></tr></thead>
         <tbody>
         {% for m in o.meets %}
-          <tr><th scope="row" class="nowrap">Meet {{ m.number }}</th><td class="num">{{ m.teams }}</td><td class="num">{{ m.average }}</td>
+          <tr><th scope="row" class="nowrap">Meet {{ m.number }}</th><td class="num hide-xs">{{ m.teams }}</td><td class="num">{{ m.average }}</td>
             <td><strong>{{ m.high }}</strong> <span class="small">{{ m.high_teams|join(', ') }}</span></td>
             <td class="num">{{ o.perfect_meets[m.number - 1] }}</td></tr>
         {% endfor %}

@@ -64,7 +64,7 @@
         <tr><td class="num" data-label="#">{{ loop.index }}</td>
           <th scope="row" data-label="Team"><a href="{{ school_url(t.school) }}">{{ t.school }}</a></th>
           <td data-label="Season"><a href="{{ url_for('results_teams', season=t.season) }}">{{ t.season }}</a></td>
-          <td data-label="League finish">{{ t.rank }}</td>
+          <td data-label="League finish">{% if t.rank_n %}{{ ordinal(t.rank_n) }}{% if t.rank.startswith('T') %} (tie){% endif %}{% else %}{{ t.rank }}{% endif %}</td>
           <td class="num" data-label="Total"><strong>{{ '{:,}'.format(t.total) }}</strong></td></tr>
       {% endfor %}
       </tbody>

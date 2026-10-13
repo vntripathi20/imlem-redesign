@@ -81,8 +81,10 @@ def rank_line(points, *, label, field_sizes=None, height=240):
     w_slot, pad_l, pad_r, pad_t, pad_b = 72, 48, 28, 22, 34
     width = pad_l + pad_r + w_slot * max(len(pts) - 1, 1)
     worst = max(vals)
-    step = max(1, int(round(_nice_step(worst - 1 if worst > 1 else 1))))   # ranks are whole numbers
-    ymax = max(ceil(worst / step) * step, step, 2)
+    # Show at least 1st to 5th so a slip from 1st to 2nd does not read as a cliff.
+    worst = max(worst, 5)
+    step = max(1, int(round(_nice_step(worst - 1))))   # ranks are whole numbers
+    ymax = max(ceil(worst / step) * step, step)
     plot_h = height - pad_t - pad_b
     y = lambda v: pad_t + plot_h * ((v - 1) / (ymax - 1 if ymax > 1 else 1))  # noqa: E731
     x = lambda i: pad_l + (w_slot * i if len(pts) > 1 else w_slot / 2)  # noqa: E731

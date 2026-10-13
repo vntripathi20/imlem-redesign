@@ -7,7 +7,7 @@
 
   <dl class="facts">
     {% if school.best_rank %}<div><dt>Best league finish</dt><dd>{{ ordinal(school.best_rank) }} <span class="muted">in {{ school.best_season }}</span></dd></div>{% endif %}
-    <div><dt>League championships</dt><dd>{{ honours.league_titles|length }}{% if honours.league_titles %} <span class="muted">({{ honours.league_titles|join(', ') }})</span>{% endif %}</dd></div>
+    <div><dt>League championships</dt><dd>{{ honours.league_titles|length }}{% if honours.league_titles|length == 1 %} <span class="muted">in {{ honours.league_titles[0] }}</span>{% elif honours.league_titles %} <span class="muted">most recently {{ honours.league_titles[0] }}</span>{% endif %}</dd></div>
     <div><dt>Top-three league finishes</dt><dd>{{ honours.podiums|length }}</dd></div>
     <div><dt>Division wins</dt><dd>{{ honours.division_wins|length }}</dd></div>
   </dl>
@@ -23,7 +23,7 @@
   <section aria-labelledby="h-seasons">
     <h2 id="h-seasons">Season by season</h2>
     <div class="table-scroll">
-    <table class="data cards-sm">
+    <table class="data cards-sm school-hist">
       <caption class="visually-hidden">{{ school.name }} results by season</caption>
       <thead><tr>
         <th scope="col">Season</th>{% if school.teams|length > 1 %}<th scope="col">Team</th>{% endif %}
@@ -38,7 +38,7 @@
           {% if school.teams|length > 1 %}<td data-label="Team">{{ h.team }}</td>{% endif %}
           <td data-label="League finish">{% if h.rank_n %}{{ ordinal(h.rank_n) }}{% if h.rank and h.rank.startswith('T') %} (tie){% endif %} <span class="muted small">of {{ h.of }}</span>{% else %}{{ h.rank or '—' }}{% endif %}</td>
           <td data-label="Division">{% if h.division %}{{ h.division }}{% if h.div_rank_n %} <span class="muted small">{{ ordinal(h.div_rank_n) }}</span>{% endif %}{% else %}&mdash;{% endif %}</td>
-          {% for i in range(5) %}<td class="num" data-label="Meet {{ i + 1 }}">{% if i < h.scores|length and h.scores[i] is not none %}{% if h.scores[i] == max_meet %}<strong title="Perfect score">{{ h.scores[i] }}</strong>{% else %}{{ h.scores[i] }}{% endif %}{% else %}<span class="muted">&mdash;</span>{% endif %}</td>{% endfor %}
+          {% for i in range(5) %}<td class="num meet-cell" data-label="Meet {{ i + 1 }}">{% if i < h.scores|length and h.scores[i] is not none %}{% if h.scores[i] == max_meet %}<strong title="Perfect score">{{ h.scores[i] }}</strong>{% else %}{{ h.scores[i] }}{% endif %}{% else %}<span class="muted">&mdash;</span>{% endif %}</td>{% endfor %}
           <td class="num" data-label="Total"><strong>{{ h.total }}</strong></td>
           <td data-label="Students">{% if h.students %}<a href="{{ url_for('results_individuals', season=h.season, school=school.name) }}">{{ h.students }} listed</a>{% else %}<span class="muted">&mdash;</span>{% endif %}</td>
         </tr>
